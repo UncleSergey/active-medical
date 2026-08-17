@@ -21,6 +21,8 @@ describe("leads.submit", () => {
       name: "Олена",
       phone: "+380 97 000 00 00",
       service: "Консультація",
+      preferredTime: "10:00–13:00",
+      consent: true,
     })).resolves.toEqual({ success: true });
 
     expect(fetchMock).toHaveBeenCalledTimes(2);
@@ -34,7 +36,15 @@ describe("leads.submit", () => {
     const fetchMock = vi.spyOn(global, "fetch");
     const caller = appRouter.createCaller(createContext());
 
-    await expect(caller.leads.submit({ name: "Олена", phone: "123", service: "" })).rejects.toThrow();
+    await expect(caller.leads.submit({ name: "Олена", phone: "123", service: "", consent: true })).rejects.toThrow();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("requires consent before delivery", async () => {
+    const fetchMock = vi.spyOn(global, "fetch");
+    const caller = appRouter.createCaller(createContext());
+
+    await expect(caller.leads.submit({ name: "Олена", phone: "+380 97 000 00 00", service: "" })).rejects.toThrow();
     expect(fetchMock).not.toHaveBeenCalled();
   });
 });

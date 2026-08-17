@@ -9,6 +9,8 @@ const leadInput = z.object({
   name: z.string().trim().min(2).max(120),
   phone: z.string().trim().min(7).max(40),
   service: z.string().trim().max(120),
+  preferredTime: z.string().trim().max(80).optional(),
+  consent: z.boolean().refine(Boolean, "Потрібна згода на обробку персональних даних"),
 });
 
 async function sendTelegramLead(input: z.infer<typeof leadInput>) {
@@ -19,6 +21,7 @@ async function sendTelegramLead(input: z.infer<typeof leadInput>) {
     `Ім'я: ${input.name}`,
     `Телефон: ${input.phone}`,
     `Напрямок: ${input.service || "Не вказано"}`,
+    `Бажаний час: ${input.preferredTime || "Не вказано"}`,
   ].join("\n");
   const response = await fetch(`https://api.telegram.org/bot${ENV.telegramBotToken}/sendMessage`, {
     method: "POST",
@@ -43,6 +46,7 @@ async function sendEmailLead(input: z.infer<typeof leadInput>) {
         `Ім'я: ${input.name}`,
         `Телефон: ${input.phone}`,
         `Напрямок: ${input.service || "Не вказано"}`,
+        `Бажаний час: ${input.preferredTime || "Не вказано"}`,
       ].join("\n"),
     }),
   });
