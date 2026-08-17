@@ -5,6 +5,7 @@ import { priceCategories } from "@/data/pricelist";
 
 const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
+const teamImage = "/manus-storage/active-medical-doctors-group-balanced_a0f036ea.png";
 const doctorImage = "/manus-storage/active-medical-doctor_806ddef6.jpg";
 const brandMark = "/manus-storage/active-medical-mark_73a7d29e.png";
 
@@ -66,7 +67,7 @@ export default function Home() {
 
       <section id="about" className="about-section section-pad">
         <div className="section-kicker">01 / Про нас</div>
-        <div className="about-grid"><div className="about-statement"><h2>Ми лікуємо<br /><em>не лише зуби.</em></h2><p>Ми створили місце, де можна видихнути. Де лікар слухає, а план лікування зрозумілий. Де сучасна технологія працює тихо — на ваше самопочуття.</p><button className="text-button" onClick={() => scrollTo("booking")}>Познайомитися ближче <ArrowUpRight size={16} /></button></div><div className="about-image-wrap"><img src={interiorImage} alt="Затишний інтер'єр клініки" /><div className="side-note">Піклуємося<br />про ваш<br /><em>спокій.</em></div></div></div>
+        <div className="about-grid"><div className="about-statement"><h2>Ми лікуємо<br /><em>не лише зуби.</em></h2><p>Ми створили місце, де можна видихнути. Де лікар слухає, а план лікування зрозумілий. Де сучасна технологія працює тихо — на ваше самопочуття.</p><button className="text-button" onClick={() => scrollTo("booking")}>Познайомитися ближче <ArrowUpRight size={16} /></button></div><div className="about-image-wrap"><img src={teamImage} alt="Команда лікарів Active Medical у клініці" /><div className="side-note">Піклуємося<br />про ваш<br /><em>спокій.</em></div></div></div>
         <div className="values-row"><div><strong>01</strong><span>Діагностика<br />без припущень</span></div><div><strong>02</strong><span>План лікування<br />без сюрпризів</span></div><div><strong>03</strong><span>Результат,<br />який хочеться показати</span></div></div>
       </section>
 
