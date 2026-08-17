@@ -8,7 +8,7 @@ const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
 const teamImage = "/manus-storage/active-medical-doctors-group-balanced_a0f036ea.png";
 const doctorImage = "/manus-storage/active-medical-doctor_806ddef6.jpg";
-const brandMark = "/manus-storage/active-medical-mark_73a7d29e.png";
+const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
 
 const services = [
   { number: "01", title: "Терапія без поспіху", text: "Лікуємо причину, пояснюємо кожен крок і зберігаємо природність усмішки.", tone: "blush", icon: HeartPulse },
