@@ -152,3 +152,20 @@ small { color:inherit; }
 .promo-case-tile img { object-fit:contain; object-position:center; padding:.3rem; }
 .promo-case-tile figcaption b { font-size:20px; }
 .promo-case-tile figcaption span { font-size:11px; }
+
+
+/* Reference-led first screen. The supplied hero carries the editorial composition; the overlay hotspots keep its CTAs functional. */
+.topbar { background:rgba(255,253,249,.96); height:78px; }
+.nav-links .nav-book { background:#4f9364; color:#fff; padding:.9rem 1.35rem; }
+.hero-reference { background:#f7f3eb; min-height:calc(100vh - 78px); overflow:hidden; position:relative; }
+.hero-reference-image { display:block; height:100%; object-fit:cover; object-position:center center; width:100%; }
+.hero-reference-hotspots { inset:0; pointer-events:none; position:absolute; }
+.hero-hotspot { background:transparent; border:0; color:transparent; pointer-events:auto; position:absolute; }
+.hero-hotspot-primary { bottom:5%; height:9%; left:4%; width:27%; }
+.hero-hotspot-secondary { bottom:5%; height:9%; left:29%; width:17%; }
+@media (max-width:900px) {
+  .hero-reference { min-height:0; }
+  .hero-reference-image { height:auto; object-fit:contain; }
+  .hero-hotspot-primary { bottom:4%; height:11%; left:4%; width:46%; }
+  .hero-hotspot-secondary { bottom:4%; height:11%; left:52%; width:35%; }
+}

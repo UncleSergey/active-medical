@@ -5,7 +5,7 @@ import { priceCategories } from "@/data/pricelist";
 import { trpc } from "@/lib/trpc";
 import { MapView } from "@/components/Map";
 
-const heroImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
+const heroImage = "/manus-storage/active-medical-hero-reference-body_cc501cac.png";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
 const teamImage = "/manus-storage/active-medical-team-yuliia-second-left-white_13c033c9.png";
 const doctorImage = "/manus-storage/alina-mezinova-color-scrubs-new_8225399f.png";
@@ -63,7 +63,7 @@ export default function Home() {
           <button onClick={() => scrollTo("documents")}>Документи</button>
           <button onClick={() => scrollTo("results")}>До / Після</button><button onClick={() => scrollTo("team")}>Команда</button>
           <button onClick={() => scrollTo("contacts")}>Контакти</button>
-          <button className="nav-book" onClick={() => scrollTo("booking")}>Записатися <ArrowUpRight size={15} /></button>
+          <button className="nav-book" onClick={() => scrollTo("booking")}>Записатися на прийом <ArrowUpRight size={15} /></button>
         </nav>
         <div className="topbar-actions">
           <a href="tel:+380512777888" className="phone-link"><Phone size={15} /> +380 512 777 888</a>
@@ -71,15 +71,13 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="top" className="hero-section">
-        <div className="hero-copy">
-          <div className="hero-brand"><img src={brandMark} alt="" /><span><strong>Актив</strong><small>МЕДІКАЛ</small></span></div><p className="eyebrow"><span className="rule" /> Стоматологія нового відчуття</p>
-          <h1>Турбота,<br /><em>яку видно</em><br />в деталях.</h1>
-          <p className="hero-lead">Спокійна атмосфера, точна медицина та чесний діалог. Для здорової усмішки, яка залишається вашою.</p>
-          <div className="hero-actions"><button className="button button-coral" onClick={() => scrollTo("booking")}>Обрати час <ArrowUpRight size={17} /></button><button className="text-button" onClick={() => scrollTo("about")}>Дізнатися більше <span>↓</span></button></div>
-          <div className="hero-notes"><span><Check size={14} /> Понад 15 років досвіду</span><span><Check size={14} /> Делікатний підхід</span></div>
+      <section id="top" className="hero-reference">
+        <img className="hero-reference-image" src={heroImage} alt="Стоматолог Active Medical у світлому клінічному інтер’єрі" />
+        <h1 className="sr-only">Турбота, яку видно в деталях</h1>
+        <div className="hero-reference-hotspots" aria-label="Дії першого екрану">
+          <button className="hero-hotspot hero-hotspot-primary" onClick={() => scrollTo("booking")} aria-label="Записатися на консультацію">Записатися на консультацію</button>
+          <button className="hero-hotspot hero-hotspot-secondary" onClick={() => scrollTo("about")} aria-label="Дізнатися більше про клініку">Дізнатися більше</button>
         </div>
-        <div className="hero-visual"><img src={heroImage} alt="Світлий кабінет стоматологічної клініки" /><div className="hero-caption"><span>Миколаїв · ЖК Рів'єра</span><span>Пн–Пт / 10:00–18:00</span></div><div className="hero-stamp">AM<br /><small>care first</small></div><div className="hero-proof"><span>01</span><strong>спокійна<br />стоматологія</strong><ArrowUpRight size={16} /></div></div>
       </section>
 
       <section className="marquee"><div>точність <span>·</span> людяність <span>·</span> довіра <span>·</span> точність <span>·</span> людяність <span>·</span> довіра</div></section>
