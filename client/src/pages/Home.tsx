@@ -78,7 +78,7 @@ export default function Home() {
         <h1 className="sr-only">Турбота, яку видно в деталях</h1>
         <div className="hero-reference-hotspots" aria-label="Дії першого екрану">
           <button className="hero-hotspot hero-hotspot-primary" onClick={() => scrollTo("booking")} aria-label="Записатися на консультацію">Записатися на консультацію</button>
-          <button className="hero-hotspot hero-hotspot-secondary" onClick={() => scrollTo("about")} aria-label="Дізнатися більше про клініку">Дізнатися більше</button>
+          <a className="hero-hotspot hero-hotspot-secondary" href="#about" onClick={(event) => { event.preventDefault(); scrollTo("about"); }} aria-label="Дізнатися більше про клініку">Дізнатися більше</a>
         </div>
       </section>
 
@@ -86,7 +86,7 @@ export default function Home() {
 
       <section id="about" className="about-section section-pad">
         <div className="section-kicker">01 / Про нас</div>
-        <div className="about-grid"><div className="about-statement"><h2>Ми лікуємо<br /><em>не лише зуби.</em></h2><p>Ми створили місце, де можна видихнути. Де лікар слухає, а план лікування зрозумілий. Де сучасна технологія працює тихо — на ваше самопочуття.</p><button className="text-button" onClick={() => scrollTo("booking")}>Познайомитися ближче <ArrowUpRight size={16} /></button></div><div className="about-image-wrap"><img src={teamImage} alt="Команда лікарів Active Medical у клініці" /><div className="side-note">Піклуємося<br />про ваш<br /><em>спокій.</em></div></div></div>
+        <div className="about-grid"><div className="about-statement"><h2>Ми лікуємо<br /><em>не лише зуби.</em></h2><p>Ми створили місце, де можна видихнути. Де лікар слухає, а план лікування зрозумілий. Де сучасна технологія працює тихо — на ваше самопочуття.</p><button className="text-button" onClick={() => scrollTo("booking")}>Познайомитися ближче <ArrowUpRight size={16} /></button></div><div className="about-image-wrap"><img src={teamImage} alt="Команда лікарів Active Medical у клініці" /></div></div>
         <div className="values-row"><div><strong>01</strong><span>Діагностика<br />без припущень</span></div><div><strong>02</strong><span>План лікування<br />без сюрпризів</span></div><div><strong>03</strong><span>Результат,<br />який хочеться показати</span></div></div>
       </section>
 

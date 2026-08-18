@@ -159,15 +159,15 @@ small { color:inherit; }
 .nav-links .nav-book { background:#4f9364; color:#fff; padding:.9rem 1.35rem; }
 .hero-reference { background:#f7f3eb; min-height:calc(100vh - 78px); overflow:hidden; position:relative; }
 .hero-reference-image { display:block; height:100%; object-fit:cover; object-position:center center; width:100%; }
-.hero-reference-hotspots { inset:0; pointer-events:none; position:absolute; }
-.hero-hotspot { background:transparent; border:0; color:transparent; pointer-events:auto; position:absolute; }
+.hero-reference-hotspots { inset:0; pointer-events:none; position:absolute; z-index:4; }
+.hero-hotspot { background:transparent; border:0; color:transparent; cursor:pointer; pointer-events:auto; position:absolute; z-index:5; }
 .hero-hotspot-primary { bottom:5%; height:9%; left:4%; width:27%; }
-.hero-hotspot-secondary { bottom:5%; height:9%; left:29%; width:17%; }
+.hero-hotspot-secondary { bottom:5%; height:11%; left:27%; width:22%; }
 @media (max-width:900px) {
   .hero-reference { min-height:0; }
   .hero-reference-image { height:auto; object-fit:contain; }
   .hero-hotspot-primary { bottom:4%; height:11%; left:4%; width:46%; }
-  .hero-hotspot-secondary { bottom:4%; height:11%; left:52%; width:35%; }
+  .hero-hotspot-secondary { bottom:4%; height:13%; left:50%; width:40%; }
 }
 
 
