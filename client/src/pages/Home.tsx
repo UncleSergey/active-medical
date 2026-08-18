@@ -5,7 +5,7 @@ import { priceCategories } from "@/data/pricelist";
 import { trpc } from "@/lib/trpc";
 import { MapView } from "@/components/Map";
 
-const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
+const heroImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
 const teamImage = "/manus-storage/active-medical-team-yuliia-second-left-white_13c033c9.png";
 const doctorImage = "/manus-storage/alina-mezinova-color-scrubs-new_8225399f.png";
