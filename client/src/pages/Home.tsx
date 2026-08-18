@@ -1,6 +1,6 @@
 // Design reminder: quiet clinical poetry — editorial asymmetry, warm milk surfaces, blush/sky/sage pastels, coral actions, Cormorant Garamond + Manrope.
-import { useMemo, useState } from "react";
-import { ArrowUpRight, CalendarDays, Check, ChevronDown, Clock3, HeartPulse, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Stethoscope, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { ArrowUp, ArrowUpRight, CalendarDays, Check, ChevronDown, Clock3, HeartPulse, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Stethoscope, X } from "lucide-react";
 import { priceCategories } from "@/data/pricelist";
 import { trpc } from "@/lib/trpc";
 import { MapView } from "@/components/Map";
@@ -38,11 +38,19 @@ const doctors = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const [openCategory, setOpenCategory] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const leadMutation = trpc.leads.submit.useMutation();
   const visibleCategories = useMemo(() => priceCategories.map((category) => ({ ...category, items: category.items.filter((item) => item.name !== "Послуга") })), []);
+
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 520);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -107,6 +115,7 @@ export default function Home() {
       <section id="contacts" className="contacts-section section-pad"><div className="section-kicker">09 / Контакти</div><div className="contacts-grid"><div><h2>Зустрінемося<br /><em>у Рів'єрі.</em></h2><address><span><MapPin size={17} /> вулиця Лазурна, 5,<br />корпус 10/1</span><a href="tel:+380512777888"><Phone size={17} /> +380 512 777 888</a><a href="tel:+380973201527"><Phone size={17} /> +38 097 320 15 27</a><span><MessageCircle size={17} /> Листування Viber/Telegram: +380 73 300 77 88</span></address><div className="contact-links"><a href="https://www.google.com/maps/search/?api=1&query=вулиця+Лазурна+5+корпус+10%2F1" target="_blank" rel="noreferrer">Відкрити маршрут <ArrowUpRight size={15} /></a><a href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer"><Instagram size={16} /> Instagram @stomatologactive</a></div><div className="contact-actions"><a className="contact-action primary" href="tel:+380973201527"><Phone size={16} /> Зателефонувати</a><a className="contact-action" href="viber://chat?number=%2B380733007788"><MessageCircle size={16} /> Написати у Viber</a><a className="contact-action" href="https://t.me/active_medical_bot" target="_blank" rel="noreferrer"><MessageCircle size={16} /> Написати у Telegram</a></div></div><div className="map-card real-map-card"><div className="map-fallback" aria-hidden="true"><div className="map-grid" /><div className="map-pin"><MapPin size={22} fill="currentColor" /><span>Active Medical</span></div></div><MapView className="contact-map" initialCenter={{ lat: 46.9391, lng: 32.0527 }} initialZoom={16} onMapReady={(map) => { const geocoder = new google.maps.Geocoder(); geocoder.geocode({ address: "вулиця Лазурна, 5, корпус 10/1, Миколаїв, Україна" }, (results, status) => { const location = results?.[0]?.geometry.location; if (status === "OK" && location) { map.setCenter(location); new google.maps.marker.AdvancedMarkerElement({ map, position: location, title: "Active Medical" }); } }); }} /><div className="map-label map-label-overlay">Active Medical<br /><small>вулиця Лазурна, 5, корпус 10/1</small></div></div><a className="instagram-qr-card" href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer"><img src={instagramQr} alt="QR-код Instagram Active Medical" /><span>Скануйте, щоб перейти<br /><b>@stomatologactive</b></span></a></div></section>
 
       <footer className="footer"><div className="footer-brand"><img src={brandMark} alt="Актив Медікал" /><div><b>Актив</b><span>Медікал</span></div></div><p>Стоматологія, в якій<br />вам спокійно.</p><span className="footer-copy">© 2026 Active Medical</span></footer>
+      <button className={`back-to-top ${showBackToTop ? "is-visible" : ""}`} onClick={() => scrollTo("top")} aria-label="Повернутися вгору"><ArrowUp size={19} /></button>
     </main>
   );
 }
