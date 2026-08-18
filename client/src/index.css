@@ -144,3 +144,11 @@ small { color:inherit; }
 /* Keep the full vertical Marko Rosso case visible in the results section. */
 .before-after-card-feature { justify-self:center; max-width:430px; width:100%; }
 .before-after-card-feature img { aspect-ratio:auto; height:auto; object-fit:contain; object-position:center; }
+
+
+/* New signed clinical cases: preserve the complete source frame and read in chronological order. */
+.promo-cases-gallery { grid-template-rows:1fr 1fr; }
+.promo-case-tile { background:#f7f3eb; }
+.promo-case-tile img { object-fit:contain; object-position:center; padding:.3rem; }
+.promo-case-tile figcaption b { font-size:20px; }
+.promo-case-tile figcaption span { font-size:11px; }
