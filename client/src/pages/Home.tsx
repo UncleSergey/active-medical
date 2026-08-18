@@ -38,19 +38,13 @@ const doctors = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showBackToTop] = useState(true);
   const [openCategory, setOpenCategory] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const leadMutation = trpc.leads.submit.useMutation();
   const visibleCategories = useMemo(() => priceCategories.map((category) => ({ ...category, items: category.items.filter((item) => item.name !== "Послуга") })), []);
 
-  useEffect(() => {
-    const onScroll = () => setShowBackToTop(window.scrollY > 520);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
