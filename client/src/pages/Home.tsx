@@ -70,7 +70,7 @@ export default function Home() {
           <div className="hero-actions"><button className="button button-coral" onClick={() => scrollTo("booking")}>Обрати час <ArrowUpRight size={17} /></button><button className="text-button" onClick={() => scrollTo("about")}>Дізнатися більше <span>↓</span></button></div>
           <div className="hero-notes"><span><Check size={14} /> Понад 15 років досвіду</span><span><Check size={14} /> Делікатний підхід</span></div>
         </div>
-        <div className="hero-visual"><img src={heroImage} alt="Світлий кабінет стоматологічної клініки" /><div className="hero-caption"><span>Миколаїв · ЖК Рів'єра</span><span>Пн–Пт / 10:00–18:00</span></div><div className="hero-stamp">AM<br /><small>care first</small></div></div>
+        <div className="hero-visual"><img src={heroImage} alt="Світлий кабінет стоматологічної клініки" /><div className="hero-caption"><span>Миколаїв · ЖК Рів'єра</span><span>Пн–Пт / 10:00–18:00</span></div><div className="hero-stamp">AM<br /><small>care first</small></div><div className="hero-proof"><span>01</span><strong>спокійна<br />стоматологія</strong><ArrowUpRight size={16} /></div></div>
       </section>
 
       <section className="marquee"><div>точність <span>·</span> людяність <span>·</span> довіра <span>·</span> точність <span>·</span> людяність <span>·</span> довіра</div></section>
