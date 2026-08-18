@@ -10,6 +10,7 @@ const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
 const teamImage = "/manus-storage/active-medical-doctors-group-balanced_a0f036ea.png";
 const doctorImage = "/manus-storage/active-medical-alina-mezinova_99255aa0.jpg";
 const doctorImageSecondary = "/manus-storage/dyachenko-yuliia-professional-portrait_3b4a0a31.png";
+const doctorImageTertiary = "/manus-storage/pohulych-yaroslav-professional-portrait_7496bcc2.png";
 const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
 const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
 
@@ -22,6 +23,7 @@ const services = [
 const doctors = [
   { name: "Мезінова Аліна Віталіївна", role: "Лікар-стоматолог", detail: "Дитяча стоматологія · Ортодонтія · високохудожня фронтальна реставрація" },
   { name: "Диченко Юлія Андріївна", role: "Щелепно-лицевий хірург", detail: "Хірургічна стоматологія · кісткова пластика · синус-ліфтинг · складні видалення · лікування кіст та новоутворень · щелепно-лицеві травми · запальні захворювання щелепно-лицевої ділянки · реконструктивна хірургія" },
+  { name: "Погулич Ярослав Євгенович", role: "Імплантолог · хірург · ортопед", detail: "Ортопедична та хірургічна стоматологія · імплантація · протезування на імплантах · коронки та мостоподібні конструкції · видалення зубів" },
 ];
 
 export default function Home() {
@@ -80,7 +82,7 @@ export default function Home() {
 
       <section id="prices" className="prices-section section-pad"><div className="section-kicker">03 / Прайс</div><div className="price-intro"><div><h2>Прозорі ціни<br /><em>на вашу усмішку.</em></h2></div><p>Остаточна вартість залежить від індивідуального плану лікування. На консультації ми все пояснюємо до початку роботи.</p></div><div className="price-list">{visibleCategories.map((category, index) => <div className={`price-category ${openCategory === index ? "is-open" : ""}`} key={category.title}><button className="category-trigger" onClick={() => setOpenCategory(openCategory === index ? -1 : index)}><span className="category-index">{String(index + 1).padStart(2, "0")}</span><strong>{category.title}</strong><span className="category-count">{category.items.length} позицій</span><ChevronDown size={19} /></button>{openCategory === index && <div className="price-items">{category.items.map((item, itemIndex) => <div className="price-item" key={`${item.name}-${itemIndex}`}><span>{item.name}</span><b>{item.price ? `${item.price} грн` : "уточнюйте"}</b></div>)}</div>}</div>)}</div></section>
 
-      <section id="team" className="team-section section-pad"><div className="team-photo"><img src={doctorImage} alt="Мезінова Аліна Віталіївна — лікар-стоматолог Active Medical" /><div className="team-photo-secondary"><img src={doctorImageSecondary} alt="Диченко Юлія Андріївна — щелепно-лицевий хірург Active Medical" /></div><div className="photo-label">Люди<br /><em>поруч</em></div></div><div className="team-copy"><div className="section-kicker">04 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Ми не ховаємося за білими халатами. Говоримо просто, працюємо уважно і завжди залишаємо вам право на запитання.</p><div className="doctor-list">{doctors.map((doctor, index) => <div className="doctor-row" key={doctor.name}><span className="doctor-number">0{index + 1}</span><div><strong>{doctor.name}</strong><span>{doctor.role} · {doctor.detail}</span></div><ArrowUpRight size={17} /></div>)}</div></div></section>
+      <section id="team" className="team-section section-pad"><div className="team-photo"><img src={doctorImage} alt="Мезінова Аліна Віталіївна — лікар-стоматолог Active Medical" /><div className="team-photo-secondary"><img src={doctorImageSecondary} alt="Диченко Юлія Андріївна — щелепно-лицевий хірург Active Medical" /></div><div className="team-photo-tertiary"><img src={doctorImageTertiary} alt="Погулич Ярослав Євгенович — імплантолог, хірург, ортопед Active Medical" /></div><div className="photo-label">Люди<br /><em>поруч</em></div></div><div className="team-copy"><div className="section-kicker">04 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Ми не ховаємося за білими халатами. Говоримо просто, працюємо уважно і завжди залишаємо вам право на запитання.</p><div className="doctor-list">{doctors.map((doctor, index) => <div className="doctor-row" key={doctor.name}><span className="doctor-number">0{index + 1}</span><div><strong>{doctor.name}</strong><span>{doctor.role} · {doctor.detail}</span></div><ArrowUpRight size={17} /></div>)}</div></div></section>
 
       <section className="quote-section section-pad"><div className="quote-mark">“</div><blockquote>Найкраще лікування — це коли вам спокійно, зрозуміло і хочеться повернутися.</blockquote><p>— команда Active Medical</p></section>
 
