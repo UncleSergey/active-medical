@@ -7,11 +7,11 @@ import { MapView } from "@/components/Map";
 
 const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
-const teamImage = "/manus-storage/active-medical-four-doctor-team-equal_0836b1b3.png";
-const doctorImage = "/manus-storage/active-medical-alina-mezinova_99255aa0.jpg";
-const doctorImageSecondary = "/manus-storage/dyachenko-yuliia-professional-portrait_3b4a0a31.png";
-const doctorImageTertiary = "/manus-storage/pohulych-yaroslav-professional-portrait_7496bcc2.png";
-const doctorImageQuaternary = "/manus-storage/fedorov-ivan-professional-portrait_cf685e8e.png";
+const teamImage = "/manus-storage/active-medical-four-doctors-final-color-team_ef7604a3.png";
+const doctorImage = "/manus-storage/alina-mezinova-color-scrubs-new_8225399f.png";
+const doctorImageSecondary = "/manus-storage/yuliia-diachenko-mic-removed-color-scrubs_3471ec73.png";
+const doctorImageTertiary = "/manus-storage/pohulych-yaroslav-color-scrubs-new_900b5f28.png";
+const doctorImageQuaternary = "/manus-storage/fedorov-ivan-color-scrubs-new_b63e6af8.png";
 const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
 const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
 
