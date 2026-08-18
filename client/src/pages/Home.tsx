@@ -7,7 +7,7 @@ import { trpc } from "@/lib/trpc";
 const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
 const teamImage = "/manus-storage/active-medical-doctors-group-balanced_a0f036ea.png";
-const doctorImage = "/manus-storage/active-medical-doctor_806ddef6.jpg";
+const doctorImage = "/manus-storage/active-medical-alina-mezinova_99255aa0.jpg";
 const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
 const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
 
@@ -18,9 +18,7 @@ const services = [
 ];
 
 const doctors = [
-  { name: "Олена Кравченко", role: "Лікарка-стоматологиня", detail: "Терапія · естетична реставрація" },
-  { name: "Андрій Мельник", role: "Хірург-імплантолог", detail: "Хірургія · імплантація" },
-  { name: "Марія Савчук", role: "Лікарка-ортодонтка", detail: "Ортодонтія · дитячий прийом" },
+  { name: "Мезінова Аліна Віталіївна", role: "Лікар-стоматолог", detail: "Дитяча стоматологія · Ортодонтія · високохудожня фронтальна реставрація" },
 ];
 
 export default function Home() {
