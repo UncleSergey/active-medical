@@ -139,3 +139,8 @@ body { font-size:16px; }
 input, select, textarea { color:var(--ink); font-size:16px; }
 input::placeholder, textarea::placeholder { color:#5a655e; opacity:1; }
 small { color:inherit; }
+
+
+/* Keep the full vertical Marko Rosso case visible in the results section. */
+.before-after-card-feature { justify-self:center; max-width:430px; width:100%; }
+.before-after-card-feature img { aspect-ratio:auto; height:auto; object-fit:contain; object-position:center; }
