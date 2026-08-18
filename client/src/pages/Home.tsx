@@ -11,7 +11,7 @@ const teamImage = "/manus-storage/active-medical-team-yuliia-second-left-white_1
 const doctorImage = "/manus-storage/alina-mezinova-color-scrubs-new_8225399f.png";
 const doctorImageSecondary = "/manus-storage/yuliia-diachenko-waist-up-white-uniform_0189e211.png";
 const doctorImageTertiary = "/manus-storage/pohulych-yaroslav-color-scrubs-new_900b5f28.png";
-const doctorImageQuaternary = "/manus-storage/fedorov-ivan-color-scrubs-new_b63e6af8.png";
+const doctorImageQuaternary = "/manus-storage/fedorov-ivan-dusty-blue-scrubs_fe3e397c.png";
 const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
 const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
 
