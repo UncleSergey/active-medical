@@ -105,3 +105,37 @@ h2 { font-size:clamp(3.5rem,6vw,6.3rem); line-height:.88; }
 .real-map-card .contact-map { height: 100% !important; inset: 0; position: absolute; width: 100% !important; z-index: 1; }
 .real-map-card .map-label-overlay { background: rgba(255, 251, 243, .9); border: 1px solid rgba(31, 41, 36, .12); border-radius: .7rem; bottom: 1rem; padding: .55rem .7rem; z-index: 2; }
 .real-map-card .map-label-overlay small { display: inline-block; margin-top: .25rem; }
+
+
+/* Readability pass: larger, darker utility typography across the public site. */
+:root { --muted:#4f5b54; }
+body { font-size:16px; }
+.brand-copy { font-size:14px; }
+.brand-copy span, .hero-brand small { font-size:10px; }
+.nav-links button, .phone-link { font-size:13px; }
+.eyebrow, .section-kicker { font-size:12px; }
+.hero-lead { color:var(--ink); font-size:16px; line-height:1.65; }
+.button, .text-button { font-size:13px; }
+.hero-notes { color:var(--ink); font-size:13px; }
+.hero-caption { font-size:12px; }
+.hero-stamp small { font-size:9px; }
+.about-statement p, .section-heading p, .price-intro p, .results-copy>p { color:var(--ink); font-size:16px; line-height:1.7; }
+.values-row span { font-size:13px; }
+.service-card p, .promo-offer p { color:var(--ink); font-size:15px; line-height:1.55; }
+.promo-offer-top b, .promo-price del { color:var(--ink); font-size:12px; }
+.promo-price strong small { font-size:13px; }
+.promo-tile figcaption span { color:var(--ink); font-size:11px; }
+.category-count { color:var(--ink); font-size:12px; }
+.price-item { font-size:14px; line-height:1.5; }
+.price-item span, .price-item b { font-size:14px; }
+.before-after-card figcaption small { color:var(--ink); font-size:12px; }
+.instagram-qr-card span { color:var(--ink); font-size:13px; }
+.instagram-qr-card b { font-size:15px; }
+.map-pin span { font-size:12px; }
+.map-label small { font-size:12px; }
+.footer-copy { font-size:12px; }
+.footer-brand span { font-size:11px; }
+.footer p { font-size:22px; }
+input, select, textarea { color:var(--ink); font-size:16px; }
+input::placeholder, textarea::placeholder { color:#5a655e; opacity:1; }
+small { color:inherit; }
