@@ -7,7 +7,7 @@ import { MapView } from "@/components/Map";
 
 const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
-const teamImage = "/manus-storage/active-medical-doctors-group-balanced_a0f036ea.png";
+const teamImage = "/manus-storage/active-medical-four-doctor-team-equal_0836b1b3.png";
 const doctorImage = "/manus-storage/active-medical-alina-mezinova_99255aa0.jpg";
 const doctorImageSecondary = "/manus-storage/dyachenko-yuliia-professional-portrait_3b4a0a31.png";
 const doctorImageTertiary = "/manus-storage/pohulych-yaroslav-professional-portrait_7496bcc2.png";
