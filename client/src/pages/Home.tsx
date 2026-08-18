@@ -7,7 +7,7 @@ import { MapView } from "@/components/Map";
 
 const heroImage = "/manus-storage/active-medical-hero_bfed7fc9.jpg";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
-const teamImage = "/manus-storage/active-medical-four-doctors-final-color-team_ef7604a3.png";
+const teamImage = "/manus-storage/active-medical-team-yuliia-second-left-white_13c033c9.png";
 const doctorImage = "/manus-storage/alina-mezinova-color-scrubs-new_8225399f.png";
 const doctorImageSecondary = "/manus-storage/yuliia-diachenko-waist-up-white-uniform_0189e211.png";
 const doctorImageTertiary = "/manus-storage/pohulych-yaroslav-color-scrubs-new_900b5f28.png";
