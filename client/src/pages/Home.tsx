@@ -74,7 +74,7 @@ export default function Home() {
       </header>
 
       <section id="top" className="hero-reference">
-        <img className="hero-reference-image" src={heroImage} alt="Стоматолог Active Medical у світлому клінічному інтер’єрі" />
+        <img className="hero-reference-image" src={heroImage} alt="Стоматолог Active Medical у світлому клінічному інтер’єрі" /><span className="hero-badge-cover" aria-hidden="true" />
         <h1 className="sr-only">Турбота, яку видно в деталях</h1>
         <div className="hero-reference-hotspots" aria-label="Дії першого екрану">
           <button className="hero-hotspot hero-hotspot-primary" onClick={() => scrollTo("booking")} aria-label="Записатись на консультацію">Записатись на консультацію</button>

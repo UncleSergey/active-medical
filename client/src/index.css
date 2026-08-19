@@ -179,3 +179,9 @@ small { color:inherit; }
 @media (max-width:900px) {
   .back-to-top { bottom:1rem; height:44px; right:1rem; width:44px; }
 }
+
+/* Hide the unwanted baked-in AM / CARE FIRST badge from the supplied hero image. */
+.hero-badge-cover { background:#f7f3eb; border-radius:50%; height:126px; position:absolute; right:1.4%; top:15.5%; width:126px; z-index:3; }
+@media (max-width:900px) {
+  .hero-badge-cover { height:76px; right:1.5%; top:17%; width:76px; }
+}
