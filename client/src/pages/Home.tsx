@@ -7,7 +7,13 @@ import { MapView } from "@/components/Map";
 
 const heroImage = "/manus-storage/active-medical-hero-reference-body_cc501cac.png";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
-const teamImage = "/manus-storage/yuliia-standing-option-balanced-head_102214b0.png";
+const teamImage = "/manus-storage/yuliia-standing-option-balanced-head_f0170033.png";
+const doctorPortraits = [
+  "/manus-storage/alina-mezinova-color-scrubs-new_5b789463.png",
+  "/manus-storage/yuliia-standing-option-balanced-head_f0170033.png",
+  "/manus-storage/pohulych-yaroslav-color-scrubs-new_fe42c9e5.png",
+  "/manus-storage/fedorov-ivan-light-gray-scrubs_a3681cf7.png",
+];
 const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
 const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
 const markoRossoCaseImage = "/manus-storage/active-medical-marko-rosso-before-after_7bfe3b81.png";
@@ -94,7 +100,7 @@ export default function Home() {
 
       <section id="results" className="results-section section-pad"><div className="section-kicker">05 / До / Після</div><div className="results-grid"><div className="results-copy"><h2>Результат,<br /><em>який видно.</em></h2><p>Показуємо реальні клінічні приклади з профілю Active Medical. Кожен випадок потребує індивідуальної консультації та плану лікування.</p><a className="text-button" href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer">Більше прикладів в Instagram <Instagram size={16} /></a></div><figure className="before-after-card before-after-card-feature"><img src={markoRossoCaseImage} alt="Реальний клінічний образец до та після за апаратом Марко Россо" /><figcaption><span>До / Після</span><small>Апарат Марко Россо · реальний клінічний кейс</small></figcaption></figure></div></section>
 
-      <section id="team" className="team-section section-pad"><div className="team-photo"><img src={teamImage} alt="Диченко Юлія Андріївна — лікар-стоматолог Active Medical" /></div><div className="team-copy"><div className="section-kicker">06 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Ми не ховаємося за білими халатами. Говоримо просто, працюємо уважно і завжди залишаємо вам право на запитання.</p><div className="doctor-list">{doctors.map((doctor, index) => <div className="doctor-row" key={doctor.name}><span className="doctor-number">0{index + 1}</span><div><strong>{doctor.name}</strong><span>{doctor.role} · {doctor.detail}</span></div><ArrowUpRight size={17} /></div>)}</div></div></section>
+      <section id="team" className="team-section section-pad"><div className="team-copy team-copy-full"><div className="section-kicker">06 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Ми не ховаємося за білими халатами. Говоримо просто, працюємо уважно і завжди залишаємо вам право на запитання.</p><div className="doctor-list doctor-list-with-photos">{doctors.map((doctor, index) => <div className="doctor-row doctor-row-with-photo" key={doctor.name}><div className="doctor-row-photo"><img src={doctorPortraits[index]} alt={`${doctor.name} — ${doctor.role} Active Medical`} /></div><span className="doctor-number">0{index + 1}</span><div className="doctor-row-copy"><strong>{doctor.name}</strong><span>{doctor.role} · {doctor.detail}</span></div><ArrowUpRight size={17} /></div>)}</div></div></section>
 
       <section className="quote-section section-pad"><div className="quote-mark">“</div><blockquote>Найкраще лікування — це коли вам спокійно, зрозуміло і хочеться повернутися.</blockquote><p>— команда Active Medical</p></section>
 

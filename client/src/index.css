@@ -194,3 +194,19 @@ small { color:inherit; }
 /* Single featured doctor portrait for the team section */
 .team-photo > img { aspect-ratio:4/5; display:block; object-fit:cover; width:100%; }
 .team-photo { overflow:hidden; }
+
+/* Team directory: each doctor's portrait sits directly to the left of the matching name and bio */
+.team-copy-full { grid-column: 1 / -1; }
+.doctor-list-with-photos { display:grid; gap:0; }
+.doctor-row-with-photo { align-items:center; display:grid; gap:1.1rem; grid-template-columns:96px 34px minmax(0,1fr) 20px; min-height:132px; padding:1rem 0; }
+.doctor-row-with-photo .doctor-row-photo { align-self:stretch; border-radius:.45rem; overflow:hidden; }
+.doctor-row-with-photo .doctor-row-photo img { display:block; height:100%; min-height:108px; object-fit:cover; object-position:center top; width:100%; }
+.doctor-row-with-photo .doctor-row-copy { display:grid; gap:.35rem; min-width:0; }
+.doctor-row-with-photo .doctor-row-copy strong { font-family:'Cormorant Garamond',serif; font-size:clamp(1.35rem,2vw,1.8rem); font-weight:500; line-height:1; }
+.doctor-row-with-photo .doctor-row-copy span { color:var(--muted); font-size:clamp(.78rem,1vw,.93rem); line-height:1.45; }
+@media (max-width:900px) {
+  .doctor-row-with-photo { align-items:start; gap:.7rem; grid-template-columns:72px 25px minmax(0,1fr) 16px; min-height:0; padding:.85rem 0; }
+  .doctor-row-with-photo .doctor-row-photo img { min-height:92px; }
+  .doctor-row-with-photo .doctor-row-copy strong { font-size:1.25rem; }
+  .doctor-row-with-photo .doctor-row-copy span { font-size:.75rem; line-height:1.4; }
+}
