@@ -7,7 +7,7 @@ import { MapView } from "@/components/Map";
 
 const heroImage = "/manus-storage/active-medical-hero-reference-body_cc501cac.png";
 const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
-const teamImage = "/manus-storage/yuliia-standing-option-balanced-head_f0170033.png";
+const teamImage = "/manus-storage/active-medical-team-right-doctor-gray_82bae3d6.png";
 const doctorPortraits = [
   "/manus-storage/alina-mezinova-color-scrubs-new_5b789463.png",
   "/manus-storage/yuliia-standing-option-balanced-head_f0170033.png",
