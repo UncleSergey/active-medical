@@ -14,7 +14,7 @@ const doctorPortraits = [
   "/manus-storage/pohulych-yaroslav-color-scrubs-new_fe42c9e5.png",
   "/manus-storage/fedorov-ivan-light-gray-scrubs_a3681cf7.png",
 ];
-const brandMark = "/manus-storage/active-medical-logo_2d7c215b.png";
+const brandMark = "/manus-storage/active-medical-official-logo_2840a822.png";
 const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
 const markoRossoCaseImage = "/manus-storage/active-medical-marko-rosso-before-after_7bfe3b81.png";
 const case1BeforeImage = "/manus-storage/active-medical-case1-before_0701fe75.webp";

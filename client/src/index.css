@@ -210,3 +210,124 @@ small { color:inherit; }
   .doctor-row-with-photo .doctor-row-copy strong { font-size:1.25rem; }
   .doctor-row-with-photo .doctor-row-copy span { font-size:.75rem; line-height:1.4; }
 }
+
+
+/* Active Medical parent-brand refresh: clinical white, signature red, charcoal hierarchy. */
+:root {
+  --milk: #fbfaf8;
+  --ink: #1b2024;
+  --muted: #55616a;
+  --coral: #b51f32;
+  --blush: #f8e7ea;
+  --blue: #edf4f6;
+  --sage: #eef1ec;
+  --line: #d9dee1;
+  --brand-red: #b51f32;
+  --brand-red-dark: #8f1727;
+  --brand-soft: #f8e7ea;
+  --brand-cool: #edf4f6;
+  --radius: .35rem;
+}
+body { background: var(--milk); color: var(--ink); background-image: none; }
+.topbar { background: rgba(255,255,255,.96); border-bottom: 1px solid #d8dde0; box-shadow: 0 5px 22px rgba(27,32,36,.05); height: 84px; }
+.brand { gap: .55rem; }
+.brand-mark { height: 58px; max-width: 128px; }
+.brand-copy { display: none; }
+.nav-links { gap: clamp(.85rem, 2.2vw, 2rem); margin-right: 2rem; }
+.nav-links button { color: #344049; font-size: 11px; letter-spacing: .1em; }
+.nav-links button:hover { color: var(--brand-red); }
+.nav-links .nav-book { background: var(--brand-red); color: #fff; padding: .95rem 1.2rem; }
+.nav-links .nav-book:hover { background: var(--brand-red-dark); color: #fff; }
+.phone-link { color: #28333a; font-size: 12px; }
+.phone-link svg { color: var(--brand-red); }
+.hero-reference { background: #f4f5f3; min-height: calc(100vh - 84px); }
+.hero-reference-image { filter: saturate(.82) contrast(1.02); }
+.hero-badge-cover { background: #f4f5f3; }
+.marquee { background: var(--brand-red); font-family: 'Manrope',sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .18em; padding: .95rem 0; text-transform: uppercase; }
+.marquee span { color: #f7c8cf; }
+.section-pad:before { background: var(--brand-red); }
+.eyebrow, .section-kicker { color: var(--brand-red); }
+.rule { background: var(--brand-red); }
+h1 em, h2 em { color: var(--brand-red); }
+.button-coral { background: var(--brand-red); box-shadow: 0 10px 22px rgba(181,31,50,.2); }
+.button-coral:hover { background: var(--brand-red-dark); box-shadow: 0 14px 28px rgba(181,31,50,.28); }
+.text-button:hover { color: var(--brand-red); }
+.about-section { background: #fff; }
+.about-image-wrap img, .before-after-card, .promo-tile { border-radius: .35rem; }
+.values-row { border-top-color: #cfd6da; }
+.values-row strong, .category-index, .promo-offer-top span, .promo-price strong, .promo-tile figcaption b { color: var(--brand-red); }
+.services-section { background: var(--brand-cool); }
+.service-card, .promo-offer { border-radius: .35rem; box-shadow: 0 12px 30px rgba(27,32,36,.07); }
+.service-card.blush { background: var(--brand-soft); }
+.service-card.blue { background: #fff; }
+.service-card.sage { background: var(--brand-cool); border: 1px solid #d9e2e5; }
+.service-top { color: var(--brand-red); }
+.round-arrow { background: var(--brand-red); }
+.promotions-section { background: linear-gradient(135deg, #fff 0%, #f8f2f3 55%, var(--brand-cool) 100%); }
+.promo-offer-blue { background: #e8f1f3; }
+.promo-offer-pink { background: var(--brand-soft); }
+.prices-section { background: #fff; }
+.price-category:before { background: var(--brand-red); }
+.price-items { background: #f5f7f7; border-left-color: rgba(181,31,50,.35); }
+.price-item b { color: var(--brand-red); }
+.results-section { background: linear-gradient(135deg, #fff, #edf4f6); }
+.before-after-card figcaption { background: var(--brand-soft); }
+.team-section { background: #eef1ec; }
+.doctor-row-with-photo { border-bottom: 1px solid rgba(27,32,36,.12); }
+.doctor-row-with-photo .doctor-row-photo { border-radius: .25rem; }
+.doctor-row-with-photo .doctor-row-copy strong { color: #1b2024; }
+.quote-section { background: var(--brand-red); color: #fff; }
+.quote-section .section-kicker, .quote-section p { color: #f9cbd2; }
+.booking-section { background: #fff; }
+.booking-aside h2 em { color: var(--brand-red); }
+.booking-contact svg { color: var(--brand-red); }
+.booking-form { background: #f5f7f7; border: 1px solid #dce2e5; border-radius: .35rem; box-shadow: 0 14px 36px rgba(27,32,36,.07); }
+.booking-form input, .booking-form select, .booking-form textarea { background: #fff; border-color: #cbd4d9; border-radius: .2rem; }
+.booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus { border-color: var(--brand-red); box-shadow: 0 0 0 3px rgba(181,31,50,.12); outline: none; }
+.documents-section { background: var(--brand-cool); }
+.document-card { background: #fff; border: 1px solid #d8e1e4; border-radius: .35rem; }
+.document-card:hover { border-color: var(--brand-red); transform: translateY(-3px); }
+.document-card-index { color: var(--brand-red); }
+.contacts-section { background: #fff; }
+.map-card { border-radius: .35rem; }
+.instagram-qr-card { background: var(--brand-soft); border-radius: .35rem; }
+.contact-action.primary { background: var(--brand-red); }
+.contact-action.primary:hover { background: var(--brand-red-dark); }
+.footer { background: #1b2024; color: #fff; }
+.footer-brand span, .footer-copy { color: #f2aab4; }
+.footer p { color: #fff; }
+.back-to-top { background: var(--brand-red); }
+.back-to-top:hover { background: var(--brand-red-dark); }
+@media (max-width: 1100px) {
+  .nav-links { gap: .8rem; margin-right: 1rem; }
+  .nav-links button { font-size: 10px; }
+  .phone-links { display: none; }
+}
+@media (max-width: 900px) {
+  .topbar { height: 72px; padding: 0 1rem; }
+  .brand-mark { height: 52px; max-width: 114px; }
+  .nav-links { background: #fff; border-bottom: 1px solid #d8dde0; box-shadow: 0 14px 22px rgba(27,32,36,.1); padding: 1rem; }
+  .nav-links .nav-book { width: 100%; }
+  .hero-reference { min-height: 0; }
+}
+
+
+/* Final art direction: red is a precise brand signal, not a dominant field. */
+.marquee { background: #fff; border-top: 1px solid #d8dde0; border-bottom: 1px solid #d8dde0; color: var(--brand-red); }
+.marquee span { color: #9aa8ae; }
+.quote-section { background: #eef1ec; color: var(--ink); }
+.quote-section .section-kicker, .quote-section p { color: var(--brand-red); }
+.quote-section .quote-mark { color: var(--brand-red); }
+.service-card, .promo-offer, .document-card, .booking-form, .before-after-card { border-radius: .15rem; }
+.service-card:hover, .document-card:hover { box-shadow: 0 18px 36px rgba(27,32,36,.1); }
+.promo-gallery { padding: .8rem; background: rgba(255,255,255,.55); border: 1px solid #dfe5e7; }
+.promo-case-tile { border-radius: .15rem; box-shadow: none; }
+.promo-case-tile img { background: #fff; padding: .8rem; }
+.team-section { border-top: 1px solid #d8dfd9; border-bottom: 1px solid #d8dfd9; }
+.team-section .section-kicker { color: var(--brand-red); }
+.footer-brand img { filter: none; }
+@media (max-width: 900px) {
+  .marquee { font-size: 10px; letter-spacing: .12em; }
+  .promo-gallery { padding: .45rem; }
+  .section-pad { padding-left: 1.1rem; padding-right: 1.1rem; }
+}
