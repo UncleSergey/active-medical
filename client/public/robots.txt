@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://activemedic-rcveslat.manus.space/sitemap.xml
