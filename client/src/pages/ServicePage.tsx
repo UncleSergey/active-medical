@@ -6,6 +6,7 @@ import { priceCategories } from "@/data/pricelist";
 export type ServicePageData = {
   slug: string;
   title: string;
+  seoTitle: string;
   shortTitle: string;
   description: string;
   intro: string;
@@ -17,6 +18,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "dityacha-stomatolohiya",
     title: "Дитяча стоматологія в Миколаєві",
+    seoTitle: "Дитяча стоматологія у Миколаєві | Active Medical",
     shortTitle: "Дитяча стоматологія",
     description: "Дитяча стоматологія Active Medical у Миколаєві: консультація, лікування молочних зубів, профілактика та ортодонтичний супровід.",
     intro: "Допомагаємо дитині знайомитися зі стоматологією спокійно: пояснюємо кожен крок, працюємо у комфортному темпі та залучаємо батьків до зрозумілого плану.",
@@ -26,6 +28,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "terapevtychna-stomatolohiya",
     title: "Терапевтична стоматологія в Миколаєві",
+    seoTitle: "Терапевтична стоматологія у Миколаєві | Active Medical",
     shortTitle: "Терапевтична стоматологія",
     description: "Терапевтична стоматологія Active Medical у Миколаєві: діагностика та лікування карієсу, відновлення зубів і зрозумілий план лікування.",
     intro: "Терапевтичне лікування починається з діагностики та розмови. Ми пояснюємо варіанти й погоджуємо план до початку роботи.",
@@ -35,6 +38,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "ortodontiya",
     title: "Ортодонтія в Миколаєві",
+    seoTitle: "Ортодонт у Миколаєві | Брекети та ортодонтичні апарати | Active Medical",
     shortTitle: "Ортодонтія",
     description: "Ортодонтія Active Medical у Миколаєві: брекет-системи, ортодонтичні апарати, пластинки та ретенційний етап лікування.",
     intro: "Ортодонтичний план формується після огляду та діагностики. Ми підбираємо рішення відповідно до віку, клінічної ситуації та цілей пацієнта.",
@@ -44,6 +48,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "implantatsiya",
     title: "Імплантація зубів у Миколаєві",
+    seoTitle: "Імплантація зубів у Миколаєві | Active Medical",
     shortTitle: "Імплантація",
     description: "Імплантація зубів Active Medical у Миколаєві: консультація імплантолога, планування та хірургічний етап за показаннями.",
     intro: "Імплантація потребує індивідуального планування. На консультації лікар оцінює ситуацію та пояснює можливі етапи лікування.",
@@ -53,6 +58,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "protezyvannya",
     title: "Протезування зубів у Миколаєві",
+    seoTitle: "Протезування зубів у Миколаєві | Active Medical",
     shortTitle: "Протезування",
     description: "Протезування зубів Active Medical у Миколаєві: ортопедична консультація, коронки, конструкції та відновлення функції зубів.",
     intro: "Ортопедичне лікування починається з оцінки стану зубів і узгодження цілей. Лікар пояснює варіанти конструкцій і послідовність етапів.",
@@ -62,6 +68,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "likuvannya-kanaliv",
     title: "Лікування кореневих каналів у Миколаєві",
+    seoTitle: "Лікування каналів зуба у Миколаєві | Ендодонтія | Active Medical",
     shortTitle: "Лікування каналів",
     description: "Лікування та переліковування кореневих каналів у Active Medical у Миколаєві: ендодонтична допомога при пульпіті та періодонтиті.",
     intro: "Ендодонтичне лікування потребує точної діагностики та послідовної роботи з каналами. Остаточний план визначається після огляду.",
@@ -71,6 +78,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "profesiyna-hihiyena",
     title: "Професійна гігієна зубів у Миколаєві",
+    seoTitle: "Професійна гігієна зубів у Миколаєві | Active Medical",
     shortTitle: "Професійна гігієна",
     description: "Професійна гігієна зубів Active Medical у Миколаєві: комплексне видалення відкладень, AirFlow, ультразвук, полірування та фторування.",
     intro: "Професійна гігієна допомагає підтримувати чистоту зубів і ясен. Конкретний обсяг процедури лікар визначає після огляду.",
@@ -80,6 +88,7 @@ export const servicePages: ServicePageData[] = [
   {
     slug: "khirurhichna-stomatolohiya",
     title: "Хірургічна стоматологія в Миколаєві",
+    seoTitle: "Хірургічна стоматологія у Миколаєві | Active Medical",
     shortTitle: "Хірургічна стоматологія",
     description: "Хірургічна стоматологія Active Medical у Миколаєві: видалення зубів, зубів мудрості та щелепно-лицеві хірургічні втручання за показаннями.",
     intro: "Хірургічне лікування починається з огляду та діагностики. Лікар пояснює показання, варіанти втручання та подальший догляд.",
@@ -130,7 +139,7 @@ export default function ServicePage({ page }: { page: ServicePageData }) {
   });
 
   useEffect(() => {
-    document.title = `${page.title} | Active Medical`;
+    document.title = page.seoTitle;
     setMeta("description", page.description);
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -139,13 +148,14 @@ export default function ServicePage({ page }: { page: ServicePageData }) {
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute("href", canonical);
-    setMeta("og:title", `${page.title} | Active Medical`);
+    setMeta("og:title", page.seoTitle);
+    setMeta("og:title", page.seoTitle);
     setMeta("og:description", page.description);
     setMeta("og:url", canonical);
     return () => {
       document.title = "Стоматологія Active Medical у Миколаєві | Лікування зубів";
     };
-  }, [canonical, page.description, page.title]);
+  }, [canonical, page.description, page.seoTitle]);
 
   return (
     <main className="service-page">

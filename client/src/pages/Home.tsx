@@ -75,6 +75,24 @@ export default function Home() {
   const leadMutation = trpc.leads.submit.useMutation();
   const visibleCategories = useMemo(() => priceCategories.map((category) => ({ ...category, items: category.items.filter((item) => item.name !== "Послуга") })), []);
 
+  useEffect(() => {
+    const title = "Стоматологія Active Medical у Миколаєві | Лікування зубів";
+    const description = "Стоматологія Active Medical у Миколаєві на Намиві, ЖК «Рів'єра». Лікування зубів для дорослих і дітей, імплантація, протезування, ортодонтія, хірургія та професійна гігієна.";
+    const canonical = `${window.location.origin}/`;
+    document.title = title;
+    const setMeta = (selector: string, attribute: string, name: string, content: string) => {
+      let element = document.querySelector(selector);
+      if (!element) { element = document.createElement("meta"); element.setAttribute(attribute, name); document.head.appendChild(element); }
+      element.setAttribute("content", content);
+    };
+    setMeta('meta[name="description"]', "name", "description", description);
+    setMeta('meta[property="og:title"]', "property", "og:title", title);
+    setMeta('meta[property="og:description"]', "property", "og:description", description);
+    setMeta('meta[property="og:url"]', "property", "og:url", canonical);
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) { canonicalLink = document.createElement("link"); canonicalLink.setAttribute("rel", "canonical"); document.head.appendChild(canonicalLink); }
+    canonicalLink.setAttribute("href", canonical);
+  }, []);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });

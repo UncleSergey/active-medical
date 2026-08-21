@@ -56,7 +56,7 @@ export default function DoctorPage({ doctor }: { doctor: DoctorPageData }) {
   const canonical = `${window.location.origin}/likari/${doctor.slug}`;
 
   useEffect(() => {
-    document.title = `${doctor.name} | Active Medical, Миколаїв`;
+    document.title = `${doctor.name} | ${doctor.role} | Active Medical`;
     const description = document.querySelector('meta[name="description"]');
     if (description) description.setAttribute("content", doctor.description);
     let canonicalLink = document.querySelector('link[rel="canonical"]');
