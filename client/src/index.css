@@ -405,3 +405,20 @@ h1 em, h2 em { color: var(--brand-red); }
   .kids-photo-collage-wrap img { border-width: 5px; }
   .kids-photo-collage-wrap .kids-bubble { bottom: -.5rem; right: .5rem; }
 }
+
+
+/* Clean clinical gallery for children: individual photos, no social-story collage. */
+.kids-photo-gallery-wrap { align-items: start; display: grid; gap: .9rem; grid-template-columns: repeat(2, 1fr); position: relative; transform: rotate(1deg); }
+.kids-photo-gallery-wrap:before { background: #f9cd55; border-radius: 50%; content: ""; height: 92px; position: absolute; right: -18px; top: -30px; width: 92px; z-index: 0; }
+.kids-clinical-photo { background: #fff; border: 1px solid #e6e0d4; border-radius: 1rem .25rem 1rem .25rem; box-shadow: 0 14px 28px rgba(27,32,36,.1); margin: 0; overflow: hidden; position: relative; z-index: 1; }
+.kids-clinical-photo:nth-child(1) { grid-row: span 2; transform: translateY(1.7rem); }
+.kids-clinical-photo:nth-child(2) { transform: rotate(-2deg); }
+.kids-clinical-photo:nth-child(3) { transform: rotate(2deg); }
+.kids-clinical-photo img { aspect-ratio: 9 / 13; display: block; object-fit: cover; width: 100%; }
+.kids-clinical-photo figcaption { color: #55656a; font-size: 11px; letter-spacing: .08em; padding: .7rem .85rem .8rem; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .kids-photo-gallery-wrap { gap: .6rem; margin: .5rem 0 1rem; }
+  .kids-photo-gallery-wrap:before { height: 65px; right: -8px; top: -20px; width: 65px; }
+  .kids-clinical-photo:nth-child(1) { transform: translateY(1rem); }
+  .kids-clinical-photo figcaption { font-size: 9px; padding: .55rem; }
+}
