@@ -392,3 +392,16 @@ h1 em, h2 em { color: var(--brand-red); }
   .kids-doctor-copy { padding: .8rem .8rem 1.2rem; }
   .kids-sparkle-two { bottom: 35%; right: 2%; }
 }
+
+
+/* Real clinical photo collage replaces the generated kids mascot. */
+.kids-photo-collage-wrap { min-height: 0; padding: .5rem; }
+.kids-photo-collage-wrap:before { background: #f9cd55; height: 72%; right: 4%; transform: rotate(-5deg); width: 78%; }
+.kids-photo-collage-wrap img { border: 8px solid rgba(255,255,255,.82); border-radius: 1.1rem .35rem 1.1rem .35rem; box-shadow: 0 18px 38px rgba(27,32,36,.14); max-width: 620px; object-fit: cover; width: 100%; }
+.kids-photo-collage-wrap .kids-bubble { bottom: -1rem; right: 1rem; }
+@media (max-width: 900px) {
+  .kids-photo-collage-wrap { margin-top: .5rem; }
+  .kids-photo-collage-wrap:before { height: 72%; right: 8%; width: 78%; }
+  .kids-photo-collage-wrap img { border-width: 5px; }
+  .kids-photo-collage-wrap .kids-bubble { bottom: -.5rem; right: .5rem; }
+}
