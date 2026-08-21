@@ -61,9 +61,10 @@ export function seoHtml(template: string, req: Request) {
     [/<meta property="og:image"[^>]*>/i, `<meta property="og:image" content="${image}" />`],
     [/<meta name="twitter:title"[^>]*>/i, `<meta name="twitter:title" content="${escapeHtml(meta.title)}" />`],
     [/<meta name="twitter:description"[^>]*>/i, `<meta name="twitter:description" content="${escapeHtml(meta.description)}" />`],
+    [/<meta name="twitter:url"[^>]*>/i, `<meta name="twitter:url" content="${canonical}" />`],
     [/<meta name="twitter:image"[^>]*>/i, `<meta name="twitter:image" content="${image}" />`],
     [/<script type="application\/ld\+json">[\s\S]*?<\/script>/i, `<script type="application/ld+json">${jsonLd}</script>`],
-    [/<div id="root">/i, `<div id="root"><h1 class="sr-only">${escapeHtml(meta.h1)}</h1>`]
+    [/<div id="root">/i, `<div id="root"><h1 class="seo-route-h1">${escapeHtml(meta.h1)}</h1>`]
   ];
   return replacements.reduce((html, [pattern, replacement]) => html.replace(pattern, replacement), template);
 }

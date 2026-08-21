@@ -149,9 +149,11 @@ export default function ServicePage({ page }: { page: ServicePageData }) {
     }
     canonicalLink.setAttribute("href", canonical);
     setMeta("og:title", page.seoTitle);
-    setMeta("og:title", page.seoTitle);
     setMeta("og:description", page.description);
     setMeta("og:url", canonical);
+    setMeta("twitter:title", page.seoTitle);
+    setMeta("twitter:description", page.description);
+    setMeta("twitter:url", canonical);
     return () => {
       document.title = "Стоматологія Active Medical у Миколаєві | Лікування зубів";
     };

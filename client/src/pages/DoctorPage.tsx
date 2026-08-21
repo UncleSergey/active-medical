@@ -66,6 +66,18 @@ export default function DoctorPage({ doctor }: { doctor: DoctorPageData }) {
       document.head.appendChild(canonicalLink);
     }
     canonicalLink.setAttribute("href", canonical);
+    const setMeta = (attribute: "name" | "property", key: string, content: string) => {
+      let element = document.querySelector(`meta[${attribute}="${key}"]`);
+      if (!element) { element = document.createElement("meta"); element.setAttribute(attribute, key); document.head.appendChild(element); }
+      element.setAttribute("content", content);
+    };
+    const title = `${doctor.name} | ${doctor.role} | Active Medical`;
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", doctor.description);
+    setMeta("property", "og:url", canonical);
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", doctor.description);
+    setMeta("name", "twitter:url", canonical);
     return () => { document.title = "Стоматологія Active Medical у Миколаєві | Лікування зубів"; };
   }, [canonical, doctor.description, doctor.name]);
 
