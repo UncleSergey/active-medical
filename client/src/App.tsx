@@ -7,10 +7,16 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import ServicePage, { servicePages } from "./pages/ServicePage";
+import DoctorPage, { doctorPages } from "./pages/DoctorPage";
 
 function ServiceRoute({ slug }: { slug: string }) {
   const page = servicePages.find((item) => item.slug === slug);
   return page ? <ServicePage page={page} /> : <NotFound />;
+}
+
+function DoctorRoute({ slug }: { slug: string }) {
+  const doctor = doctorPages.find((item) => item.slug === slug);
+  return doctor ? <DoctorPage doctor={doctor} /> : <NotFound />;
 }
 
 function Router() {
@@ -18,6 +24,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       {servicePages.map((page) => <Route key={page.slug} path={`/${page.slug}`}><ServiceRoute slug={page.slug} /></Route>)}
+      {doctorPages.map((doctor) => <Route key={doctor.slug} path={`/likari/${doctor.slug}`}><DoctorRoute slug={doctor.slug} /></Route>)}
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

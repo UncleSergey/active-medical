@@ -463,3 +463,28 @@ h1 em, h2 em { color: var(--brand-red); }
 }
 
 .local-seo-copy { color: #536268; font-size: 14px; line-height: 1.6; margin-top: 1.1rem; max-width: 560px; }
+
+.doctor-row-with-photo { color: inherit; text-decoration: none; }
+.doctor-row-with-photo:hover { color: inherit; }
+.doctor-page-hero { align-items: center; display: grid; gap: clamp(2rem, 7vw, 7rem); grid-template-columns: 1fr 320px; }
+.doctor-page-hero > img { background: #eef1ec; display: block; max-height: 520px; object-fit: cover; object-position: center top; width: 100%; }
+.doctor-page-hero > div > p:not(.service-page-lead) { color: #536268; line-height: 1.7; margin: 1.5rem 0; max-width: 650px; }
+.doctor-page-related { border-top: 1px solid #cfd6da; margin-top: 5rem; padding-top: 2.5rem; }
+.doctor-page-related > div { display: flex; flex-wrap: wrap; gap: .75rem; }
+.doctor-page-related a { align-items: center; border-bottom: 1px solid rgba(181,31,50,.3); color: var(--ink); display: inline-flex; gap: .4rem; padding-bottom: .25rem; text-decoration: none; }
+.doctor-page-related a:hover { color: var(--brand-red); }
+@media (max-width: 800px) { .doctor-page-hero { grid-template-columns: 1fr; } .doctor-page-hero > img { max-height: 440px; order: -1; } }
+
+.service-page-photo { display: block; height: clamp(220px, 32vw, 380px); margin-top: 2.5rem; object-fit: cover; object-position: center; width: min(100%, 760px); }
+.service-page-doctors { border-top: 1px solid #cfd6da; margin-top: 4rem; padding-top: 2.5rem; }
+.service-page-doctors > div { display: flex; flex-wrap: wrap; gap: .75rem; }
+.service-page-doctors a { align-items: center; border-bottom: 1px solid rgba(181,31,50,.3); color: var(--ink); display: inline-flex; flex-wrap: wrap; gap: .4rem; padding-bottom: .25rem; text-decoration: none; }
+.service-page-doctors a span { color: #68767a; font-size: .85rem; }
+.service-page-doctors a:hover { color: var(--brand-red); }
+.service-page-faq { border-top: 1px solid #cfd6da; margin-top: 4rem; padding-top: 2.5rem; }
+.service-page-faq details { border-bottom: 1px solid #d8dde0; padding: 1rem 0; }
+.service-page-faq summary { cursor: pointer; font-size: 1rem; font-weight: 700; list-style: none; }
+.service-page-faq summary::-webkit-details-marker { display: none; }
+.service-page-faq summary::after { color: var(--brand-red); content: '+'; float: right; font-size: 1.2rem; }
+.service-page-faq details[open] summary::after { content: '−'; }
+.service-page-faq details p { color: #536268; line-height: 1.6; margin: .8rem 0 .2rem; max-width: 720px; }

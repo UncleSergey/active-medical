@@ -88,6 +88,28 @@ export const servicePages: ServicePageData[] = [
   }
 ];
 
+const serviceFaqs: Record<string, Array<{ question: string; answer: string }>> = {
+  "dityacha-stomatolohiya": [{ question: "Як підготувати дитину до першого візиту?", answer: "Розкажіть дитині про візит спокійно та без залякування. На прийомі лікар пояснює кожен крок дитині й батькам." }, { question: "Чи можна записатися на діагностичний прийом?", answer: "Так, у прайсі є окрема позиція діагностичного прийому дитячого стоматолога." }],
+  "terapevtychna-stomatolohiya": [{ question: "З чого починається лікування?", answer: "З огляду та консультації: лікар оцінює стан зубів, пояснює варіанти та погоджує план до початку роботи." }, { question: "Чи є в прайсі лікування карієсу?", answer: "Так, актуальні позиції для лікування карієсу наведені в прайсі Active Medical." }],
+  "ortodontiya": [{ question: "Коли потрібна консультація ортодонта?", answer: "Після огляду ортодонт може оцінити прикус, положення зубів і потребу в апараті або брекет-системі." }, { question: "Чи є в прайсі брекет-системи?", answer: "Так, у чинному прайсі є позиції металевих і самолігуючих брекет-систем." }],
+  "implantatsiya": [{ question: "Як планують імплантацію?", answer: "Після консультації лікар оцінює клінічну ситуацію та пояснює послідовність можливих етапів лікування." }, { question: "Чи може знадобитися підготовка кісткової тканини?", answer: "За показаннями в план лікування можуть входити кісткова пластика або синус-ліфтинг." }],
+  "protezyvannya": [{ question: "Як обирають ортопедичну конструкцію?", answer: "Варіант визначають після огляду, оцінки функції та обговорення цілей лікування." }, { question: "Чи є консультація ортопеда?", answer: "Так, у прайсі є первинна консультація лікаря-стоматолога-ортопеда." }],
+  "likuvannya-kanaliv": [{ question: "Коли потрібне лікування каналів?", answer: "Показання визначає лікар після огляду та діагностики, зокрема при пульпіті або періодонтиті." }, { question: "Чи можна звернутися зі гострим болем?", answer: "Так, у чинному прайсі є окрема позиція «Зняття гострого болю»." }],
+  "profesiyna-hihiyena": [{ question: "Що входить у професійну гігієну?", answer: "Обсяг процедури визначається після огляду; у пропозиції клініки зазначені AirFlow, ультразвуковий скейлер, полірування та фторування." }, { question: "Як часто потрібна гігієна?", answer: "Періодичність залежить від стану зубів і ясен — її визначає лікар на консультації." }],
+  "khirurhichna-stomatolohiya": [{ question: "Чи потрібна консультація перед видаленням?", answer: "Так, хірургічне втручання починається з огляду, діагностики та пояснення подальшого догляду." }, { question: "Чи лікує клініка зуби мудрості?", answer: "Так, у чинному прайсі є просте та атипове видалення зуба мудрості." }]
+};
+
+const serviceDoctors: Record<string, Array<{ name: string; href: string; role: string }>> = {
+  "dityacha-stomatolohiya": [{ name: "Мезінова Аліна Віталіївна", href: "/likari/mezinova-alina-vitaliyivna", role: "дитяча стоматологія · ортодонтія" }],
+  "ortodontiya": [{ name: "Мезінова Аліна Віталіївна", href: "/likari/mezinova-alina-vitaliyivna", role: "ортодонтія" }],
+  "implantatsiya": [{ name: "Погулич Ярослав Євгенович", href: "/likari/pohulych-yaroslav-yevhenovych", role: "імплантолог · хірург · ортопед" }, { name: "Диченко Юлія Андріївна", href: "/likari/dyachenko-yuliya-andriyivna", role: "щелепно-лицевий хірург" }],
+  "protezyvannya": [{ name: "Погулич Ярослав Євгенович", href: "/likari/pohulych-yaroslav-yevhenovych", role: "ортопед · імплантолог" }],
+  "likuvannya-kanaliv": [{ name: "Федоров Іван Михайлович", href: "/likari/fedorov-ivan-mykhaylovych", role: "терапевтична · ендодонтична стоматологія" }],
+  "terapevtychna-stomatolohiya": [{ name: "Федоров Іван Михайлович", href: "/likari/fedorov-ivan-mykhaylovych", role: "лікар-стоматолог" }],
+  "khirurhichna-stomatolohiya": [{ name: "Диченко Юлія Андріївна", href: "/likari/dyachenko-yuliya-andriyivna", role: "щелепно-лицевий хірург" }, { name: "Погулич Ярослав Євгенович", href: "/likari/pohulych-yaroslav-yevhenovych", role: "хірург" }],
+  "profesiyna-hihiyena": []
+};
+
 function setMeta(name: string, content: string) {
   const attribute = name.startsWith("og:") ? "property" : "name";
   let element = document.querySelector(`meta[${attribute}="${name}"]`);
@@ -135,6 +157,7 @@ export default function ServicePage({ page }: { page: ServicePageData }) {
         <div className="section-kicker">Active Medical / Миколаїв / Намив</div>
         <h1>{page.title}</h1>
         <p className="service-page-lead">{page.intro}</p>
+        <img className="service-page-photo" src="/manus-storage/active-medical-interior_58fbcb9b.jpg" alt={`Стоматологічний кабінет Active Medical у Миколаєві — ${page.shortTitle}`} loading="lazy" decoding="async" />
         <div className="service-page-grid">
           <section>
             <h2>Що входить у напрямок</h2>
@@ -148,11 +171,13 @@ export default function ServicePage({ page }: { page: ServicePageData }) {
             <button className="button button-coral" onClick={() => navigate("/#booking")}>Записатись на консультацію <ArrowUpRight size={16} /></button>
           </aside>
         </div>
+        {(serviceDoctors[page.slug] ?? []).length > 0 && <section className="service-page-doctors"><h2>Лікарі цього напрямку</h2><div>{serviceDoctors[page.slug].map((doctor) => <Link key={doctor.href} href={doctor.href}>{doctor.name} <span>{doctor.role}</span><ArrowUpRight size={15} /></Link>)}</div></section>}
         {categories.length > 0 && <section className="service-page-prices">
           <h2>Позиції з актуального прайсу</h2>
           <p>Ціни наведені для орієнтації. Остаточний план і вартість лікар визначає після огляду та консультації.</p>
           {categories.map((category) => <div className="service-page-price-group" key={category.title}><h3>{category.title}</h3>{category.items.map((item) => <div className="service-page-price-row" key={item.name}><span>{item.name}</span><b>{item.price ? `${item.price} грн` : "уточнюйте"}</b></div>)}</div>)}
         </section>}
+        <section className="service-page-faq"><h2>Поширені запитання</h2>{(serviceFaqs[page.slug] ?? []).map((faq) => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</section>
         <section className="service-page-final-cta">
           <h2>{page.shortTitle} в Active Medical</h2>
           <p>Залиште заявку — адміністратор відповість на запитання та підбере зручний час.</p>
