@@ -54,7 +54,6 @@ const kidsClinicalGallery = [
   { src: "/manus-storage/kids-clean-clinical-01_bf0a66eb.png", alt: "Клінічний результат дитячої ортодонтії — фронтальний ракурс", label: "Фронтальний ракурс" },
   { src: "/manus-storage/kids-clean-clinical-02_9b327ec5.png", alt: "Клінічний результат ортодонтичного лікування з брекетами", label: "Ортодонтичне лікування" },
   { src: "/manus-storage/kids-clean-clinical-03_eef8c1b0.png", alt: "Клінічний ракурс зубного ряду з ортодонтичною системою", label: "Деталі лікування" },
-  { src: "/manus-storage/kids-colorful-ligatures_81347f74.png", alt: "Яскраві різнокольорові лігатури на брекетах", label: "Кольорові лігатури" },
 ];
 
 const doctors = [
