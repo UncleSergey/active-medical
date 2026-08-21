@@ -331,3 +331,64 @@ h1 em, h2 em { color: var(--brand-red); }
   .promo-gallery { padding: .45rem; }
   .section-pad { padding-left: 1.1rem; padding-right: 1.1rem; }
 }
+
+
+/* Pediatric dentistry: joyful accents inside the Active Medical brand system. */
+.kids-section { background: linear-gradient(135deg, #fffdf8 0%, #fff4d9 48%, #eaf7f5 100%); overflow: hidden; }
+.kids-hero { align-items: center; display: grid; gap: clamp(2rem, 7vw, 7rem); grid-template-columns: 1fr .8fr; min-height: 480px; position: relative; }
+.kids-hero-copy { position: relative; z-index: 1; }
+.kids-hero-copy h2 { font-size: clamp(3.5rem, 6vw, 6.4rem); }
+.kids-hero-copy h2 em { color: #e38b22; }
+.kids-hero-copy > p { color: var(--ink); font-size: 17px; line-height: 1.7; margin: 2rem 0; max-width: 470px; }
+.kids-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 1.3rem; }
+.kids-age { color: #5f7277; font-size: 12px; line-height: 1.45; }
+.kids-age b { color: var(--brand-red); }
+.kids-mascot-wrap { align-items: center; display: flex; justify-content: center; min-height: 380px; position: relative; }
+.kids-mascot-wrap:before { background: #f9cd55; border-radius: 48% 52% 44% 56%; content: ""; height: 300px; position: absolute; transform: rotate(9deg); width: 300px; }
+.kids-mascot-wrap img { max-width: 350px; position: relative; width: 100%; z-index: 1; }
+.kids-bubble { background: #fff; border: 2px solid #b51f32; border-radius: 1rem 1rem 1rem .25rem; bottom: 7%; box-shadow: 0 10px 24px rgba(27,32,36,.1); display: flex; flex-direction: column; padding: .75rem 1rem; position: absolute; right: 3%; transform: rotate(4deg); z-index: 2; }
+.kids-bubble span { color: #4d9e9a; font-size: 12px; font-weight: 800; }
+.kids-bubble b { color: var(--brand-red); font-family: 'Cormorant Garamond',serif; font-size: 24px; line-height: .9; }
+.kids-sparkle { color: #e38b22; font-size: 35px; position: absolute; }
+.kids-sparkle-one { left: 4%; top: 11%; transform: rotate(-15deg); }
+.kids-sparkle-two { bottom: 32%; right: 5%; transform: rotate(18deg); }
+.kids-benefits { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); margin-top: 2rem; }
+.kids-benefits article { background: rgba(255,255,255,.82); border: 1px solid #e4e3d6; border-radius: 1rem .3rem 1rem .3rem; padding: 1.25rem; }
+.kids-benefit-icon { align-items: center; background: #f9cd55; border-radius: 50%; color: #8c5c00; display: flex; font-size: 14px; height: 35px; justify-content: center; margin-bottom: 1rem; width: 35px; }
+.kids-benefits article:nth-child(2) .kids-benefit-icon { background: #bfe8e3; color: #287f79; }
+.kids-benefits article:nth-child(3) .kids-benefit-icon { background: #f4c6cf; color: var(--brand-red); }
+.kids-benefits strong { display: block; font-size: 15px; }
+.kids-benefits p { color: #536268; font-size: 13px; line-height: 1.55; margin-top: .45rem; }
+.kids-doctor-card { align-items: center; background: #fff; border: 1px solid #e2dcd0; border-radius: 1.25rem .35rem 1.25rem .35rem; display: grid; gap: clamp(1.5rem, 5vw, 5rem); grid-template-columns: 260px 1fr; margin-top: 4rem; overflow: hidden; padding: 1.1rem; }
+.kids-doctor-photo { align-self: stretch; background: #dff1ef; border-radius: .9rem .2rem .9rem .2rem; min-height: 300px; overflow: hidden; }
+.kids-doctor-photo img { display: block; height: 100%; object-fit: cover; object-position: center top; width: 100%; }
+.kids-doctor-copy { padding: 1.5rem 1.5rem 1.5rem 0; }
+.kids-doctor-copy h3 { font-family: 'Cormorant Garamond',serif; font-size: clamp(2.5rem, 4vw, 4.4rem); font-weight: 500; line-height: .85; margin: 1rem 0 1.5rem; }
+.kids-doctor-copy h3 em { color: #e38b22; font-style: italic; }
+.kids-doctor-copy p { color: var(--ink); font-size: 15px; line-height: 1.7; max-width: 620px; }
+.kids-doctor-copy .text-button { margin-top: 1.5rem; }
+.kids-prices { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; margin-top: 2rem; }
+.kids-price-panel { background: #fff; border: 1px solid #e2dcd0; border-top: 5px solid #e38b22; border-radius: .8rem .2rem .8rem .2rem; padding: 1.4rem; }
+.kids-price-panel-ortho { border-top-color: #4d9e9a; }
+.kids-price-heading { align-items: center; display: flex; gap: 1rem; margin-bottom: .7rem; }
+.kids-price-heading span { color: #e38b22; font-family: 'Cormorant Garamond',serif; font-size: 28px; }
+.kids-price-panel-ortho .kids-price-heading span { color: #4d9e9a; }
+.kids-price-heading h3 { font-family: 'Cormorant Garamond',serif; font-size: 29px; font-weight: 500; line-height: .9; }
+.kids-price-row { align-items: baseline; border-bottom: 1px dashed #d9ddd8; display: flex; font-size: 13px; gap: 1rem; justify-content: space-between; padding: .75rem 0; }
+.kids-price-row span { color: #425159; line-height: 1.4; }
+.kids-price-row b { color: var(--brand-red); font-size: 13px; white-space: nowrap; }
+.kids-price-note { color: #5d6c70; font-size: 12px; margin: 1rem 0 0; }
+@media (max-width: 900px) {
+  .kids-hero { grid-template-columns: 1fr; min-height: 0; }
+  .kids-hero-copy { padding-top: 1rem; }
+  .kids-hero-copy > p { font-size: 15px; }
+  .kids-mascot-wrap { min-height: 280px; }
+  .kids-mascot-wrap:before { height: 230px; width: 230px; }
+  .kids-mascot-wrap img { max-width: 260px; }
+  .kids-bubble { bottom: 0; right: 8%; }
+  .kids-benefits, .kids-prices { grid-template-columns: 1fr; }
+  .kids-doctor-card { grid-template-columns: 1fr; padding: .7rem; }
+  .kids-doctor-photo { min-height: 300px; }
+  .kids-doctor-copy { padding: .8rem .8rem 1.2rem; }
+  .kids-sparkle-two { bottom: 35%; right: 2%; }
+}
