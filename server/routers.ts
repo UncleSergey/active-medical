@@ -28,7 +28,10 @@ async function sendTelegramLead(input: z.infer<typeof leadInput>) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ chat_id: ENV.telegramChatId, text }),
   });
-  if (!response.ok) throw new Error(`Telegram delivery failed with ${response.status}`);
+  const payload = (await response.json().catch(() => null)) as { ok?: boolean; description?: string } | null;
+  if (!response.ok || payload?.ok === false) {
+    throw new Error(`Telegram delivery failed with ${response.status}${payload?.description ? `: ${payload.description}` : ""}`);
+  }
 }
 
 async function sendEmailLead(input: z.infer<typeof leadInput>) {
@@ -50,7 +53,11 @@ async function sendEmailLead(input: z.infer<typeof leadInput>) {
       ].join("\n"),
     }),
   });
-  if (!response.ok) throw new Error(`Email delivery failed with ${response.status}`);
+  const payload = (await response.json().catch(() => null)) as { message?: string; error?: { message?: string } } | null;
+  if (!response.ok) {
+    const description = payload?.message || payload?.error?.message;
+    throw new Error(`Email delivery failed with ${response.status}${description ? `: ${description}` : ""}`);
+  }
 }
 
 async function deliverLead(input: z.infer<typeof leadInput>) {
