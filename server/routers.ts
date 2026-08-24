@@ -61,12 +61,7 @@ async function sendEmailLead(input: z.infer<typeof leadInput>) {
 }
 
 async function deliverLead(input: z.infer<typeof leadInput>) {
-  // Temporary diagnostic mode: production test isolates Telegram from Resend.
-  // Remove this branch immediately after the single live test.
-  const channelPromises = process.env.NODE_ENV === "production"
-    ? [sendTelegramLead(input)]
-    : [sendTelegramLead(input), sendEmailLead(input)];
-  const results = await Promise.allSettled(channelPromises);
+  const results = await Promise.allSettled([sendTelegramLead(input), sendEmailLead(input)]);
   const [telegramResult, emailResult] = results;
   const telegram = telegramResult?.status === "fulfilled";
   const email = emailResult?.status === "fulfilled";
