@@ -53,6 +53,24 @@ async function sendEmailLead(input: z.infer<typeof leadInput>) {
   if (!response.ok) throw new Error(`Email delivery failed with ${response.status}`);
 }
 
+async function deliverLead(input: z.infer<typeof leadInput>) {
+  const results = await Promise.allSettled([sendTelegramLead(input), sendEmailLead(input)]);
+  const [telegramResult, emailResult] = results;
+  const telegram = telegramResult?.status === "fulfilled";
+  const email = emailResult?.status === "fulfilled";
+
+  if (!telegram && telegramResult?.status === "rejected") {
+    console.error("[Lead] Telegram delivery failed", telegramResult.reason);
+  }
+  if (!email && emailResult?.status === "rejected") {
+    console.error("[Lead] Email delivery failed", emailResult.reason);
+  }
+  if (!telegram && !email) {
+    throw new Error("Lead delivery failed through all configured channels");
+  }
+  return { telegram, email } as const;
+}
+
 export const appRouter = router({
   system: systemRouter,
   auth: router({
@@ -65,8 +83,8 @@ export const appRouter = router({
   }),
   leads: router({
     submit: publicProcedure.input(leadInput).mutation(async ({ input }) => {
-      await Promise.all([sendTelegramLead(input), sendEmailLead(input)]);
-      return { success: true } as const;
+      const delivery = await deliverLead(input);
+      return { success: true, delivery } as const;
     }),
   }),
 });

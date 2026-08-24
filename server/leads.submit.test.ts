@@ -23,7 +23,7 @@ describe("leads.submit", () => {
       service: "Консультація",
       preferredTime: "10:00–13:00",
       consent: true,
-    })).resolves.toEqual({ success: true });
+    })).resolves.toEqual({ success: true, delivery: { telegram: true, email: true } });
 
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock.mock.calls.map(([url]) => String(url))).toEqual(expect.arrayContaining([
