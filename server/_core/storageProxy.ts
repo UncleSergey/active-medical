@@ -10,6 +10,12 @@ export function registerStorageProxy(app: Express) {
     }
 
     if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
+      if (ENV.storageFallbackUrl) {
+        const fallbackUrl = new URL(`manus-storage/${key}`, ENV.storageFallbackUrl.replace(/\/+$/, "") + "/");
+        res.set("Cache-Control", "no-store");
+        res.redirect(307, fallbackUrl.href);
+        return;
+      }
       res.status(500).send("Storage proxy not configured");
       return;
     }

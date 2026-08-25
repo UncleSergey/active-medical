@@ -92,6 +92,13 @@ export default function Home() {
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) { canonicalLink = document.createElement("link"); canonicalLink.setAttribute("rel", "canonical"); document.head.appendChild(canonicalLink); }
     canonicalLink.setAttribute("href", canonical);
+
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(decodeURIComponent(hash))?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const scrollTo = (id: string) => {
