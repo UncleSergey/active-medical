@@ -44,7 +44,15 @@ export function registerStorageProxy(app: Express) {
     // endpoint so the browser still receives it from active-medical.pp.ua.
     if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
       try {
-        await proxyFallbackAsset(key, res);
+        const fallbackOrigin = ENV.storageFallbackUrl || FALLBACK_STORAGE_ORIGIN;
+        const upstream = await fetch(`${fallbackOrigin.replace(/\/+$/, "")}/manus-storage/${encodeStorageKey(key)}`);
+        if (!upstream.ok) {
+          const body = await upstream.text().catch(() => "");
+          console.error(`[StorageProxy] fallback error: ${upstream.status} ${body.slice(0, 200)}`);
+          res.status(502).send("Storage backend error");
+          return;
+        }
+        sendStorageResponse(res, upstream, Buffer.from(await upstream.arrayBuffer()));
       } catch (err) {
         console.error("[StorageProxy] fallback failed:", err);
         res.status(502).send("Storage proxy error");
