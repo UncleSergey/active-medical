@@ -5,25 +5,25 @@ import { priceCategories } from "@/data/pricelist";
 import { trpc } from "@/lib/trpc";
 import { MapView } from "@/components/Map";
 
-const heroImage = "/manus-storage/active-medical-hero-reference-body_cc501cac.png";
-const interiorImage = "/manus-storage/active-medical-interior_58fbcb9b.jpg";
-const teamImage = "/manus-storage/active-medical-team-realistic-proportions_a0b90a6e.png";
+const heroImage = "/manus-storage/active-medical-hero-reference-body_fda89e6a.png";
+const interiorImage = "/manus-storage/active-medical-interior_10802c60.jpg";
+const teamImage = "/manus-storage/active-medical-team-realistic-proportions_23ae09e7.png";
 const doctorPortraits = [
-  "/manus-storage/alina-mezinova-color-scrubs-new_5b789463.png",
-  "/manus-storage/yuliia-standing-option-balanced-head_f0170033.png",
-  "/manus-storage/pohulych-yaroslav-color-scrubs-new_fe42c9e5.png",
-  "/manus-storage/fedorov-ivan-light-gray-scrubs_a3681cf7.png",
+  "/manus-storage/alina-mezinova-color-scrubs-new_22ddf932.png",
+  "/manus-storage/yuliia-standing-option-balanced-head_4c568e66.png",
+  "/manus-storage/pohulych-yaroslav-color-scrubs-new_e4e3f887.png",
+  "/manus-storage/fedorov-ivan-light-gray-scrubs_b178ecf8.png",
 ];
-const brandMark = "/manus-storage/active-medical-official-logo_2840a822.png";
-const instagramQr = "/manus-storage/active-medical-instagram-qr_16ab140c.png";
-const markoRossoCaseImage = "/manus-storage/active-medical-marko-rosso-before-after_7bfe3b81.png";
-const case1BeforeImage = "/manus-storage/active-medical-case1-before_0701fe75.webp";
-const case1AfterImage = "/manus-storage/active-medical-case1-after_efa7455a.webp";
-const case2BeforeImage = "/manus-storage/active-medical-case2-before_61c1884e.webp";
-const case2AfterImage = "/manus-storage/active-medical-case2-after_4cac5683.webp";
-const licenseDocument = "/manus-storage/active-medical-license_0c964282.pdf";
-const companyExtractDocument = "/manus-storage/active-medical-company-extract_0a229816.pdf";
-const vatDocument = "/manus-storage/active-medical-vat-extract_e1f5d394.webp";
+const brandMark = "/manus-storage/active-medical-official-logo_c0e6b7c3.png";
+const instagramQr = "/manus-storage/active-medical-instagram-qr_102f54b1.png";
+const markoRossoCaseImage = "/manus-storage/active-medical-marko-rosso-before-after_7073d9f2.png";
+const case1BeforeImage = "/manus-storage/active-medical-case1-before_c2a0444e.webp";
+const case1AfterImage = "/manus-storage/active-medical-case1-after_23d01b9d.webp";
+const case2BeforeImage = "/manus-storage/active-medical-case2-before_5ca610e9.webp";
+const case2AfterImage = "/manus-storage/active-medical-case2-after_f7eb8c92.webp";
+const licenseDocument = "/manus-storage/active-medical-license_a18c773c.pdf";
+const companyExtractDocument = "/manus-storage/active-medical-company-extract_1ae0a500.pdf";
+const vatDocument = "/manus-storage/active-medical-vat-extract_b12736c5.webp";
 
 const services = [
   { number: "01", title: "Терапія без поспіху", text: "Лікуємо причину, пояснюємо кожен крок і зберігаємо природність усмішки.", tone: "blush", icon: HeartPulse },
@@ -51,12 +51,12 @@ const kidsOrthoPrices = [
 ];
 
 const kidsClinicalGallery = [
-  { src: "/manus-storage/kids-clean-clinical-01_bf0a66eb.png", alt: "Клінічний результат дитячої ортодонтії — фронтальний ракурс", label: "Фронтальний ракурс" },
-  { src: "/manus-storage/kids-pediatric-care-photo_d0e7e541.jpg", alt: "Дружня консультація з дитячої стоматології", label: "Дбайливий візит" },
-  { src: "/manus-storage/kids-caries-stages_1ab96c96.png", alt: "Стадії карієсу у дитини — навчальна схема", label: "Стадії карієсу" },
-  { src: "/manus-storage/kids-clean-clinical-02_9b327ec5.png", alt: "Клінічний результат ортодонтичного лікування з брекетами", label: "Ортодонтичне лікування" },
-  { src: "/manus-storage/kids-clean-clinical-03_eef8c1b0.png", alt: "Клінічний ракурс зубного ряду з ортодонтичною системою", label: "Деталі лікування" },
-  { src: "/manus-storage/kids-visit-preparation_dcfcc29c.png", alt: "Як підготувати дитину до візиту до стоматолога — книжка та зубна щітка", label: "Підготовка до візиту" },
+  { src: "/manus-storage/kids-clean-clinical-01_42ec865a.png", alt: "Клінічний результат дитячої ортодонтії — фронтальний ракурс", label: "Фронтальний ракурс" },
+  { src: "/manus-storage/kids-pediatric-care-photo_98070c4a.jpg", alt: "Дружня консультація з дитячої стоматології", label: "Дбайливий візит" },
+  { src: "/manus-storage/kids-caries-stages_0a2edca0.png", alt: "Стадії карієсу у дитини — навчальна схема", label: "Стадії карієсу" },
+  { src: "/manus-storage/kids-clean-clinical-02_a82db344.png", alt: "Клінічний результат ортодонтичного лікування з брекетами", label: "Ортодонтичне лікування" },
+  { src: "/manus-storage/kids-clean-clinical-03_713b9081.png", alt: "Клінічний ракурс зубного ряду з ортодонтичною системою", label: "Деталі лікування" },
+  { src: "/manus-storage/kids-visit-preparation_3f08866a.png", alt: "Як підготувати дитину до візиту до стоматолога — книжка та зубна щітка", label: "Підготовка до візиту" },
 ];
 
 const doctors = [

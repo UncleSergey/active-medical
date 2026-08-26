@@ -17,7 +17,7 @@ export const doctorPages: DoctorPageData[] = [
     slug: "mezinova-alina-vitaliyivna",
     name: "Мезінова Аліна Віталіївна",
     role: "Лікар-стоматолог · дитяча стоматологія · ортодонтія",
-    image: "/manus-storage/alina-mezinova-color-scrubs-new_5b789463.png",
+    image: "/manus-storage/alina-mezinova-color-scrubs-new_22ddf932.png",
     description: "Мезінова Аліна Віталіївна — лікар-стоматолог Active Medical у Миколаєві. Дитяча стоматологія, ортодонтія та лікування дітей, яким потрібен особливий підхід.",
     areas: ["Дитяча стоматологія", "Ортодонтія та ортодонтичні апарати", "Лікування карієсу та його ускладнень", "Високохудожня реставрація зубів", "Лікування дітей, які потребують особливого підходу", "Стоматологічне лікування під медикаментозним сном"],
     related: [{ label: "Дитяча стоматологія", href: "/dityacha-stomatolohiya" }, { label: "Ортодонтія", href: "/ortodontiya" }]
@@ -26,7 +26,7 @@ export const doctorPages: DoctorPageData[] = [
     slug: "dyachenko-yuliya-andriyivna",
     name: "Диченко Юлія Андріївна",
     role: "Щелепно-лицевий хірург",
-    image: "/manus-storage/yuliia-standing-option-balanced-head_f0170033.png",
+    image: "/manus-storage/yuliia-standing-option-balanced-head_4c568e66.png",
     description: "Диченко Юлія Андріївна — щелепно-лицевий хірург Active Medical у Миколаєві. Хірургічна стоматологія та реконструктивні втручання за показаннями.",
     areas: ["Хірургічна стоматологія", "Кісткова пластика та синус-ліфтинг", "Складні видалення", "Лікування кіст та новоутворень", "Щелепно-лицеві травми", "Реконструктивна хірургія"],
     related: [{ label: "Хірургічна стоматологія", href: "/khirurhichna-stomatolohiya" }, { label: "Імплантація", href: "/implantatsiya" }]
@@ -35,7 +35,7 @@ export const doctorPages: DoctorPageData[] = [
     slug: "pohulych-yaroslav-yevhenovych",
     name: "Погулич Ярослав Євгенович",
     role: "Імплантолог · хірург · ортопед",
-    image: "/manus-storage/pohulych-yaroslav-color-scrubs-new_fe42c9e5.png",
+    image: "/manus-storage/pohulych-yaroslav-color-scrubs-new_e4e3f887.png",
     description: "Погулич Ярослав Євгенович — імплантолог, хірург і ортопед Active Medical у Миколаєві. Імплантація, протезування та хірургічна стоматологія.",
     areas: ["Імплантація", "Протезування на імплантах", "Коронки та мостоподібні конструкції", "Видалення зубів", "Ортопедична та хірургічна стоматологія"],
     related: [{ label: "Імплантація", href: "/implantatsiya" }, { label: "Протезування", href: "/protezyvannya" }]
@@ -44,7 +44,7 @@ export const doctorPages: DoctorPageData[] = [
     slug: "fedorov-ivan-mykhaylovych",
     name: "Федоров Іван Михайлович",
     role: "Лікар-стоматолог · терапевтична, ендодонтична та ортопедична стоматологія",
-    image: "/manus-storage/fedorov-ivan-light-gray-scrubs_a3681cf7.png",
+    image: "/manus-storage/fedorov-ivan-light-gray-scrubs_b178ecf8.png",
     description: "Федоров Іван Михайлович — лікар-стоматолог Active Medical у Миколаєві. Лікування карієсу, ендодонтичне лікування та ортопедичне відновлення зубів.",
     areas: ["Терапевтична стоматологія", "Ендодонтія", "Лікування карієсу та його ускладнень", "Лікування пульпітів і періодонтитів", "Відновлення анатомії та функції зубів", "Ортопедичне протезування"],
     related: [{ label: "Терапевтична стоматологія", href: "/terapevtychna-stomatolohiya" }, { label: "Лікування каналів", href: "/likuvannya-kanaliv" }, { label: "Протезування", href: "/protezyvannya" }]

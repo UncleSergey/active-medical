@@ -169,7 +169,7 @@ export default function ServicePage({ page }: { page: ServicePageData }) {
         <div className="section-kicker">Active Medical / Миколаїв / Намив</div>
         <h1>{page.title}</h1>
         <p className="service-page-lead">{page.intro}</p>
-        <img className="service-page-photo" src="/manus-storage/active-medical-interior_58fbcb9b.jpg" alt={`Стоматологічний кабінет Active Medical у Миколаєві — ${page.shortTitle}`} loading="lazy" decoding="async" />
+        <img className="service-page-photo" src="/manus-storage/active-medical-interior_10802c60.jpg" alt={`Стоматологічний кабінет Active Medical у Миколаєві — ${page.shortTitle}`} loading="lazy" decoding="async" />
         <div className="service-page-grid">
           <section>
             <h2>Що входить у напрямок</h2>

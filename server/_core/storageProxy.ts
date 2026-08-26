@@ -1,16 +1,54 @@
-import type { Express } from "express";
+import type { Express, Request, Response as ExpressResponse } from "express";
 import { ENV } from "./env";
 
+const FALLBACK_STORAGE_ORIGIN = "https://activemedic-rcveslat.manus.space";
+
+function encodeStorageKey(key: string) {
+  return key.split("/").map(encodeURIComponent).join("/");
+}
+
+export function getFallbackStorageUrl(key: string) {
+  return `${FALLBACK_STORAGE_ORIGIN}/manus-storage/${encodeStorageKey(key)}`;
+}
+
+function sendStorageResponse(res: ExpressResponse, upstream: globalThis.Response, bytes: Buffer) {
+  const contentType = upstream.headers.get("content-type");
+  const cacheControl = upstream.headers.get("cache-control") ?? "public, max-age=3600";
+  if (contentType) res.set("Content-Type", contentType);
+  res.set("Cache-Control", cacheControl);
+  res.set("Content-Length", String(bytes.byteLength));
+  res.status(200).send(bytes);
+}
+
+async function proxyFallbackAsset(key: string, res: ExpressResponse) {
+  const upstream = await fetch(getFallbackStorageUrl(key));
+  if (!upstream.ok) {
+    const body = await upstream.text().catch(() => "");
+    console.error(`[StorageProxy] fallback error: ${upstream.status} ${body.slice(0, 200)}`);
+    res.status(502).send("Storage backend error");
+    return;
+  }
+  sendStorageResponse(res, upstream, Buffer.from(await upstream.arrayBuffer()));
+}
+
 export function registerStorageProxy(app: Express) {
-  app.get("/manus-storage/*", async (req, res) => {
+  app.get("/manus-storage/*", async (req: Request, res: ExpressResponse) => {
     const key = (req.params as Record<string, string>)[0];
     if (!key) {
       res.status(400).send("Missing storage key");
       return;
     }
 
+    // The custom-domain deployment may not have Manus Forge credentials. In that
+    // environment, relay the same original object from the project's live storage
+    // endpoint so the browser still receives it from active-medical.pp.ua.
     if (!ENV.forgeApiUrl || !ENV.forgeApiKey) {
-      res.status(500).send("Storage proxy not configured");
+      try {
+        await proxyFallbackAsset(key, res);
+      } catch (err) {
+        console.error("[StorageProxy] fallback failed:", err);
+        res.status(502).send("Storage proxy error");
+      }
       return;
     }
 

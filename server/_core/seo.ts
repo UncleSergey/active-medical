@@ -2,8 +2,9 @@ import type { Request } from "express";
 
 const CURRENT_ORIGIN = "https://activemedic-rcveslat.manus.space";
 const FUTURE_ORIGIN = "https://active-dent.mk.ua";
-const heroImage = "/manus-storage/active-medical-hero-reference-body_cc501cac.png";
-const logoImage = "/manus-storage/active-medical-official-logo_2840a822.png";
+const CUSTOM_ORIGIN = "https://active-medical.pp.ua";
+const heroImage = "/manus-storage/active-medical-hero-reference-body_fda89e6a.png";
+const logoImage = "/manus-storage/active-medical-official-logo_c0e6b7c3.png";
 
 const services: Record<string, { title: string; description: string; h1: string }> = {
   "/dityacha-stomatolohiya": { title: "Дитяча стоматологія у Миколаєві | Active Medical", description: "Дитяча стоматологія у Миколаєві: спокійний прийом, лікування молочних зубів, профілактика та ортодонтичний супровід у Active Medical.", h1: "Дитяча стоматологія у Миколаєві" },
@@ -25,6 +26,7 @@ const doctors: Record<string, { title: string; description: string; h1: string }
 
 export function originForRequest(req: Request) {
   const host = (req.get("host") ?? req.hostname ?? "").split(":")[0].toLowerCase();
+  if (host === "active-medical.pp.ua") return CUSTOM_ORIGIN;
   return host === "active-dent.mk.ua" ? FUTURE_ORIGIN : CURRENT_ORIGIN;
 }
 
