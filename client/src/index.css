@@ -488,3 +488,8 @@ h1 em, h2 em { color: var(--brand-red); }
 .service-page-faq summary::after { color: var(--brand-red); content: '+'; float: right; font-size: 1.2rem; }
 .service-page-faq details[open] summary::after { content: '−'; }
 .service-page-faq details p { color: #536268; line-height: 1.6; margin: .8rem 0 .2rem; max-width: 720px; }
+
+/* Keyless map fallback for deployments without a Google Maps runtime key. */
+.real-map-card .map-embed-fallback { border: 0; height: 100%; inset: 0; position: absolute; width: 100%; z-index: 1; }
+.real-map-card .map-embed-fallback-hidden { display: none; }
+.real-map-card .map-sdk-container { height: 100%; width: 100%; }

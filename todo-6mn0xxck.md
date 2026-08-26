@@ -18,3 +18,5 @@
 - [x] Проверить, какой deployment фактически обслуживает active-medical.pp.ua (Render за Cloudflare; `x-render-origin-server: Render`)
 - [ ] Синхронизировать текущие изменения с deployment active-medical.pp.ua
 - [ ] Проверить lazy-loading, Maps и storage-ассеты непосредственно на active-medical.pp.ua
+- [ ] Устранить оставшийся 503/недоступность `/api/maps-sdk` на фактическом Render deployment active-medical.pp.ua
+- [ ] Подтвердить на active-medical.pp.ua, что Google Maps загружается, а lazy-loading и storage-ассеты работают после redeploy

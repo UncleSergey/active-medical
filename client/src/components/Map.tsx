@@ -76,7 +76,7 @@
 
 /// <reference types="@types/google.maps" />
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePersistFn } from "@/hooks/usePersistFn";
 import { cn } from "@/lib/utils";
 
@@ -139,6 +139,12 @@ export function MapView({
 }: MapViewProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<google.maps.Map | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+  const openStreetMapUrl = useMemo(() => {
+    const delta = 0.008;
+    const bbox = [initialCenter.lng - delta, initialCenter.lat - delta, initialCenter.lng + delta, initialCenter.lat + delta].join("%2C");
+    return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${initialCenter.lat}%2C${initialCenter.lng}`;
+  }, [initialCenter.lat, initialCenter.lng]);
 
   const init = usePersistFn(async () => {
     const loaded = await loadMapScript();
@@ -152,6 +158,7 @@ export function MapView({
       streetViewControl: true,
       mapId: "DEMO_MAP_ID",
     });
+    setMapReady(true);
     if (onMapReady) {
       onMapReady(map.current);
     }
@@ -162,6 +169,15 @@ export function MapView({
   }, [init]);
 
   return (
-    <div ref={mapContainer} className={cn("w-full h-[500px]", className)} />
+    <div className={cn("w-full h-[500px]", className)}>
+      <iframe
+        title="Карта розташування Active Medical"
+        src={openStreetMapUrl}
+        className={cn("map-embed-fallback", mapReady && "map-embed-fallback-hidden")}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+      <div ref={mapContainer} className="map-sdk-container" />
+    </div>
   );
 }
