@@ -7,7 +7,7 @@ vi.mock("./_core/env", () => ({
   },
 }));
 
-const { buildMapsSdkUrl, registerMapsSdkProxy } = await import("./_core/mapsSdkProxy");
+const { buildMapsSdkUrl, registerMapsSdkProxy, resolveMapsConfig } = await import("./_core/mapsSdkProxy");
 
 type RouteHandler = (req: unknown, res: {
   status: (code: number) => any;
@@ -50,6 +50,18 @@ describe("Maps SDK proxy", () => {
     expect(url.toString()).toBe(
       "https://forge.example.test/v1/maps/proxy/maps/api/js?key=frontend-key&v=weekly&libraries=marker%2Cplaces%2Cgeocoding%2Cgeometry&loading=async",
     );
+  });
+
+  it("falls back to server-side Forge configuration for custom deployments", () => {
+    expect(resolveMapsConfig({
+      frontendForgeApiUrl: "",
+      frontendForgeApiKey: "",
+      forgeApiUrl: "https://server-forge.example.test/",
+      forgeApiKey: "server-key",
+    })).toEqual({
+      baseUrl: "https://server-forge.example.test/",
+      apiKey: "server-key",
+    });
   });
 
   it("relays the SDK through the allowed project origin", async () => {

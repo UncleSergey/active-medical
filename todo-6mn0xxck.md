@@ -15,6 +15,6 @@
 - [x] Шаг 2: добавить автоматический мониторинг доступности всех storage-ассетов с уведомлением о сбоях (20 ассетов каждые 15 минут; task UID `gtLgq7UYjNEcNAftzTFp2Y`)
 - [x] Шаг 3: настроить lazy-loading для тяжёлых командных фотографий и проверить загрузку изображений (team portraits lazy + async decoding; hero eager/high priority; тесты прошли)
 - [x] Проверить и опубликовать каждый шаг отдельным checkpoint (monitor code checkpoint `f2292b9d`)
-- [ ] Проверить, какой deployment фактически обслуживает active-medical.pp.ua
+- [x] Проверить, какой deployment фактически обслуживает active-medical.pp.ua (Render за Cloudflare; `x-render-origin-server: Render`)
 - [ ] Синхронизировать текущие изменения с deployment active-medical.pp.ua
 - [ ] Проверить lazy-loading, Maps и storage-ассеты непосредственно на active-medical.pp.ua

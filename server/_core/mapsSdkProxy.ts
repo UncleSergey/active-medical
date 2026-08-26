@@ -5,6 +5,15 @@ const PROJECT_ORIGIN = "https://activemedic-rcveslat.manus.space";
 const MAPS_PATH = "/v1/maps/proxy/maps/api/js";
 const MAP_LIBRARIES = "marker,places,geocoding,geometry";
 
+type MapsConfigEnv = Pick<typeof ENV, "frontendForgeApiUrl" | "frontendForgeApiKey" | "forgeApiUrl" | "forgeApiKey">;
+
+export function resolveMapsConfig(env: MapsConfigEnv) {
+  return {
+    baseUrl: env.frontendForgeApiUrl || env.forgeApiUrl,
+    apiKey: env.frontendForgeApiKey || env.forgeApiKey,
+  };
+}
+
 export function buildMapsSdkUrl(baseUrl: string, apiKey: string) {
   const url = new URL(MAPS_PATH, `${baseUrl.replace(/\/+$/, "")}/`);
   url.searchParams.set("key", apiKey);
@@ -16,13 +25,14 @@ export function buildMapsSdkUrl(baseUrl: string, apiKey: string) {
 
 export function registerMapsSdkProxy(app: Express) {
   app.get("/api/maps-sdk", async (_req: Request, res: Response) => {
-    if (!ENV.frontendForgeApiUrl || !ENV.frontendForgeApiKey) {
+    const { baseUrl, apiKey } = resolveMapsConfig(ENV);
+    if (!baseUrl || !apiKey) {
       res.status(503).type("text/plain").send("Maps SDK is not configured");
       return;
     }
 
     try {
-      const upstream = await fetch(buildMapsSdkUrl(ENV.frontendForgeApiUrl, ENV.frontendForgeApiKey), {
+      const upstream = await fetch(buildMapsSdkUrl(baseUrl, apiKey), {
         headers: { Origin: PROJECT_ORIGIN },
       });
       if (!upstream.ok) {
