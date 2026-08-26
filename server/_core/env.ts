@@ -7,6 +7,8 @@ export const ENV = {
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  frontendForgeApiUrl: process.env.VITE_FRONTEND_FORGE_API_URL ?? "",
+  frontendForgeApiKey: process.env.VITE_FRONTEND_FORGE_API_KEY ?? "",
   storageFallbackUrl: process.env.MANUS_STORAGE_FALLBACK_URL ?? "",
   telegramBotToken: process.env.TELEGRAM_BOT_TOKEN ?? "",
   telegramChatId: process.env.TELEGRAM_CHAT_ID ?? "",

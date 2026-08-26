@@ -86,27 +86,42 @@ declare global {
   }
 }
 
-const API_KEY = import.meta.env.VITE_FRONTEND_FORGE_API_KEY;
-const FORGE_BASE_URL =
-  import.meta.env.VITE_FRONTEND_FORGE_API_URL ||
-  "https://forge.butterfly-effect.dev";
-const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
+const MAPS_SDK_URLS = [
+  "/api/maps-sdk",
+  "https://activemedic-rcveslat.manus.space/api/maps-sdk",
+];
+let mapScriptPromise: Promise<boolean> | null = null;
 
-function loadMapScript() {
-  return new Promise(resolve => {
+function appendMapScript(src: string): Promise<boolean> {
+  return new Promise<boolean>((resolve) => {
     const script = document.createElement("script");
-    script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry`;
+    script.src = src;
     script.async = true;
-    script.crossOrigin = "anonymous";
-    script.onload = () => {
-      resolve(null);
-      script.remove(); // Clean up immediately
-    };
+    script.dataset.activeMedicalMapsSdk = "true";
+    script.onload = () => resolve(Boolean(window.google?.maps));
+    // The branded map fallback remains visible when the external SDK is unavailable.
     script.onerror = () => {
-      console.error("Failed to load Google Maps script");
+      script.remove();
+      resolve(false);
     };
     document.head.appendChild(script);
   });
+}
+
+function loadMapScript(): Promise<boolean> {
+  if (window.google?.maps) return Promise.resolve(true);
+  if (mapScriptPromise) return mapScriptPromise;
+
+  mapScriptPromise = (async () => {
+    for (const src of MAPS_SDK_URLS) {
+      if (await appendMapScript(src)) return true;
+    }
+    return false;
+  })().finally(() => {
+    mapScriptPromise = null;
+  });
+
+  return mapScriptPromise;
 }
 
 interface MapViewProps {
@@ -126,11 +141,8 @@ export function MapView({
   const map = useRef<google.maps.Map | null>(null);
 
   const init = usePersistFn(async () => {
-    await loadMapScript();
-    if (!mapContainer.current) {
-      console.error("Map container not found");
-      return;
-    }
+    const loaded = await loadMapScript();
+    if (!loaded || !mapContainer.current || !window.google?.maps) return;
     map.current = new window.google.maps.Map(mapContainer.current, {
       zoom: initialZoom,
       center: initialCenter,
