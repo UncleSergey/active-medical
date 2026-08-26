@@ -13,5 +13,8 @@
 - [x] Проверить preview, TypeScript, тесты и production build, затем сохранить опубликованный checkpoint (preview и `/api/maps-sdk` HTTP 200; TypeScript/build и целевые тесты прошли)
 - [x] Шаг 1: обновить Telegram bot token через защищённую конфигурацию и подтвердить `getMe`/credential-тест (пропущен по решению пользователя: заявки работают)
 - [x] Шаг 2: добавить автоматический мониторинг доступности всех storage-ассетов с уведомлением о сбоях (20 ассетов каждые 15 минут; task UID `gtLgq7UYjNEcNAftzTFp2Y`)
-- [ ] Шаг 3: настроить lazy-loading для тяжёлых командных фотографий и проверить загрузку изображений
+- [x] Шаг 3: настроить lazy-loading для тяжёлых командных фотографий и проверить загрузку изображений (team portraits lazy + async decoding; hero eager/high priority; тесты прошли)
 - [x] Проверить и опубликовать каждый шаг отдельным checkpoint (monitor code checkpoint `f2292b9d`)
+- [ ] Проверить, какой deployment фактически обслуживает active-medical.pp.ua
+- [ ] Синхронизировать текущие изменения с deployment active-medical.pp.ua
+- [ ] Проверить lazy-loading, Maps и storage-ассеты непосредственно на active-medical.pp.ua
