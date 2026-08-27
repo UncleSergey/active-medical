@@ -1,5 +1,5 @@
 // Design reminder: quiet clinical poetry — editorial asymmetry, warm milk surfaces, blush/sky/sage pastels, coral actions, Cormorant Garamond + Manrope.
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowUp, ArrowUpRight, CalendarDays, Check, ChevronDown, Clock3, HeartPulse, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Stethoscope, X } from "lucide-react";
 import { priceCategories } from "@/data/pricelist";
 import { trpc } from "@/lib/trpc";
@@ -72,6 +72,8 @@ export default function Home() {
   const [openCategory, setOpenCategory] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [doctorPaused, setDoctorPaused] = useState(false);
+  const doctorTrackRef = useRef<HTMLDivElement>(null);
   const leadMutation = trpc.leads.submit.useMutation();
   const visibleCategories = useMemo(() => priceCategories.map((category) => ({ ...category, items: category.items.filter((item) => item.name !== "Послуга") })), []);
 
@@ -106,6 +108,19 @@ export default function Home() {
     setMenuOpen(false);
   };
 
+  const moveDoctors = (direction: number) => {
+    const track = doctorTrackRef.current;
+    const card = track?.querySelector<HTMLElement>(".doctor-carousel-card");
+    if (!track || !card) return;
+    track.scrollBy({ left: direction * (card.offsetWidth + 16), behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (doctorPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => moveDoctors(1), 5200);
+    return () => window.clearInterval(timer);
+  }, [doctorPaused]);
+
   return (
     <main className="site-shell">
       <header className="topbar">
@@ -120,6 +135,8 @@ export default function Home() {
           <button onClick={() => scrollTo("documents")}>Документи</button>
           <button onClick={() => scrollTo("results")}>До / Після</button><button onClick={() => scrollTo("team")}>Команда</button>
           <button onClick={() => scrollTo("contacts")}>Контакти</button>
+          <a className="nav-page-link" href="/stomatologiya">Стоматологія</a>
+          <a className="nav-page-link" href="/viddilennia">Відділення</a>
           <button className="nav-book" onClick={() => scrollTo("booking")}>Записатись на прийом <ArrowUpRight size={15} /></button>
         </nav>
         <div className="topbar-actions">
@@ -155,7 +172,7 @@ export default function Home() {
 
       <section id="results" className="results-section section-pad"><div className="section-kicker">06 / До / Після</div><div className="results-grid"><div className="results-copy"><h2>Результат,<br /><em>який видно.</em></h2><p>Показуємо реальні клінічні приклади з профілю Active Medical. Кожен випадок потребує індивідуальної консультації та плану лікування.</p><a className="text-button" href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer">Більше прикладів в Instagram <Instagram size={16} /></a></div><figure className="before-after-card before-after-card-feature"><img src={markoRossoCaseImage} alt="Реальний клінічний кейс до та після лікування апаратом Марко Россо" loading="lazy" decoding="async" /><figcaption><span>До / Після</span><small>Апарат Марко Россо · реальний клінічний кейс</small></figcaption></figure></div></section>
 
-      <section id="team" className="team-section section-pad"><div className="team-copy team-copy-full"><div className="section-kicker">07 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Ми не ховаємося за білими халатами. Говоримо просто, працюємо уважно і завжди залишаємо вам право на запитання.</p><div className="doctor-list doctor-list-with-photos">{doctors.map((doctor, index) => <a className="doctor-row doctor-row-with-photo" href={`/likari/${doctor.slug}`} key={doctor.name}><div className="doctor-row-photo"><img src={doctorPortraits[index]} alt={`${doctor.name} — ${doctor.role} Active Medical`} loading="lazy" decoding="async" /></div><span className="doctor-number">0{index + 1}</span><div className="doctor-row-copy"><strong>{doctor.name}</strong><span>{doctor.role} · {doctor.detail}</span></div><ArrowUpRight size={17} /></a>)}</div></div></section>
+      <section id="team" className="team-section team-section-carousel section-pad"><div className="team-carousel-intro"><div className="section-kicker">07 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Познайомтеся з командою Active Medical. Відкрийте картку лікаря, щоб дізнатися більше про його напрямок.</p><div className="team-carousel-line" aria-hidden="true"><span>маршрут спокійної усмішки</span><i /></div><div className="team-carousel-controls"><button type="button" className="carousel-arrow" onClick={() => moveDoctors(-1)} aria-label="Попередній лікар">←</button><button type="button" className="carousel-arrow" onClick={() => moveDoctors(1)} aria-label="Наступний лікар">→</button></div></div><div className="doctor-carousel" role="region" aria-roledescription="carousel" aria-label="Лікарі Active Medical" onMouseEnter={() => setDoctorPaused(true)} onMouseLeave={() => setDoctorPaused(false)} onFocus={() => setDoctorPaused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDoctorPaused(false); }}><div className="doctor-carousel-track" ref={doctorTrackRef}>{doctors.map((doctor, index) => <a className="doctor-carousel-card" href={`/likari/${doctor.slug}`} key={doctor.name}><div className="doctor-carousel-photo"><img src={doctorPortraits[index]} alt={`${doctor.name} — ${doctor.role} Active Medical`} loading="lazy" decoding="async" /></div><div className="doctor-carousel-meta"><span className="doctor-number">0{index + 1}</span><div><strong>{doctor.name}</strong><span>{doctor.role}</span></div><ArrowUpRight size={17} /></div></a>)}</div></div></section>
 
       <section className="quote-section section-pad"><div className="quote-mark">“</div><blockquote>Найкраще лікування — це коли вам спокійно, зрозуміло і хочеться повернутися.</blockquote><p>— команда Active Medical</p></section>
 

@@ -625,3 +625,191 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
 .hero-reference-image {
   height: 100%;
 }
+
+/* Dental overview: official Active Medical palette with a restrained contact-blue accent. */
+.nav-page-link { color: #2f3940; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; transition: color .2s var(--ease); }
+.nav-page-link:hover { color: var(--brand-red); }
+.dental-shell { background: #fff; color: #20262b; }
+.dental-header-phone { align-items: center; display: flex; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.dental-header-phone a { color: #6e7b82; }
+.dental-header-phone a::before { background: #86a8d8; border-radius: 50%; content: ''; display: inline-block; height: 8px; margin-right: .45rem; width: 8px; }
+.dental-page-hero { background: linear-gradient(115deg, #fff 0%, #f5f6f7 66%, #eceff1 100%); display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr); min-height: 620px; overflow: hidden; position: relative; }
+.dental-page-hero-copy { align-self: center; max-width: 760px; padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 8vw, 9rem); position: relative; z-index: 1; }
+.dental-page-hero-copy::before { border: 1px solid rgba(181,31,50,.25); border-radius: 50%; content: ''; height: 220px; left: 8%; position: absolute; top: 12%; width: 220px; z-index: -1; }
+.dental-page-hero h1 { color: #20262b; font-size: clamp(4rem, 7vw, 7.8rem); margin: 2rem 0 1.6rem; max-width: 650px; }
+.dental-page-hero h1 em { color: var(--brand-red); }
+.dental-page-hero-copy > p { color: #536268; font-size: 15px; line-height: 1.8; max-width: 500px; }
+.dental-hero-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+.dental-highlight-list { border-left: 1px solid var(--brand-red); display: grid; gap: .65rem; margin-top: 3rem; padding-left: 1rem; }
+.dental-highlight-list span { align-items: center; color: #536268; display: flex; font-size: 11px; gap: .55rem; }
+.dental-highlight-list svg { color: var(--brand-red); flex: 0 0 auto; }
+.dental-page-hero-art { align-self: stretch; background: #e9ecee; border-left: 1px solid #d5dade; min-height: 620px; overflow: hidden; position: relative; }
+.dental-page-hero-art::before { background-image: radial-gradient(circle at 50% 30%, rgba(181,31,50,.12) 0 1px, transparent 1.5px); background-size: 18px 18px; content: ''; inset: 0; opacity: .6; position: absolute; }
+.dental-page-hero-art::after { border: 1px solid rgba(181,31,50,.24); border-radius: 50%; content: ''; height: 440px; left: 50%; position: absolute; top: 50%; transform: translate(-50%,-50%); width: 440px; }
+.dental-lion-pattern { filter: grayscale(1); left: 50%; opacity: .08; position: absolute; top: 20%; transform: translateX(-50%); width: 360px; z-index: 1; }
+.dental-hero-label { color: #6e7b82; font-size: 12px; font-weight: 800; left: 2rem; letter-spacing: .16em; position: absolute; text-transform: uppercase; top: 2rem; z-index: 2; }
+.dental-hero-label small { color: var(--brand-red); display: block; font-size: 9px; margin-top: .4rem; }
+.dental-hero-paper { background: #fff; bottom: 3rem; box-shadow: 0 16px 34px rgba(32,38,43,.12); display: flex; flex-direction: column; gap: .3rem; left: 3rem; padding: 1rem 1.2rem; position: absolute; transform: rotate(-4deg); z-index: 3; }
+.dental-hero-paper b { color: var(--brand-red); font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; line-height: .9; }
+.dental-hero-paper span { color: #536268; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.dental-directions { background: #fff; }
+.dental-direction-grid { display: grid; gap: 0 1.2rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
+.dental-direction-card { align-items: start; border-bottom: 1px solid #d8dde0; display: grid; gap: 1rem; grid-template-columns: 42px minmax(0,1fr) 26px; padding: 1.5rem .2rem; transition: background .2s var(--ease), padding .2s var(--ease); }
+.dental-direction-card:hover { background: #f5f6f7; padding-left: .7rem; }
+.dental-direction-number { color: var(--brand-red); font-family: 'Cormorant Garamond', serif; font-size: 28px; line-height: 1; }
+.dental-direction-card h3 { color: #20262b; font-family: 'Cormorant Garamond', serif; font-size: 31px; font-weight: 500; line-height: .95; margin-bottom: .5rem; }
+.dental-direction-card p { color: #68767a; font-size: 11px; line-height: 1.55; max-width: 430px; }
+.dental-direction-arrow { color: var(--brand-red); transition: transform .2s var(--ease); }
+.dental-direction-card:hover .dental-direction-arrow { transform: translate(3px,-3px); }
+.dental-approach { background: #f5f6f7; }
+.dental-approach-grid { display: grid; gap: clamp(3rem, 8vw, 8rem); grid-template-columns: .8fr 1.2fr; margin-top: 3.5rem; }
+.dental-approach-grid > div > p { color: #536268; line-height: 1.75; margin-top: 2rem; max-width: 430px; }
+.dental-approach-steps { border-top: 1px solid #cfd6da; display: grid; grid-template-columns: repeat(3,1fr); }
+.dental-approach-steps article { border-right: 1px solid #cfd6da; min-height: 190px; padding: 1.3rem 1rem; }
+.dental-approach-steps article:last-child { border-right: 0; }
+.dental-approach-steps strong { color: var(--brand-red); font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; }
+.dental-approach-steps h3 { color: #20262b; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; line-height: 1; margin: 2.5rem 0 .6rem; }
+.dental-approach-steps p { color: #68767a; font-size: 11px; line-height: 1.55; }
+.dental-contact-banner { align-items: end; background: #8f1f31; color: #fff; display: flex; gap: 2rem; justify-content: space-between; }
+.dental-contact-banner .section-kicker, .dental-contact-banner h2 em { color: #f3c4cb; }
+.dental-contact-banner h2 { margin-top: 1.5rem; }
+.dental-contact-banner p { color: rgba(255,255,255,.78); margin-top: 1.3rem; max-width: 380px; }
+.dental-contact-actions { align-items: flex-end; display: flex; flex-direction: column; gap: 1.2rem; }
+.dental-contact-actions span { align-items: center; color: #fff; display: flex; font-size: 11px; gap: .5rem; }
+.dental-contact-actions span svg { color: #86a8d8; }
+.dental-contact-actions .button-coral { background: #fff; color: #8f1f31; }
+@media (max-width: 900px) {
+  .dental-header-phone, .dental-nav { display: none; }
+  .dental-page-hero { grid-template-columns: 1fr; }
+  .dental-page-hero-copy { padding-bottom: 3.5rem; padding-top: 5rem; }
+  .dental-page-hero h1 { font-size: clamp(3.5rem, 15vw, 5.3rem); }
+  .dental-page-hero-art { min-height: 310px; }
+  .dental-page-hero-art::after { height: 260px; width: 260px; }
+  .dental-lion-pattern { top: 19%; width: 260px; }
+  .dental-hero-paper { bottom: 1.5rem; left: 1.5rem; }
+  .dental-direction-grid, .dental-approach-grid { grid-template-columns: 1fr; }
+  .dental-direction-card { grid-template-columns: 36px minmax(0,1fr) 22px; }
+  .dental-approach-steps { margin-top: 1rem; }
+  .dental-contact-banner { align-items: flex-start; flex-direction: column; }
+  .dental-contact-actions { align-items: flex-start; }
+}
+@media (max-width: 560px) {
+  .dental-hero-actions { align-items: flex-start; flex-direction: column; }
+  .dental-approach-steps article { min-height: 165px; padding: 1rem .7rem; }
+  .dental-approach-steps h3 { font-size: 22px; margin-top: 2rem; }
+}
+
+/* Branches page: factual locations, restrained Active Medical palette. */
+.branches-shell { background: #fff; color: #20262b; }
+.branches-hero { align-items: center; background: #f3f5f6; display: grid; grid-template-columns: minmax(0,1fr) .75fr; min-height: 520px; padding: clamp(4rem, 8vw, 8rem) clamp(1.5rem, 8vw, 9rem); position: relative; }
+.branches-hero-copy h1 { font-size: clamp(4rem, 8vw, 8rem); margin: 2rem 0 1.5rem; }
+.branches-hero-copy h1 em { color: var(--brand-red); }
+.branches-hero-copy > p { color: #536268; line-height: 1.8; margin-bottom: 2rem; max-width: 460px; }
+.branches-hero-mark { align-items: center; border: 1px solid rgba(181,31,50,.23); border-radius: 50%; color: var(--brand-red); display: flex; flex-direction: column; height: clamp(250px, 30vw, 390px); justify-content: center; justify-self: center; position: relative; transform: rotate(5deg); width: clamp(250px, 30vw, 390px); }
+.branches-hero-mark::before { border: 1px dashed rgba(181,31,50,.22); border-radius: 50%; content: ''; inset: 14%; position: absolute; }
+.branches-hero-mark img { filter: grayscale(1); height: 76px; opacity: .68; object-fit: contain; width: 130px; }
+.branches-hero-mark b { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 500; line-height: 1; margin-top: 1.2rem; }
+.branches-hero-mark small { color: #68767a; font-size: 10px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; margin-top: .5rem; text-align: center; text-transform: uppercase; }
+.branches-list { background: #fff; }
+.branch-card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0,1fr)); }
+.branch-card { background: #f5f6f7; border: 1px solid #d8dde0; border-top: 3px solid var(--brand-red); display: flex; flex-direction: column; min-height: 340px; padding: 1.5rem; transition: box-shadow .2s var(--ease), transform .2s var(--ease); }
+.branch-card:hover { box-shadow: 0 16px 32px rgba(32,38,43,.09); transform: translateY(-4px); }
+.branch-card-03 { background: #fff; }
+.branch-card-top { align-items: center; color: var(--brand-red); display: flex; justify-content: space-between; }
+.branch-card-top span { font-family: 'Cormorant Garamond', serif; font-size: 32px; }
+.branch-card-top svg { stroke: #86a8d8; }
+.branch-card h3 { color: #20262b; font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 500; line-height: .95; margin: 3.5rem 0 .9rem; }
+.branch-address { color: #536268; font-size: 13px; line-height: 1.6; min-height: 62px; }
+.branch-hours { border-top: 1px solid #d8dde0; display: grid; gap: .55rem; margin: 1.4rem 0 1.5rem; padding-top: 1rem; }
+.branch-hours span { align-items: center; color: #68767a; display: flex; font-size: 11px; gap: .5rem; }
+.branch-hours svg { color: #86a8d8; flex: 0 0 auto; }
+.branch-card .text-button { margin-top: auto; }
+.branches-map-section { background: #f3f5f6; }
+.branches-map-grid { align-items: center; display: grid; gap: clamp(2rem, 7vw, 8rem); grid-template-columns: .7fr 1.3fr; margin-top: 3.5rem; }
+.branches-map-grid > div > p { color: #536268; line-height: 1.75; margin: 1.5rem 0; max-width: 350px; }
+.branches-map-card { background: #fff; border: 1px solid #d8dde0; box-shadow: 0 18px 36px rgba(32,38,43,.08); min-height: 500px; overflow: hidden; position: relative; }
+.branches-map-card .branches-map { height: 500px; }
+.branches-map-label { background: #fff; bottom: 1rem; display: flex; flex-direction: column; gap: .25rem; left: 1rem; padding: .8rem 1rem; position: absolute; z-index: 4; }
+.branches-map-label b { color: var(--brand-red); font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; }
+.branches-map-label span { color: #68767a; font-size: 10px; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .branches-hero { gap: 3rem; grid-template-columns: 1fr; }
+  .branches-hero-mark { justify-self: start; }
+  .branch-card-grid, .branches-map-grid { grid-template-columns: 1fr; }
+  .branch-address { min-height: 0; }
+}
+@media (max-width: 560px) {
+  .branches-hero { padding-bottom: 4rem; padding-top: 4rem; }
+  .branches-hero-mark { height: 230px; width: 230px; }
+  .branches-map-card, .branches-map-card .branches-map { min-height: 360px; height: 360px; }
+}
+
+/* Signature motion layer: "Левова лінія" for doctors and children. */
+.team-section-carousel { background: #eef1f2; display: grid; gap: clamp(2rem, 6vw, 6rem); grid-template-columns: .72fr 1.28fr; overflow: hidden; }
+.team-section-carousel::before { background-image: url('/manus-storage/active-medical-official-logo_c0e6b7c3.png'); background-position: center; background-repeat: repeat; background-size: 150px auto; content: ''; inset: 0; opacity: .035; pointer-events: none; position: absolute; }
+.team-section-carousel::after { border: 1px solid rgba(181,31,50,.16); border-radius: 50%; content: ''; height: 480px; pointer-events: none; position: absolute; right: -180px; top: 12%; width: 480px; }
+.team-carousel-intro { position: relative; z-index: 1; }
+.team-carousel-intro > p { color: #536268; line-height: 1.75; margin: 1.8rem 0 1.5rem; max-width: 370px; }
+.team-carousel-line { align-items: center; color: var(--brand-red); display: flex; font-size: 9px; font-weight: 800; gap: .7rem; letter-spacing: .13em; text-transform: uppercase; }
+.team-carousel-line i { background: var(--brand-red); display: block; height: 1px; max-width: 170px; width: 35%; }
+.team-carousel-controls { display: flex; gap: .55rem; margin-top: 2.2rem; }
+.carousel-arrow { align-items: center; background: #fff; border: 1px solid #cfd6da; color: var(--brand-red); display: flex; font-size: 20px; height: 42px; justify-content: center; transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease); width: 42px; }
+.carousel-arrow:hover { background: var(--brand-red); color: #fff; transform: translateY(-2px); }
+.doctor-carousel { min-width: 0; position: relative; z-index: 1; }
+.doctor-carousel::before { background: var(--brand-red); content: ''; height: 1px; left: 0; opacity: .7; position: absolute; right: 0; top: 0; }
+.doctor-carousel-track { display: flex; gap: 1rem; overflow-x: auto; padding: 1.5rem 0 1.2rem; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-color: var(--brand-red) transparent; scrollbar-width: thin; }
+.doctor-carousel-card { background: #fff; border: 1px solid #d5dade; box-shadow: 0 14px 30px rgba(32,38,43,.08); flex: 0 0 min(320px, 72%); scroll-snap-align: start; text-decoration: none; transition: box-shadow .2s var(--ease), transform .2s var(--ease); }
+.doctor-carousel-card:hover { box-shadow: 0 20px 36px rgba(32,38,43,.14); transform: translateY(-5px); }
+.doctor-carousel-photo { background: #f3f5f6; height: 340px; overflow: hidden; }
+.doctor-carousel-photo img { display: block; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s var(--ease); width: 100%; }
+.doctor-carousel-card:hover .doctor-carousel-photo img { transform: scale(1.03); }
+.doctor-carousel-meta { align-items: start; display: grid; gap: .7rem; grid-template-columns: 28px minmax(0,1fr) 20px; min-height: 112px; padding: 1rem; }
+.doctor-carousel-meta .doctor-number { color: var(--brand-red); font-family: 'Cormorant Garamond',serif; font-size: 26px; }
+.doctor-carousel-meta > div { display: grid; gap: .4rem; }
+.doctor-carousel-meta strong { color: #20262b; font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 500; line-height: .95; }
+.doctor-carousel-meta span:not(.doctor-number) { color: #68767a; font-size: 10px; line-height: 1.4; }
+.doctor-carousel-meta > svg { color: var(--brand-red); }
+.kids-photo-gallery-wrap { align-items: stretch; display: grid; gap: .75rem; grid-auto-flow: dense; grid-auto-rows: 135px; grid-template-columns: repeat(12, minmax(0,1fr)); margin: 0; position: relative; transform: none; }
+.kids-photo-gallery-wrap:before { background: #b51f32; border-radius: 50%; height: 74px; opacity: .13; right: -12px; top: -24px; width: 74px; }
+.kids-clinical-photo { background: #fff; border: 1px solid #d5dade; border-radius: 1.1rem .2rem 1.1rem .2rem; box-shadow: 0 10px 22px rgba(32,38,43,.09); display: flex; flex-direction: column; margin: 0; overflow: hidden; position: relative; transform: none !important; }
+.kids-clinical-photo:nth-child(1) { grid-column: span 6; grid-row: span 3; border-top: 3px solid var(--brand-red); }
+.kids-clinical-photo:nth-child(2) { grid-column: span 6; grid-row: span 3; border-right: 3px solid #8f1f31; }
+.kids-clinical-photo:nth-child(3), .kids-clinical-photo:nth-child(4), .kids-clinical-photo:nth-child(5), .kids-clinical-photo:nth-child(6) { grid-column: span 3; grid-row: span 2; }
+.kids-clinical-photo:nth-child(3) { border-left: 3px solid #8f1f31; }
+.kids-clinical-photo:nth-child(4) { border-bottom: 3px solid var(--brand-red); }
+.kids-clinical-photo:nth-child(5) { border-top: 3px solid #8f1f31; }
+.kids-clinical-photo:nth-child(6) { border-right: 3px solid var(--brand-red); }
+.kids-clinical-photo img { aspect-ratio: auto; flex: 1; height: 0; min-height: 0; object-fit: cover; width: 100%; }
+.kids-clinical-photo figcaption { background: #fff; color: #68767a; font-size: 9px; letter-spacing: .08em; padding: .55rem .7rem .65rem; text-transform: uppercase; }
+.kids-clinical-photo figcaption::before { color: var(--brand-red); content: '— '; }
+@media (max-width: 900px) {
+  .team-section-carousel { grid-template-columns: 1fr; }
+  .team-section-carousel::after { height: 300px; right: -160px; top: 33%; width: 300px; }
+  .doctor-carousel-card { flex-basis: min(290px, 78vw); }
+  .doctor-carousel-photo { height: 300px; }
+  .kids-photo-gallery-wrap { grid-auto-rows: 105px; }
+  .kids-clinical-photo:nth-child(1), .kids-clinical-photo:nth-child(2) { grid-column: span 6; grid-row: span 3; }
+  .kids-clinical-photo:nth-child(n+3) { grid-column: span 4; grid-row: span 2; }
+}
+@media (max-width: 560px) {
+  .doctor-carousel-card { flex-basis: 82vw; }
+  .doctor-carousel-photo { height: 280px; }
+  .kids-photo-gallery-wrap { gap: .55rem; grid-auto-rows: 88px; }
+  .kids-clinical-photo:nth-child(1), .kids-clinical-photo:nth-child(2) { grid-column: span 6; grid-row: span 3; }
+  .kids-clinical-photo:nth-child(n+3) { grid-column: span 6; grid-row: span 2; }
+  .kids-clinical-photo figcaption { font-size: 8px; padding: .45rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .doctor-carousel-track { scroll-behavior: auto; }
+  .doctor-carousel-card, .doctor-carousel-photo img { transition: none; }
+}
+
+/* Kids section palette correction: playfulness comes from rhythm and frames, not extra colors. */
+.kids-section { background: #f3f5f6; }
+.kids-section h2 em, .kids-section .kids-age b, .kids-section .kids-price-row b { color: var(--brand-red); }
+.kids-section .kids-sparkle { color: var(--brand-red); }
+.kids-section .kids-benefit-icon { background: #fff; border: 1px solid rgba(181,31,50,.35); color: var(--brand-red); }
+.kids-section .kids-benefits article { background: #fff; border-color: #d8dde0; }
+.kids-section .kids-price-panel { background: #fff; border-color: #d8dde0; }
+.kids-section .kids-price-panel-ortho { background: #f5f6f7; }
+.kids-section .kids-doctor-card { background: #fff; border-color: #d8dde0; }

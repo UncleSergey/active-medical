@@ -30,3 +30,9 @@ A fresh 1280×900 headless Chromium capture of `https://www.active-medical.pp.ua
 ## Live mobile smoke test after checkpoint 473e434c
 
 A fresh 390×844 headless Chromium capture of `https://www.active-medical.pp.ua/?hero-fix=473e434c` shows the real hero image, mobile logo/menu header, one red primary appointment button and one secondary “ДІЗНАТИСЯ БІЛЬШЕ” link. The green static CTA is not visible, the secondary text appears once, and the action row does not overlap the hero image or the following marquee/section.
+
+## Live desktop/mobile smoke test after checkpoint e123f589
+
+Fresh headless captures were reviewed at 1280×900 and 390×844 on `active-medical.pp.ua`. On desktop, the hero image fills the frame to the marquee boundary; the lower-left action area contains one red primary CTA and one red underlined link, with no green static CTA or duplicate text. On mobile, the logo/menu, hero image, red CTA and secondary link all remain inside the hero frame; the original green CTA is not visible, the link appears once, and the following marquee/section starts below the hero without overlap.
+
+The live DOM continues to expose exactly one `.hero-hotspot-primary` button and one `.hero-hotspot-secondary` link. The final frame uses the supplied asset ratio 1536:924, so the mask and controls stay aligned at both tested viewports.

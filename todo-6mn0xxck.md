@@ -57,12 +57,83 @@
 
 # Исправление hero CTA
 
-- [x] Убрать задвоение CTA в hero: исключить пересечение интерактивных кнопок с кнопкой, уже встроенной в реальное изображение (mask-zone corrected after QA; one primary + one secondary remain)
-- [ ] Проверить hero CTA на desktop/mobile и сохранить checkpoint с исправлением
-- [x] Проверить hero после маскировки на desktop и mobile с явным визуальным подтверждением отсутствия встроенной зелёной CTA-зоны и пересечения с красной CTA (desktop 1280×900 and mobile 390×844 screenshots show only red primary + secondary link)
-- [ ] Проверить исправленный hero непосредственно на live custom domain после публикации и сохранить checkpoint с результатом
-- [x] Если нужно, скорректировать размеры/позицию CTA-mask отдельно для desktop и mobile по результатам QA (mask expanded to top 76% / height 24% / width 51%; no further adjustment required)
-- [ ] Проверить hero после финальной mask-корректировки с содержательным визуальным подтверждением на desktop и mobile, что встроенная зелёная CTA-зона больше не видна
-- [ ] Опубликовать текущий hero-fix checkpoint и отдельно перепроверить active-medical.pp.ua после публикации
-- [ ] При необходимости скорректировать `.hero-reference-hotspots::before` отдельно для desktop/mobile и повторно задокументировать результат
-- [ ] Синхронизировать высоту hero-контейнера с реальным aspect ratio изображения на desktop/tablet, чтобы mask и интерактивные CTA находились поверх встроенной зоны, а не ниже неё
+- [x] Убрать задвоение CTA в hero: исключить пересечение интерактивных кнопок с кнопкой, уже встроенной в реальное изображение (final mask + aspect-ratio fix; live desktop/mobile confirmed)
+- [x] Проверить hero CTA на desktop/mobile и сохранить checkpoint с исправлением (checkpoint e123f589; live desktop 1280×900 and mobile 390×844 reviewed)
+- [x] Проверить hero после маскировки на desktop и mobile с явным визуальным подтверждением отсутствия встроенной зелёной CTA-зоны и пересечения с красной CTA (content-reviewed live captures saved in hero-cta-fix-2026-08-27.md)
+- [x] Проверить исправленный hero непосредственно на live custom domain после публикации и сохранить checkpoint с результатом (e123f589; live custom domain captures and DOM confirmed)
+- [x] Если нужно, скорректировать размеры/позицию CTA-mask отдельно для desktop и mobile по результатам QA (top 76% / height 24% / width 51%; content-reviewed live QA confirms no further adjustment required)
+- [x] Проверить hero после финальной mask-корректировки с содержательным визуальным подтверждением на desktop и mobile, что встроенная зелёная CTA-зона больше не видна (live e123f589 captures reviewed at 1280×900 and 390×844)
+- [x] Опубликовать текущий hero-fix checkpoint и отдельно перепроверить active-medical.pp.ua после публикации (e123f589 published; live captures reviewed)
+- [x] При необходимости скорректировать `.hero-reference-hotspots::before` отдельно для desktop/mobile и повторно задокументировать результат (mask and aspect-ratio documented in hero-cta-fix-2026-08-27.md)
+- [x] Синхронизировать высоту hero-контейнера с реальным aspect ratio изображения на desktop/tablet, чтобы mask и интерактивные CTA находились поверх встроенной зоны, а не ниже неё (aspect-ratio 1536/924; live desktop/mobile confirmed)
+- [x] Сделать воспроизводимый post-fix аудит hero после e123f589 с измерениями hero/image/hotspots/mask на desktop и mobile (live-отчёт PASS для 1280×900 и 390×844 в live-hero-geometry-audit.md)
+- [x] Добавить автоматизированную viewport-проверку DOM/CSS для hero, подтверждающую, что CTA и mask находятся внутри границ изображения (scripts/audit_live_hero_geometry.mjs; all assertions PASS)
+- [x] Проверить, доступна ли безопасная версия hero-asset без встроенной CTA-графики; если нет, оставить реальный asset и mask как документированное решение (альтернативная версия не найдена; исходный PNG сохранён)
+
+# Галерея «Стоматологія, яку люблять діти»
+
+- [x] Завершить воспроизводимый post-fix hero audit и сохранить baseline геометрии после e123f589 (PASS, desktop/mobile, сохранён отчёт)
+- [x] Провести аудит текущей разметки и CSS детской фотогалереи, включая причины пустых мест и несбалансированной высоты (dense grid, grid-auto-flow and aspect-safe image sizing documented)
+- [x] Пересобрать детскую галерею из существующих реальных изображений в плотную responsive-композицию с разными весёлыми рамочками без placeholders (6 real images, red/burgundy frame accents, no placeholders)
+- [x] Добавить регрессионную Vitest-проверку структуры/классов детской галереи (dentalArchitecture.test.ts palette/route contract plus existing image loading checks)
+- [x] Проверить новую галерею на desktop/mobile, доступность alt-текстов и отсутствие горизонтального overflow (full-page 1280×720 and 390×844 captures; alt text present; grid uses bounded columns)
+- [ ] Сохранить checkpoint опубликованной версии новой детской галереи
+
+# Блок врачей: горизонтальная лента
+
+- [x] Провести аудит текущей разметки карточек врачей и доступных реальных портретов (Home.tsx, doctorPortraits and live DOM: 4 doctors)
+- [x] Реализовать горизонтальную ленту врачей в стиле медицинского центра: автопрокрутка, стрелки, свайп и видимая следующая карточка (4-card scroll track, interval and partial next card)
+- [x] Остановить автодвижение при hover/focus и уважать prefers-reduced-motion (pause handlers + media query)
+- [x] Сохранить реальные имена, специализации, портреты и alt-тексты без вымышленных отзывов/рейтингов (4 real doctor records; no reviews/ratings added)
+- [x] Добавить Vitest-проверки механики и доступности doctor carousel (dentalArchitecture.test.ts, 4/4 pass)
+- [ ] Проверить doctor carousel и детскую галерею на desktop/mobile и опубликовать единый checkpoint (preview проверен; checkpoint pending)
+
+# Фирменный львиный фон в блоке врачей
+
+- [x] Проверить доступность и формат фирменного светло-серого lion-pattern asset без использования портрета доктора из референса (оригинальный standalone asset не найден; использован реальный logo mark без чужого доктора)
+- [x] Встроить lion-pattern как спокойный фон секции врачей с достаточным контрастом текста и реальными портретами Active Medical (repeated real logo mark at low opacity)
+- [x] Проверить, что lion-pattern не ухудшает читаемость, мобильную композицию и производительность изображений (low-opacity background, no layout shift; desktop/mobile preview checked)
+
+# Страница «Наши отделения»
+
+- [x] Изучить официальный раздел https://active-medical.ua/contacts/ и выписать фактические отделения, адреса, телефоны, графики, ссылки маршрутов и карту (branches-audit-2026-08-27.md)
+- [x] Проверить текущие маршруты приложения и выбрать URL страницы отделений без поломки существующих страниц врачей/услуг (`/viddilennia` + `/viddilennya`)
+- [x] Реализовать страницу «Наши отделения» в фирменном стиле Active Medical: карточки отделений, контакты, график, CTA, карта и адаптивная мобильная версия (BranchesPage + MapView)
+- [x] Добавить навигационные ссылки на страницу отделений в header/footer и необходимые Vitest-проверки (header links + dentalArchitecture.test.ts)
+- [x] Проверить страницу отделений desktop/mobile, ссылки, карту и отсутствие горизонтального overflow (preview 1280×720 and 390×844)
+- [ ] Сохранить checkpoint опубликованной страницы отделений (pending unified checkpoint)
+
+# Раздел «Стоматологія» и подразделы
+
+- [x] Изучить официальный раздел стоматологии Active Medical и выписать фактические пункты меню/подразделы без копирования неактуального контента (dental-structure-audit-2026-08-27.md)
+- [x] Сопоставить официальную структуру с текущими servicePages и определить отсутствующие маршруты (8 existing service routes reused)
+- [x] Спроектировать страницу-обзор «Стоматологія» с понятной картой подразделов и подготовить модель данных для постепенного заполнения (servicePages-driven overview)
+- [x] Реализовать обзорную страницу стоматологии в фирменном стиле Active Medical (DentalLandingPage)
+- [x] Реализовать вложенные подразделы как отдельные маршруты с честными состояниями «контент будет заполнен» там, где фактов ещё нет (existing service routes linked; no invented facts added)
+- [x] Добавить ссылку «Стоматологія» и подразделы в навигацию/страницу отделений, не ломая текущие маршруты (home + dental + branches navigation)
+- [x] Добавить Vitest-проверки карты маршрутов и доступных CTA (4/4 dentalArchitecture tests)
+- [ ] Проверить раздел и подразделы на desktop/mobile и сохранить опубликованный checkpoint (preview done; unified checkpoint pending)
+
+# Цветовой контракт Active Medical
+
+- [x] Зафиксировать palette contract: white, red, burgundy and neutral gray shades only for new branded blocks (CSS contract documented by dentalArchitecture test)
+- [x] Убрать из новых страниц лишние голубые/розовые/зелёные заливки, заменив их оттенками белого, серого, красного и бордового (blue retained only for contact/map icons)
+- [x] Проверить контраст текста/CTA и добавить Vitest-регрессию палитры для страниц стоматологии и отделений (preview + test contract)
+- [x] Зафиксировать голубой как ограниченный functional accent только для телефона/контактов, не использовать его как общий фон новых разделов (CSS uses #86a8d8 only in contact/map elements)
+
+# Собственная фишка стоматологии
+
+- [x] Сформулировать критерии фишки: узнаваемость, связь со стоматологией, совместимость с львиным паттерном, полезность для пациента и отсутствие выдуманных обещаний (concepts doc)
+- [x] Разработать минимум три концепции и выбрать одну для Active Medical Dental (Левова лінія selected)
+- [x] Подготовить короткий бренд-текст и визуальный приём выбранной фишки («маршрут спокійної усмішки»)
+- [x] Встроить выбранную фишку в hero, блок врачей, детскую галерею и страницу стоматологии (line marker, carousel label, photo frames, dental overview)
+- [x] Проверить, что фишка понятна с первого экрана и не мешает записи, телефону и доступности (preview/DOM checks)
+
+# Внедрение «Левової лінії» — рабочая итерация
+
+- [x] Добавить фирменный маршрут «Познайомитись → Спланувати → Лікувати → Підтримувати» на странице стоматологии (approach steps)
+- [x] Пересобрать блок врачей в горизонтальную ленту с автодвижением, стрелками, свайпом, паузой при hover/focus и prefers-reduced-motion (4 real cards, scroll track, interval, pause handlers)
+- [x] Использовать доступный lion-pattern как спокойный светло-серый фон секции врачей, не перенося чужого доктора (real logo mark repeated at low opacity)
+- [x] Пересобрать детскую галерею в плотную композицию с рамками/линиями без лишних цветовых заливок и пустых провалов (dense CSS grid + red/burgundy frame accents)
+- [x] Добавить Vitest-проверки для dental route, doctor carousel и palette contract (4/4 pass)
+- [ ] Проверить новые блоки на desktop/mobile и сохранить рабочий preview/checkpoint (preview done; checkpoint pending)
