@@ -6,8 +6,8 @@ import { trpc } from "@/lib/trpc";
 import { MapView } from "@/components/Map";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-const heroImage = "/manus-storage/active-medical-hero-reference-body_fda89e6a.png";
 const interiorImage = "/manus-storage/active-medical-interior_10802c60.jpg";
+const heroImage = interiorImage;
 const teamImage = "/manus-storage/active-medical-team-realistic-proportions_23ae09e7.png";
 const doctorPortraits = [
   "/manus-storage/alina-mezinova-color-scrubs-new_22ddf932.png",
@@ -183,12 +183,14 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="top" className="hero-reference">
-        <img className="hero-reference-image" src={heroImage} alt="Стоматолог Active Medical у світлому клінічному інтер’єрі" loading="eager" fetchPriority="high" decoding="async" /><span className="hero-badge-cover" aria-hidden="true" />
-        <h1 className="sr-only">Стоматологія Active Medical у Миколаєві</h1>
-        <div className="hero-reference-hotspots" aria-label="Дії першого екрану">
-          <button className="hero-hotspot hero-hotspot-primary" onClick={() => scrollTo("booking")} aria-label="Записатись на консультацію">Записатись на консультацію</button>
-          <a className="hero-hotspot hero-hotspot-secondary" href="#about" onClick={(event) => { event.preventDefault(); scrollTo("about"); }} aria-label="Дізнатися більше про клініку">Дізнатися більше</a>
+      <section id="top" className="hero-reference hero-clinic">
+        <img className="hero-reference-image" src={heroImage} alt="Світлий інтер’єр стоматологічної клініки Active Medical" loading="eager" fetchPriority="high" decoding="async" />
+        <div className="hero-clinic-overlay">
+          <div className="hero-clinic-eyebrow"><span /> Стоматологія Active Medical</div>
+          <h1>Стоматологія,<br /><em>яку видно.</em></h1>
+          <p>Сучасне лікування зубів для всієї родини — делікатно, зрозуміло і з турботою про ваш комфорт.</p>
+          <div className="hero-benefit-cards" aria-label="Переваги Active Medical"><span><b>01</b>Сучасно</span><span><b>02</b>Безпечно</span><span><b>03</b>Індивідуально</span></div>
+          <div className="hero-clinic-actions"><button className="button button-coral" onClick={() => scrollTo("booking")}>Записатись на консультацію <ArrowUpRight size={16} /></button><a href="#about" onClick={(event) => { event.preventDefault(); scrollTo("about"); }}>Дізнатися більше <ArrowUpRight size={15} /></a></div>
         </div>
       </section>
 

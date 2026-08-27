@@ -24,11 +24,19 @@ describe("Active Medical brand identity contract", () => {
     expect(home).toContain("Записатись на прийом");
   });
 
-  it("keeps a single accessible CTA pair over the supplied hero artwork", () => {
-    expect(home.match(/hero-hotspot-primary/g)).toHaveLength(1);
-    expect(home.match(/hero-hotspot-secondary/g)).toHaveLength(1);
-    expect(css).toContain(".hero-reference-hotspots::before");
-    expect(css).toContain("Cover the static CTA artwork");
+  it("keeps a single accessible CTA pair in the clinic-first hero", () => {
+    expect(home.match(/hero-clinic-actions/g)).toHaveLength(1);
+    expect(home).toContain("Записатись на консультацію");
+    expect(home).toContain("Дізнатися більше");
+    expect(css).toContain(".hero-clinic-actions");
+  });
+
+  it("replaces truncated baked-in hero captions with complete labels", () => {
+    expect(home).toContain("Сучасно");
+    expect(home).toContain("Безпечно");
+    expect(home).toContain("Індивідуально");
+    expect(css).toContain(".hero-benefits-mask");
+    expect(css).toContain(".hero-benefits-overlay");
   });
 
   it("keeps the hero frame aligned with the real 1536x924 artwork", () => {

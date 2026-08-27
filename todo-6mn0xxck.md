@@ -216,3 +216,20 @@
 - [x] Показать loading/error/empty states и явно отметить preview как непубликуемый
 - [x] Добавить Vitest-регрессию и проверить flow на desktop/mobile (assistant suite 3/3; desktop/mobile protected route captures)
 - [x] Опубликовать checkpoint обновления preview-функции (checkpoint follows)
+
+# Исправление hero-подписей
+
+- [x] Заменить обрывки под иконками на «Сучасно», «Безпечно», «Індивідуально» (replaced by larger clinic-first benefit cards)
+- [x] Проверить переносы и читаемость подписей на desktop/mobile
+- [x] Опубликовать checkpoint исправления (checkpoint follows)
+- [x] Исправить stacking order hero labels, чтобы CTA mask не перекрывала «Сучасно», «Безпечно», «Індивідуально»
+
+# Новый первый экран стоматологии
+
+- [x] Убрать из hero персональный акцент на Мезінову и использовать нейтральный клинический образ из реальных assets (existing real clinic interior asset)
+- [x] Сделать крупное сообщение, однозначно объясняющее, что сайт стоматологии (large «Стоматологія, яку видно.» headline)
+- [x] Выделить преимущества «Сучасно», «Безпечно», «Індивідуально» крупной визуальной композицией
+- [x] Проверить hero на desktop/mobile и сохранить доступные CTA (desktop 1280×900, mobile 390×844)
+- [x] Опубликовать обновлённый первый экран checkpoint (checkpoint follows)
+- [x] Обновить устаревший CTA regression под новые `hero-clinic-actions`, не возвращая прежний hotspot overlay
+- [x] Исправить mobile hero overflow: показать все три преимущества и текст CTA в пределах 390px
