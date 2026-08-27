@@ -27,6 +27,9 @@ describe("Active Medical calm assistant", () => {
 
   it("keeps knowledge management admin-only and published-only for the AI", () => {
     expect(router).toContain("adminList: adminProcedure");
+    expect(router).toContain("adminPreview: adminProcedure");
+    expect(router).toContain("PREVIEW чернетки");
+    expect(router).toContain("Чернетка для preview");
     expect(router).toContain("adminCreate: adminProcedure");
     expect(router).toContain("adminUpdate: adminProcedure");
     expect(router).toContain("adminSetStatus: adminProcedure");
@@ -35,6 +38,9 @@ describe("Active Medical calm assistant", () => {
     expect(adminPage).toContain("user.role !== \"admin\"");
     expect(app).toContain('path="/admin/knowledge" component={AdminKnowledgePage}');
     expect(adminPage).toContain("Опубліковано");
+    expect(adminPage).toContain("adminPreview.useMutation");
+    expect(adminPage).toContain("Предпросмотр ответа AI");
+    expect(adminPage).toContain("не публікує запис");
   });
 
   it("provides accessible UI states and does not fabricate social proof", () => {

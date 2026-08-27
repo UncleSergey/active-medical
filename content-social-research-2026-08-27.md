@@ -47,3 +47,7 @@ Final smart-bot smoke-test: on `/statti?assistant=knowledge`, the assistant open
 ## Knowledge admin QA
 
 The `/admin/knowledge` route is protected before data loading: an unauthenticated preview shows only the Ukrainian administrator login state and no editor/list content. Desktop 1280×900 and mobile 390×844 captures both remain readable with no horizontal overflow. The six initial published knowledge entries are stored in the database and are available for future admin editing.
+
+## AI preview QA
+
+The admin route after the preview update remains protected: desktop 1280×900 and mobile 390×844 show only the administrator login state without editor, knowledge entries, or preview data when no session is present. The editor contains a preview action that calls a separate admin-only procedure and is disabled until the draft has a valid title, category, and content.

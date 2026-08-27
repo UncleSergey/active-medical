@@ -19,6 +19,13 @@ const assistantKnowledgeInput = z.object({
   sortOrder: z.number().int().min(0).max(9999).default(0),
 });
 
+const assistantPreviewInput = z.object({
+  title: z.string().trim().min(2).max(240),
+  category: z.string().trim().min(2).max(80),
+  content: z.string().trim().min(10).max(12000),
+  question: z.string().trim().min(2).max(600).default("Що важливо знати пацієнту з цього питання?")
+});
+
 const leadInput = z.object({
   name: z.string().trim().min(2).max(120),
   phone: z.string().trim().min(7).max(40),
@@ -110,6 +117,18 @@ export const appRouter = router({
   }),
   assistant: router({
     adminList: adminProcedure.query(() => listAssistantKnowledgeEntries()),
+    adminPreview: adminProcedure.input(assistantPreviewInput).mutation(async ({ input }) => {
+      const publishedEntries = await listPublishedAssistantKnowledgeEntries();
+      const publishedContext = publishedEntries.map((entry) => `${entry.title} (${entry.category}): ${entry.content}`).join("\\n");
+      const response = await invokeLLM({
+        messages: [
+          { role: "system", content: `Ти — редактор відповідей AI-помічника стоматології Active Medical. Відповідай українською коротко, спокійно й зрозуміло. Це PREVIEW чернетки, а не відповідь пацієнту: не стверджуй неперевірені факти як офіційні. Не став діагнозів, не призначай лікування/ліки, не обіцяй результатів, не вигадуй ціни, графік, адреси або вільні слоти. Завжди додай, що інформація загальна і не замінює огляд лікаря. Якщо питання стосується гострих симптомів — порадь звернутися до стоматолога або невідкладної допомоги. Перевіряй чернетку на точність і не додавай фактів, яких у ній немає.\\n\\nВже опублікований контекст сайту:\\n${publishedContext || assistantKnowledge}\\n\\nЧернетка для preview (ще не опублікована):\\nЗаголовок: ${input.title}\\nКатегорія: ${input.category}\\nТекст: ${input.content}` },
+          { role: "user", content: input.question },
+        ],
+      });
+      const content = response.choices[0]?.message?.content;
+      return { text: typeof content === "string" ? content : "Не вдалося підготувати preview. Перевірте чернетку або спробуйте ще раз." } as const;
+    }),
     adminCreate: adminProcedure.input(assistantKnowledgeInput).mutation(async ({ input, ctx }) => createAssistantKnowledgeEntry({ ...input, sourceUrl: input.sourceUrl || null, updatedBy: ctx.user.email ?? ctx.user.openId })),
     adminUpdate: adminProcedure.input(assistantKnowledgeInput.partial().extend({ id: z.number().int().positive() })).mutation(async ({ input, ctx }) => {
       const { id, ...values } = input;

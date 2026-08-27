@@ -208,3 +208,11 @@
 - [x] Создать responsive админ-панель с поиском, фильтром статуса, редактором и понятными состояниями
 - [x] Добавить Vitest для authorization, CRUD contract и published-only AI context (assistant/admin suite 3/3)
 - [x] Проверить админ-панель desktop/mobile и опубликовать checkpoint (unauthenticated protection QA; desktop/mobile captures; checkpoint follows)
+
+# AI preview перед публикацией
+
+- [x] Добавить admin-only preview procedure, который принимает текущий черновик и не изменяет БД
+- [x] Добавить кнопку «Предпросмотр ответа AI» и preview panel в редактор записи
+- [x] Показать loading/error/empty states и явно отметить preview как непубликуемый
+- [x] Добавить Vitest-регрессию и проверить flow на desktop/mobile (assistant suite 3/3; desktop/mobile protected route captures)
+- [x] Опубликовать checkpoint обновления preview-функции (checkpoint follows)
