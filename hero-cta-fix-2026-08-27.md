@@ -22,3 +22,11 @@ The final mask override is `.hero-reference-hotspots::before` with `top: 76%`, `
 ## Final preview review
 
 After the mask was expanded to begin at `top: 76%` and cover `height: 24%` of the hero, a content-reviewed desktop capture and a mobile capture were inspected. Both show the supplied hero artwork with the green static CTA fully covered. The only visible lower-left actions are the red React primary button and the red underlined React secondary link; neither intersects the other, the doctor portrait, or the proof badge. No further desktop/mobile mask adjustment is indicated by this QA pass.
+
+## Live desktop smoke test after checkpoint 473e434c
+
+A fresh 1280×900 headless Chromium capture of `https://www.active-medical.pp.ua/?hero-fix=473e434c` shows the real hero image, white branded header, one red primary appointment button and one red underlined secondary link. The original green static CTA and duplicate static link are fully covered in the live custom-domain render. The hero image, doctor portrait, proof badge and headline remain visible and undisturbed.
+
+## Live mobile smoke test after checkpoint 473e434c
+
+A fresh 390×844 headless Chromium capture of `https://www.active-medical.pp.ua/?hero-fix=473e434c` shows the real hero image, mobile logo/menu header, one red primary appointment button and one secondary “ДІЗНАТИСЯ БІЛЬШЕ” link. The green static CTA is not visible, the secondary text appears once, and the action row does not overlap the hero image or the following marquee/section.

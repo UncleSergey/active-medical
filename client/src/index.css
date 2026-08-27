@@ -616,3 +616,12 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
   top: 76%;
   width: 51%;
 }
+
+/* Keep the hero frame locked to the supplied 1536×924 artwork at every viewport. */
+.hero-reference {
+  aspect-ratio: 1536 / 924;
+  min-height: 0;
+}
+.hero-reference-image {
+  height: 100%;
+}
