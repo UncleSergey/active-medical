@@ -37,14 +37,20 @@
 
 # Новая итерация: фирменный стиль и домен
 
-- [ ] Провести аудит официального сайта active-medical.ua: логотип, палитра, типографика, навигация, композиция, CTA и мобильная версия
-- [ ] Провести аудит текущего active-medical.pp.ua и составить список визуальных и технических замечаний
+- [x] Провести аудит официального сайта active-medical.ua: логотип, палитра, типографика, навигация, композиция, CTA и мобильная версия (результаты сохранены в brand-audit-2026-08-27.md)
+- [x] Провести аудит текущего active-medical.pp.ua и составить список визуальных и технических замечаний (результаты сохранены в brand-audit-2026-08-27.md)
 - [x] Сформировать согласованную бренд-систему для текущего сайта на основе официального Active Medical без замены реальных фото заглушками (белая клиническая база, Active Medical red #b51f32, Manrope/Cormorant, реальные фото сохранены)
-- [ ] Подготовить варианты доменного имени со словом `denta` и проверить риски/доступность перед сменой домена
+- [x] Подготовить варианты доменного имени со словом `denta` и проверить риски/доступность перед сменой домена (NIC.UA показал все 4 кандидата available for registration; рекомендация active-denta.pp.ua; регистрация/активация не выполнялась)
 - [x] Обновить визуальный слой сайта: корпоративные цвета, логотип, шапка, типографика, кнопки, секции и адаптивные состояния (первая итерация реализована в index.css, включая red hero CTA overlay)
 - [x] Исправить накопившиеся замечания после аудита и добавить необходимые Vitest-проверки (brandIdentity.test.ts: 3/3; Maps 200; transient upstream 502 остаётся покрыт fallback)
-- [ ] Проверить desktop/mobile preview и live custom domain перед публикацией новой версии
-- [ ] Сохранить отдельный checkpoint после согласованной первой итерации редизайна
-- [ ] Провести и зафиксировать полный список замечаний редизайна по итогам аудита official/current site и отметить, какие исправлены в коде
-- [ ] Проверить первую бренд-итерацию на live custom domain и подтвердить desktop/mobile и ключевые бренд-элементы
-- [ ] Повторно запустить релевантный набор проверок после финальных правок и отдельно задокументировать два сознательно оставшихся Telegram credential test failures (HTTP 401)
+- [x] Проверить desktop/mobile preview и live custom domain перед публикацией новой версии (preview 1280×720 и 390×844; live DOM/computed styles подтверждены после checkpoint 3815bf4f)
+- [x] Сохранить отдельный checkpoint после согласованной первой итерации редизайна (checkpoint 3815bf4f опубликован; последующая live-проверка сохранена в brand-audit-2026-08-27.md)
+- [x] Провести и зафиксировать полный список замечаний редизайна по итогам аудита official/current site и отметить, какие исправлены в коде (issue register в brand-audit-2026-08-27.md)
+- [x] Проверить первую бренд-итерацию на live custom domain и подтвердить desktop/mobile и ключевые бренд-элементы (live DOM: logo, red CTA, white header, clinical surfaces; mobile preview отдельно подтверждён)
+- [x] Повторно запустить релевантный набор проверок после финальных правок и отдельно задокументировать два сознательно оставшихся Telegram credential test failures (HTTP 401) (релевантные тесты 15/15, TypeScript OK; полный suite 20/22)
+- [x] Проверить реальную registrar availability и ownership flow для выбранного `denta`-домена, а не только DNS, и задокументировать итог (NIC.UA availability flow подтверждён; ownership/activation intentionally not initiated)
+- [x] Проверить mobile-вариант первой бренд-итерации непосредственно на live custom domain и зафиксировать ключевые элементы/стили (headless Chromium 390×844: logo, menu, hero, red CTA, marquee and first section rendered)
+- [x] Уточнить формулировку публикационной проверки: live desktop/mobile проверяются после checkpoint, поскольку checkpoint является публикацией в этом проекте (добавлено в audit-документ)
+- [x] Проверить mobile-версию active-medical.pp.ua на live custom domain с явным viewport 390×844 и сохранить computed styles/DOM для header, logo, red CTA, hero и first section (CDP: viewport 390×844, overflow false, all key styles confirmed)
+- [x] Добавить и перечитать явное примечание в brand-audit.md о том, что checkpoint является публикацией, поэтому live desktop/mobile verification выполняется сразу после checkpoint (explicit workflow clarification added and mobile report saved)
+- [x] Перечитать brand-audit-2026-08-27.md после добавления workflow clarification и зафиксировать точные строки о post-checkpoint live verification (строки 59–63: checkpoint is publication; live checks follow immediately)

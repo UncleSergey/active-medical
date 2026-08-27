@@ -43,3 +43,21 @@ Desktop and mobile preview checks confirm that the appointment CTA is now render
 | Domain with `denta` has no confirmed candidate yet | No DNS/domain switch made; candidate names, ownership, redirects, SSL, and availability remain a separate decision | Pending |
 
 The two full-suite Telegram credential tests still fail with HTTP 401 because the configured bot token was intentionally not rotated. This is an existing integration credential issue, unrelated to the redesign CSS and source-contract test; the Resend credential and all other previously passing tests remain unchanged.
+
+## Published checkpoint live audit
+
+The browser successfully loaded the published checkpoint on `https://www.active-medical.pp.ua/?brand-audit=3815bf4f`. The live DOM contains the Active Medical logo button, the full dental navigation, a red-CTA-ready appointment flow, real doctor/children/case content, documents, contacts, and the map fallback. The first navigation attempt did not provide an uploadable screenshot, so a computed-style check is still required before marking the live visual verification complete.
+
+## Live computed-style confirmation
+
+The published version on `active-medical.pp.ua` returned the expected brand values in the browser DOM: `.topbar` has `rgba(255,255,255,.98)` and height 82px; the real `.brand-mark` is present at 57px high; `.nav-book` has Active Medical red `rgb(181,31,50)`, white text and compact 3.2px radius; `.hero-hotspot-primary` has the same red and white text; the about section is white, the services section is cool clinical `rgb(241,245,246)`, and the quote section is sage `rgb(241,244,239)`. The live page exposes the full dental navigation, booking controls, real assets, documents, contacts, and map section.
+
+## Independent live mobile rendering
+
+An independent headless Chromium render of `https://www.active-medical.pp.ua/` at 390×844 confirmed the mobile header, real Active Medical logo, real hero image, menu trigger, red appointment CTA, secondary action, marquee, and the first content section. A capture with a hash/query landed on a pre-paint state and was discarded; the no-hash capture rendered correctly. The live mobile DOM contained the real logo asset, one hero CTA element, and 19 lazy image attributes. No domain change or registration was performed.
+
+## Workflow clarification and explicit mobile proof
+
+In this managed project, creating a checkpoint is the publication action because auto-publish is enabled. Therefore the correct verification sequence is: validate the preview before checkpoint creation, save the checkpoint, then immediately verify the published live custom domain. The live desktop and live mobile checks below are post-publication smoke tests for the exact published checkpoint, not a claim that the live site was checked before deployment.
+
+The CDP mobile audit explicitly measured viewport `390×844` on `https://www.active-medical.pp.ua/?brand-audit=3815bf4f`. It returned `documentWidth=390` and `horizontalOverflow=false`. The live DOM contained the real logo `/manus-storage/active-medical-official-logo_c0e6b7c3.png`, the real hero `/manus-storage/active-medical-hero-reference-body_fda89e6a.png`, 18 lazy-loaded images, and the primary action text `Записатись на консультацію`. Computed styles were: `.topbar` white, 72px high, width 390px; `.brand-mark` 112×51px at left 16px; `.menu-toggle` displayed at left 350px; `.hero-reference` clinical neutral `rgb(244,245,243)`, 390×235px; `.hero-hotspot-primary` Active Medical red `rgb(181,31,50)`, white text, 179×26px; `.hero-hotspot-secondary` red text, 156×30px; `.about-section` white, width 390px. This is explicit live mobile evidence for the published brand iteration.
