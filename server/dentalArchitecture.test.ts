@@ -42,7 +42,18 @@ describe("Active Medical dental architecture", () => {
     expect(home).toContain("setTimeout(() => moveDoctors(1), 30000)");
     expect(home).toContain("track.scrollWidth <= track.clientWidth + 2");
     expect(home.indexOf('name: "Мезінова Аліна Віталіївна"')).toBeLessThan(home.indexOf('name: "Диченко Юлія Андріївна"'));
+    expect(home).toContain("alina-mezinova-natural-gaze-2026-08-27_d1dbc079.png");
+    expect(home).toContain("selectedDoctor");
+    expect(home).toContain('aria-haspopup="dialog"');
+    expect(home).toContain("<Dialog open={Boolean(selectedDoctor)}");
+    expect(home).toContain("doctorTriggerRefs");
+    expect(home).toContain("trigger?.focus()");
+    expect(home).toContain("goToBookingFromDoctor");
+    expect(home).toContain("#booking input");
+    expect(home).not.toContain('href={`/likari/${doctor.slug}`}');
     expect(css).toContain(".doctor-carousel-track");
+    expect(css).toContain(".doctor-dialog-content");
+    expect(css).toContain(".doctor-carousel-card:focus-visible");
     expect(css).toContain("flex: 0 0 calc((100% - 3rem) / 4)");
     expect(css).toContain("@media (max-width: 1100px)");
     expect(css).toContain("prefers-reduced-motion: reduce");

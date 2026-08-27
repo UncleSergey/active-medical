@@ -150,4 +150,15 @@
 
 - [x] Уменьшить desktop-карточки/фото врачей так, чтобы все 4 карточки помещались в видимой области одновременно (desktop computed geometry: 4 cards, each 149px, all visible at scrollLeft=0)
 - [x] Сохранить горизонтальный overflow, стрелки, свайп и читаемость карточек на mobile (mobile 390×844 full-page capture; responsive basis remains 82vw)
-- [ ] Проверить новую геометрию desktop/mobile, обновить регрессионный тест и опубликовать checkpoint
+- [x] Проверить новую геометрию desktop/mobile, обновить регрессионный тест и опубликовать checkpoint (desktop: 4 cards visible at scrollLeft=0; mobile: responsive swipe retained; test 4/4; checkpoint 7d11c2f5)
+
+# Портрет Алины и встроенные карточки врачей
+
+- [x] Подготовить аккуратную редактуру портрета Мезінової Аліни: естественный взгляд, сохранение личности, одежды, света и фона
+- [x] Загрузить исправленный реальный портрет в Manus storage и заменить только ссылку Алины
+- [x] Убрать переход doctor cards на пустые `/likari/...` маршруты и открыть подробности во встроенной доступной панели/диалоге
+- [x] Сохранить реальные имя, специализацию, фото и CTA записи без вымышленных медицинских фактов
+- [x] Добавить Vitest-проверки встроенного doctor detail flow и portrait asset
+- [x] Проверить desktop/mobile, keyboard escape/focus и опубликовать checkpoint (desktop/mobile captures; Dialog, Escape focus and booking CTA verified; checkpoint follows)
+- [x] Исправить возврат keyboard focus после закрытия controlled doctor Dialog на карточку, которая его открыла, и повторно проверить Escape/CTA (Escape возвращает focus на card; CTA фокусирует booking name input)
+- [x] Защитить MapView от частично загруженного Google Maps namespace без конструктора Map и сохранить OSM fallback без console error (guard + mapFallback regression)

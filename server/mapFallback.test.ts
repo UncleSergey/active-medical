@@ -9,6 +9,8 @@ describe("MapView fallback", () => {
     const source = await readFile(mapSourcePath, "utf8");
 
     expect(source).toContain("https://www.openstreetmap.org/export/embed.html");
+    expect(source).toContain('typeof window.google?.maps?.Map === "function"');
+    expect(source).toContain('typeof maps.Map !== "function"');
     expect(source).toMatch(/className=\{cn\("map-embed-fallback", mapReady && "map-embed-fallback-hidden"\)\}/);
     expect(source).toMatch(/loading="lazy"/);
   });

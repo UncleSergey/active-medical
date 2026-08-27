@@ -98,7 +98,7 @@ function appendMapScript(src: string): Promise<boolean> {
     script.src = src;
     script.async = true;
     script.dataset.activeMedicalMapsSdk = "true";
-    script.onload = () => resolve(Boolean(window.google?.maps));
+    script.onload = () => resolve(typeof window.google?.maps?.Map === "function");
     // The branded map fallback remains visible when the external SDK is unavailable.
     script.onerror = () => {
       script.remove();
@@ -109,7 +109,7 @@ function appendMapScript(src: string): Promise<boolean> {
 }
 
 function loadMapScript(): Promise<boolean> {
-  if (window.google?.maps) return Promise.resolve(true);
+  if (typeof window.google?.maps?.Map === "function") return Promise.resolve(true);
   if (mapScriptPromise) return mapScriptPromise;
 
   mapScriptPromise = (async () => {
@@ -148,8 +148,9 @@ export function MapView({
 
   const init = usePersistFn(async () => {
     const loaded = await loadMapScript();
-    if (!loaded || !mapContainer.current || !window.google?.maps) return;
-    map.current = new window.google.maps.Map(mapContainer.current, {
+    const maps = window.google?.maps;
+    if (!loaded || !mapContainer.current || !maps || typeof maps.Map !== "function") return;
+    map.current = new maps.Map(mapContainer.current, {
       zoom: initialZoom,
       center: initialCenter,
       mapTypeControl: true,

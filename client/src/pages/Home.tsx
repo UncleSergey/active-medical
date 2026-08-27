@@ -4,12 +4,13 @@ import { ArrowUp, ArrowUpRight, CalendarDays, Check, ChevronDown, Clock3, HeartP
 import { priceCategories } from "@/data/pricelist";
 import { trpc } from "@/lib/trpc";
 import { MapView } from "@/components/Map";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const heroImage = "/manus-storage/active-medical-hero-reference-body_fda89e6a.png";
 const interiorImage = "/manus-storage/active-medical-interior_10802c60.jpg";
 const teamImage = "/manus-storage/active-medical-team-realistic-proportions_23ae09e7.png";
 const doctorPortraits = [
-  "/manus-storage/alina-mezinova-color-scrubs-new_22ddf932.png",
+  "/manus-storage/alina-mezinova-natural-gaze-2026-08-27_d1dbc079.png",
   "/manus-storage/yuliia-standing-option-balanced-head_4c568e66.png",
   "/manus-storage/pohulych-yaroslav-color-scrubs-new_e4e3f887.png",
   "/manus-storage/fedorov-ivan-light-gray-scrubs_b178ecf8.png",
@@ -74,9 +75,24 @@ export default function Home() {
   const [submitError, setSubmitError] = useState("");
   const [doctorPaused, setDoctorPaused] = useState(false);
   const [doctorInView, setDoctorInView] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState<typeof doctors[number] | null>(null);
+  const doctorTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const doctorTrackRef = useRef<HTMLDivElement>(null);
   const doctorWasInView = useRef(false);
   const leadMutation = trpc.leads.submit.useMutation();
+  const closeDoctorDialog = () => {
+    if (!selectedDoctor) return;
+    const trigger = doctorTriggerRefs.current[selectedDoctor.name];
+    setSelectedDoctor(null);
+    window.requestAnimationFrame(() => trigger?.focus());
+  };
+  const goToBookingFromDoctor = () => {
+    setSelectedDoctor(null);
+    window.requestAnimationFrame(() => {
+      scrollTo("booking");
+      document.querySelector<HTMLInputElement>("#booking input")?.focus({ preventScroll: true });
+    });
+  };
   const visibleCategories = useMemo(() => priceCategories.map((category) => ({ ...category, items: category.items.filter((item) => item.name !== "Послуга") })), []);
 
   useEffect(() => {
@@ -194,7 +210,7 @@ export default function Home() {
 
       <section id="results" className="results-section section-pad"><div className="section-kicker">06 / До / Після</div><div className="results-grid"><div className="results-copy"><h2>Результат,<br /><em>який видно.</em></h2><p>Показуємо реальні клінічні приклади з профілю Active Medical. Кожен випадок потребує індивідуальної консультації та плану лікування.</p><a className="text-button" href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer">Більше прикладів в Instagram <Instagram size={16} /></a></div><figure className="before-after-card before-after-card-feature"><img src={markoRossoCaseImage} alt="Реальний клінічний кейс до та після лікування апаратом Марко Россо" loading="lazy" decoding="async" /><figcaption><span>До / Після</span><small>Апарат Марко Россо · реальний клінічний кейс</small></figcaption></figure></div></section>
 
-      <section id="team" className="team-section team-section-carousel section-pad"><div className="team-carousel-intro"><div className="section-kicker">07 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Познайомтеся з командою Active Medical. Відкрийте картку лікаря, щоб дізнатися більше про його напрямок.</p><div className="team-carousel-line" aria-hidden="true"><span>маршрут спокійної усмішки</span><i /></div><div className="team-carousel-controls"><button type="button" className="carousel-arrow" onClick={() => moveDoctors(-1)} aria-label="Попередній лікар">←</button><button type="button" className="carousel-arrow" onClick={() => moveDoctors(1)} aria-label="Наступний лікар">→</button></div></div><div className="doctor-carousel" role="region" aria-roledescription="carousel" aria-label="Лікарі Active Medical" onMouseEnter={() => setDoctorPaused(true)} onMouseLeave={() => setDoctorPaused(false)} onFocus={() => setDoctorPaused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDoctorPaused(false); }}><div className="doctor-carousel-track" ref={doctorTrackRef}>{doctors.map((doctor, index) => <a className="doctor-carousel-card" href={`/likari/${doctor.slug}`} key={doctor.name}><div className="doctor-carousel-photo"><img src={doctorPortraits[index]} alt={`${doctor.name} — ${doctor.role} Active Medical`} loading="lazy" decoding="async" /></div><div className="doctor-carousel-meta"><span className="doctor-number">0{index + 1}</span><div><strong>{doctor.name}</strong><span>{doctor.role}</span></div><ArrowUpRight size={17} /></div></a>)}</div></div></section>
+      <section id="team" className="team-section team-section-carousel section-pad"><div className="team-carousel-intro"><div className="section-kicker">07 / Команда</div><h2>Ваші лікарі —<br /><em>ваші союзники.</em></h2><p>Познайомтеся з командою Active Medical. Відкрийте картку лікаря, щоб дізнатися більше про його напрямок.</p><div className="team-carousel-line" aria-hidden="true"><span>маршрут спокійної усмішки</span><i /></div><div className="team-carousel-controls"><button type="button" className="carousel-arrow" onClick={() => moveDoctors(-1)} aria-label="Попередній лікар">←</button><button type="button" className="carousel-arrow" onClick={() => moveDoctors(1)} aria-label="Наступний лікар">→</button></div></div><div className="doctor-carousel" role="region" aria-roledescription="carousel" aria-label="Лікарі Active Medical" onMouseEnter={() => setDoctorPaused(true)} onMouseLeave={() => setDoctorPaused(false)} onFocus={() => setDoctorPaused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDoctorPaused(false); }}><div className="doctor-carousel-track" ref={doctorTrackRef}>{doctors.map((doctor, index) => <button type="button" className="doctor-carousel-card" ref={(element) => { doctorTriggerRefs.current[doctor.name] = element; }} onClick={() => setSelectedDoctor(doctor)} aria-haspopup="dialog" key={doctor.name}><div className="doctor-carousel-photo"><img src={doctorPortraits[index]} alt={`${doctor.name} — ${doctor.role} Active Medical`} loading="lazy" decoding="async" /></div><div className="doctor-carousel-meta"><span className="doctor-number">0{index + 1}</span><div><strong>{doctor.name}</strong><span>{doctor.role}</span></div><ArrowUpRight size={17} /></div></button>)}</div></div></section>
 
       <section className="quote-section section-pad"><div className="quote-mark">“</div><blockquote>Найкраще лікування — це коли вам спокійно, зрозуміло і хочеться повернутися.</blockquote><p>— команда Active Medical</p></section>
 
@@ -205,6 +221,7 @@ export default function Home() {
       <section id="contacts" className="contacts-section section-pad"><div className="section-kicker">10 / Контакти</div><div className="contacts-grid"><div><h2>Зустрінемося<br /><em>у Рів'єрі.</em></h2><address><span><MapPin size={17} /> вулиця Лазурна, 5,<br />корпус 10/1</span><a href="tel:+380512777888"><Phone size={17} /> +380 512 777 888</a><a href="tel:+380973201527"><Phone size={17} /> +38 097 320 15 27</a><a href="tel:+380951123195"><Phone size={17} /> +38 095 112 31 95</a><a href="tel:+380938818409"><Phone size={17} /> +38 093 881 84 09</a><span><MessageCircle size={17} /> Листування Viber/Telegram: +380 73 300 77 88</span></address><div className="contact-links"><a href="https://www.google.com/maps/search/?api=1&query=вулиця+Лазурна+5+корпус+10%2F1" target="_blank" rel="noreferrer">Відкрити маршрут <ArrowUpRight size={15} /></a><a href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer"><Instagram size={16} /> Instagram @stomatologactive</a></div><div className="contact-actions"><a className="contact-action primary" href="tel:+380973201527"><Phone size={16} /> Зателефонувати</a><a className="contact-action" href="viber://chat?number=%2B380733007788"><MessageCircle size={16} /> Написати у Viber</a><a className="contact-action" href="https://t.me/active_medical_bot" target="_blank" rel="noreferrer"><MessageCircle size={16} /> Написати у Telegram</a></div></div><div className="map-card real-map-card"><div className="map-fallback" aria-hidden="true"><div className="map-grid" /><div className="map-pin"><MapPin size={22} fill="currentColor" /><span>Active Medical</span></div></div><MapView className="contact-map" initialCenter={{ lat: 46.94455, lng: 31.93783 }} initialZoom={16} onMapReady={(map) => { const geocoder = new google.maps.Geocoder(); geocoder.geocode({ address: "вулиця Лазурна, 5, корпус 10/1, Миколаїв, Україна" }, (results, status) => { const location = results?.[0]?.geometry.location; if (status === "OK" && location) { map.setCenter(location); new google.maps.marker.AdvancedMarkerElement({ map, position: location, title: "Active Medical" }); } }); }} /><div className="map-label map-label-overlay">Active Medical<br /><small>вулиця Лазурна, 5, корпус 10/1</small></div></div><a className="instagram-qr-card" href="https://www.instagram.com/stomatologactive/" target="_blank" rel="noreferrer"><img src={instagramQr} alt="QR-код для переходу в Instagram Active Medical" loading="lazy" decoding="async" /><span>Скануйте, щоб перейти<br /><b>@stomatologactive</b></span></a></div></section>
 
       <footer className="footer"><div className="footer-brand"><img src={brandMark} alt="Актив Медікал" /><div><b>Актив</b><span>Медікал</span></div></div><p>Стоматологія, в якій<br />вам спокійно.</p><span className="footer-copy">© 2026 Active Medical</span></footer>
+      {selectedDoctor && <Dialog open={Boolean(selectedDoctor)} onOpenChange={(open) => { if (!open) closeDoctorDialog(); }}><DialogContent className="doctor-dialog-content"><DialogHeader><div className="doctor-dialog-kicker">{String(doctors.indexOf(selectedDoctor) + 1).padStart(2, "0")} / Команда Active Medical</div><DialogTitle>{selectedDoctor.name}</DialogTitle><DialogDescription>{selectedDoctor.role}</DialogDescription></DialogHeader><div className="doctor-dialog-body"><img src={doctorPortraits[doctors.indexOf(selectedDoctor)]} alt={`${selectedDoctor.name} — ${selectedDoctor.role} Active Medical`} loading="lazy" decoding="async" /><div className="doctor-dialog-copy"><p>{selectedDoctor.detail}</p><button type="button" className="button button-coral" onClick={goToBookingFromDoctor}>Записатись на консультацію <ArrowUpRight size={16} /></button></div></div></DialogContent></Dialog>}
       <button className={`back-to-top ${showBackToTop ? "is-visible" : ""}`} onClick={() => scrollTo("top")} aria-label="Повернутися вгору"><ArrowUp size={19} /></button>
     </main>
   );
