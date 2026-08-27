@@ -59,7 +59,3 @@ After the user identified the previously used natural-gaze portrait as Юлія 
 ## Mapping responsive QA
 
 A fresh mobile full-page capture at 390×844 completed after the mapping correction. The page remained responsive without a visible horizontal overflow; the doctor section and its four-card sequence are present in the full document. The DOM audit above confirms the real image source/name pairing, with Мезінова first and Диченко second.
-
-## Clinic-first hero QA
-
-The first screen now uses the existing real clinic interior asset rather than a doctor portrait. Desktop and mobile captures show a large, explicit dental headline, the three complete labels “Сучасно”, “Безпечно”, “Індивідуально”, and a visible consultation CTA. Mobile 390px keeps all three benefit cards and the CTA within the viewport without horizontal overflow.
