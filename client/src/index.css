@@ -758,7 +758,7 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
 .doctor-carousel { min-width: 0; position: relative; z-index: 1; }
 .doctor-carousel::before { background: var(--brand-red); content: ''; height: 1px; left: 0; opacity: .7; position: absolute; right: 0; top: 0; }
 .doctor-carousel-track { display: flex; gap: 1rem; overflow-x: auto; padding: 1.5rem 0 1.2rem; scroll-behavior: smooth; scroll-snap-type: x mandatory; scrollbar-color: var(--brand-red) transparent; scrollbar-width: thin; }
-.doctor-carousel-card { background: #fff; border: 1px solid #d5dade; box-shadow: 0 14px 30px rgba(32,38,43,.08); flex: 0 0 min(320px, 72%); scroll-snap-align: start; text-decoration: none; transition: box-shadow .2s var(--ease), transform .2s var(--ease); }
+.doctor-carousel-card { background: #fff; border: 1px solid #d5dade; box-shadow: 0 14px 30px rgba(32,38,43,.08); flex: 0 0 calc((100% - 3rem) / 4); min-width: 0; scroll-snap-align: start; text-decoration: none; transition: box-shadow .2s var(--ease), transform .2s var(--ease); }
 .doctor-carousel-card:hover { box-shadow: 0 20px 36px rgba(32,38,43,.14); transform: translateY(-5px); }
 .doctor-carousel-photo { background: #f3f5f6; height: 340px; overflow: hidden; }
 .doctor-carousel-photo img { display: block; height: 100%; object-fit: cover; object-position: center top; transition: transform .4s var(--ease); width: 100%; }
@@ -782,6 +782,9 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
 .kids-clinical-photo img { aspect-ratio: auto; flex: 1; height: 0; min-height: 0; object-fit: cover; width: 100%; }
 .kids-clinical-photo figcaption { background: #fff; color: #68767a; font-size: 9px; letter-spacing: .08em; padding: .55rem .7rem .65rem; text-transform: uppercase; }
 .kids-clinical-photo figcaption::before { color: var(--brand-red); content: '— '; }
+@media (max-width: 1100px) {
+  .doctor-carousel-card { flex-basis: min(290px, 72%); }
+}
 @media (max-width: 900px) {
   .team-section-carousel { grid-template-columns: 1fr; }
   .team-section-carousel::after { height: 300px; right: -160px; top: 33%; width: 300px; }

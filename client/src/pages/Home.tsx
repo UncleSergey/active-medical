@@ -129,7 +129,7 @@ export default function Home() {
   const moveDoctors = (direction: number) => {
     const track = doctorTrackRef.current;
     const card = track?.querySelector<HTMLElement>(".doctor-carousel-card");
-    if (!track || !card) return;
+    if (!track || !card || track.scrollWidth <= track.clientWidth + 2) return;
     track.scrollBy({ left: direction * (card.offsetWidth + 16), behavior: "smooth" });
   };
 

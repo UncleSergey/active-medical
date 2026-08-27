@@ -145,3 +145,9 @@
 - [x] Сохранить автодвижение после карточки №01, arrows/swipe, reduced-motion и доступность (30s first delay, 5.2s interval, existing controls/pause behavior preserved)
 - [x] Добавить/обновить Vitest-регрессию стартового порядка и проверить desktop/mobile перед checkpoint (dentalArchitecture 4/4, TypeScript OK, desktop/mobile PASS)
 - [x] Проверить fresh-load старт doctor carousel в отдельном browser context без сохранённого horizontal scroll state и записать результат (fresh-doctor-start-audit.md: desktop/mobile PASS, scrollLeft=0, visible card 01)
+
+# Компактная лента врачей
+
+- [x] Уменьшить desktop-карточки/фото врачей так, чтобы все 4 карточки помещались в видимой области одновременно (desktop computed geometry: 4 cards, each 149px, all visible at scrollLeft=0)
+- [x] Сохранить горизонтальный overflow, стрелки, свайп и читаемость карточек на mobile (mobile 390×844 full-page capture; responsive basis remains 82vw)
+- [ ] Проверить новую геометрию desktop/mobile, обновить регрессионный тест и опубликовать checkpoint
