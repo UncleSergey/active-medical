@@ -493,3 +493,104 @@ h1 em, h2 em { color: var(--brand-red); }
 .real-map-card .map-embed-fallback { border: 0; height: 100%; inset: 0; position: absolute; width: 100%; z-index: 1; }
 .real-map-card .map-embed-fallback-hidden { display: none; }
 .real-map-card .map-sdk-container { height: 100%; width: 100%; }
+
+
+/* Brand alignment pass: official Active Medical system with a dental-first content layer. */
+:root {
+  --milk: #ffffff;
+  --ink: #20262b;
+  --muted: #536069;
+  --coral: #b51f32;
+  --brand-red: #b51f32;
+  --brand-red-dark: #92182a;
+  --brand-soft: #f8e8eb;
+  --brand-cool: #f1f5f6;
+  --sage: #f1f4ef;
+  --line: #d7dde1;
+  --radius: .25rem;
+}
+body { background: #fff; color: var(--ink); }
+h1, h2, h3, .category-trigger strong, .service-card h3, .promo-offer h3, .document-card strong, .before-after-card figcaption span, .kids-doctor-copy h3, .kids-price-heading h3 { font-family: 'Manrope', sans-serif; letter-spacing: -.035em; }
+h2 { font-weight: 700; line-height: 1; }
+h3, .category-trigger strong, .document-card strong { font-weight: 700; }
+.topbar { background: rgba(255,255,255,.98); border-bottom-color: #d5dade; box-shadow: 0 4px 16px rgba(32,38,43,.06); height: 82px; }
+.brand-mark { height: 57px; max-width: 136px; }
+.nav-links button { color: #2f3940; font-weight: 800; }
+.nav-links .nav-book { border-radius: .2rem; font-weight: 800; letter-spacing: .08em; }
+.phone-links { align-items: flex-start; display: flex; flex-direction: column; gap: .1rem; }
+.phone-link { font-weight: 800; }
+.marquee { background: #fff; color: var(--brand-red); font-weight: 800; }
+.section-kicker, .eyebrow { font-weight: 800; }
+.button, .text-button, .contact-action, .category-trigger { font-weight: 800; }
+.button, .button-coral, .contact-action.primary, .nav-links .nav-book { border-radius: .2rem; }
+.about-section, .prices-section, .contacts-section { background: #fff; }
+.services-section, .documents-section { background: var(--brand-cool); }
+.promotions-section, .results-section { background: #f8f9f9; }
+.team-section { background: var(--sage); }
+.service-card, .promo-offer, .document-card, .booking-form, .before-after-card, .instagram-qr-card, .map-card { border-radius: .25rem; }
+.service-card, .promo-offer, .document-card { border: 1px solid #dbe1e4; }
+.service-card.blush, .promo-offer-pink, .instagram-qr-card { background: var(--brand-soft); }
+.service-card.blue, .promo-offer-blue { background: #fff; }
+.service-card.sage { background: var(--brand-cool); }
+.service-card:hover, .document-card:hover { border-color: rgba(181,31,50,.55); }
+.round-arrow { background: var(--brand-red); }
+.price-items { background: #f4f6f7; }
+.before-after-card figcaption { background: var(--brand-soft); }
+.quote-section { background: var(--brand-red); color: #fff; }
+.quote-section .section-kicker, .quote-section p, .quote-section .quote-mark { color: #f9cbd2; }
+.booking-aside { background: #f1f5f6; border-left-color: var(--brand-red); }
+.booking-form { background: #f4f6f7; }
+.document-card-featured { background: var(--brand-soft); }
+.footer { background: #20262b; }
+.footer-brand span, .footer-copy { color: #f2aab4; }
+.back-to-top { background: var(--brand-red); }
+@media (max-width: 900px) {
+  .topbar { height: 72px; }
+  .brand-mark { height: 51px; max-width: 116px; }
+  .nav-links { top: 72px; }
+}
+
+
+/* Editorial refinement: keep the official red as a scarce signal while restoring the clinic's calm publication voice. */
+h1, h2, h3, .category-trigger strong, .service-card h3, .promo-offer h3, .document-card strong, .before-after-card figcaption span, .kids-doctor-copy h3, .kids-price-heading h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
+.service-card h3, .promo-offer h3, .document-card strong, .kids-price-heading h3 { font-weight: 500; }
+.quote-section { background: var(--sage); color: var(--ink); }
+.quote-section blockquote { font-weight: 500; }
+.quote-section .section-kicker, .quote-section p, .quote-section .quote-mark { color: var(--brand-red); }
+.service-card, .promo-offer, .document-card, .booking-form, .before-after-card, .instagram-qr-card, .map-card {
+  box-shadow: 0 10px 26px rgba(32,38,43,.055);
+}
+.service-card:hover, .document-card:hover { box-shadow: 0 16px 32px rgba(32,38,43,.09); }
+.promo-case-tile { background: #fafbfa; border-color: #d9e0e2; }
+.promo-case-tile img { background: #fff; }
+.section-pad:before { opacity: .55; }
+
+
+/* Reassert the official red CTA over the supplied hero artwork without altering the real photo asset. */
+.hero-hotspot-primary {
+  align-items: center;
+  background: var(--brand-red);
+  border-radius: .2rem;
+  box-shadow: 0 10px 24px rgba(181,31,50,.2);
+  color: #fff;
+  display: flex;
+  font-size: 11px;
+  font-weight: 800;
+  justify-content: center;
+  letter-spacing: .06em;
+  padding: .6rem .8rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background .18s var(--ease), transform .18s var(--ease);
+}
+.hero-hotspot-primary:hover { background: var(--brand-red-dark); transform: translateY(-2px); }
+.hero-hotspot-secondary { align-items: center; color: var(--brand-red); display: flex; font-size: 11px; font-weight: 800; justify-content: center; letter-spacing: .06em; text-decoration: underline; text-underline-offset: .25rem; text-transform: uppercase; }
+@media (max-width: 900px) {
+  .hero-hotspot-primary { font-size: 8px; padding: .35rem .4rem; }
+  .hero-hotspot-secondary { font-size: 8px; }
+}
