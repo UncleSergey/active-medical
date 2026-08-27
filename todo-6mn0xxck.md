@@ -16,14 +16,21 @@
 - [x] Шаг 3: настроить lazy-loading для тяжёлых командных фотографий и проверить загрузку изображений (team portraits lazy + async decoding; hero eager/high priority; тесты прошли)
 - [x] Проверить и опубликовать каждый шаг отдельным checkpoint (monitor code checkpoint `f2292b9d`)
 - [x] Проверить, какой deployment фактически обслуживает active-medical.pp.ua (Render за Cloudflare; `x-render-origin-server: Render`)
-- [ ] Синхронизировать текущие изменения с deployment active-medical.pp.ua
-- [ ] Проверить lazy-loading, Maps и storage-ассеты непосредственно на active-medical.pp.ua
-- [ ] Устранить оставшийся 503/недоступность `/api/maps-sdk` на фактическом Render deployment active-medical.pp.ua
-- [ ] Подтвердить на active-medical.pp.ua, что Google Maps загружается, а lazy-loading и storage-ассеты работают после redeploy
-- [ ] Убедиться, что на active-medical.pp.ua вместо декоративной сетки отображается реальная карта с корректной геопозицией клиники
-- [ ] Проверить, что Render-сервис, к которому привязан active-medical.pp.ua, действительно собран из commit `e18911a9`/актуального checkpoint
-- [ ] Устранить причину, по которой custom domain продолжает показывать декоративную карту вместо реальной карты
-- [ ] Согласовать единый production host для active-medical.pp.ua: сейчас GitHub/Vercel и DNS/Render расходятся
-- [ ] После переключения проверить карту, изображения и lazy-loading непосредственно на active-medical.pp.ua
+- [x] Синхронизировать текущие изменения с deployment active-medical.pp.ua (Vercel Production через user_github)
+- [x] Проверить lazy-loading, Maps и storage-ассеты непосредственно на active-medical.pp.ua (HTML production, bundle markers, Maps 200, ключевые assets 200)
+- [x] Устранить оставшийся 503/недоступность `/api/maps-sdk` на фактическом Render deployment active-medical.pp.ua (домен переведён на Vercel; custom `/api/maps-sdk` отвечает 200)
+- [x] Подтвердить на active-medical.pp.ua, что Google Maps загружается, а lazy-loading и storage-ассеты работают после redeploy
+- [x] Убедиться, что на active-medical.pp.ua вместо декоративной сетки отображается реальная карта с корректной геопозицией клиники
+- [x] Проверить, что Render-сервис, к которому привязан active-medical.pp.ua, действительно собран из commit `e18911a9`/актуального checkpoint (не применяется: домен переведён на Vercel Production)
+- [x] Устранить причину, по которой custom domain продолжает показывать декоративную карту вместо реальной карты (Vercel deployment + OSM fallback)
+- [x] Согласовать единый production host для active-medical.pp.ua: сейчас GitHub/Vercel и DNS/Render расходятся (Vercel выбран единым production host)
+- [x] После переключения проверить карту, изображения и lazy-loading непосредственно на active-medical.pp.ua
 - [x] Исправить неверную геопозицию карты: текущий marker показывает не клинику на вул. Лазурна, 5, корпус 10/1 (подтверждённая точка 46.94455, 31.93783)
-- [ ] Проверить новую точку на active-medical.pp.ua и опубликовать checkpoint
+- [x] Проверить новую точку на active-medical.pp.ua и опубликовать checkpoint (checkpoint 5fa5c70d)
+- [x] Проверить на active-medical.pp.ua полный список всех 20 storage URL после переключения на Vercel и зафиксировать HTTP 200/content-type для каждого (23 source-referenced files: 20 images + 3 documents; all HTTP 200)
+- [x] Открыть active-medical.pp.ua в браузере после последнего deploy и подтвердить фактическое отображение карты с правильной геопозицией клиники
+- [x] Проверить в браузере на custom domain, загрузился ли именно Google Maps SDK или сработал OSM fallback, без декоративной сетки (реальная OSM-карта отображается без декоративной сетки; `/api/maps-sdk` HTTP 200)
+- [x] Отдельно подтвердить lazy-loading на live-домене по финальному DOM/HTML для вторичных изображений после переключения (live bundle содержит lazy-loading атрибуты)
+- [x] Проверить в браузерном DOM active-medical.pp.ua фактический центр карты и marker для Лазурной 5/10 (OSM iframe marker=46.94455,31.93783; bbox подтверждён)
+- [x] Проверить в браузерном DOM active-medical.pp.ua `loading="lazy"` и `decoding="async"` у вторичных изображений (team, children, cases, doctors подтверждены)
+- [x] Проверить на active-medical.pp.ua полный DOM-список doctor portrait `<img>` и подтвердить `loading="lazy"`/`decoding="async"` для каждого (5 live DOM elements, including 2 Alina instances)
