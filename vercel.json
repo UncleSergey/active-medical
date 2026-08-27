@@ -1,5 +1,16 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist/public",
   "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://activemedic-rcveslat.manus.space/api/:path*"
+    },
+    {
+      "source": "/manus-storage/:path*",
+      "destination": "https://activemedic-rcveslat.manus.space/manus-storage/:path*"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

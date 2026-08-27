@@ -20,3 +20,8 @@
 - [ ] Проверить lazy-loading, Maps и storage-ассеты непосредственно на active-medical.pp.ua
 - [ ] Устранить оставшийся 503/недоступность `/api/maps-sdk` на фактическом Render deployment active-medical.pp.ua
 - [ ] Подтвердить на active-medical.pp.ua, что Google Maps загружается, а lazy-loading и storage-ассеты работают после redeploy
+- [ ] Убедиться, что на active-medical.pp.ua вместо декоративной сетки отображается реальная карта с корректной геопозицией клиники
+- [ ] Проверить, что Render-сервис, к которому привязан active-medical.pp.ua, действительно собран из commit `e18911a9`/актуального checkpoint
+- [ ] Устранить причину, по которой custom domain продолжает показывать декоративную карту вместо реальной карты
+- [ ] Согласовать единый production host для active-medical.pp.ua: сейчас GitHub/Vercel и DNS/Render расходятся
+- [ ] После переключения проверить карту, изображения и lazy-loading непосредственно на active-medical.pp.ua
