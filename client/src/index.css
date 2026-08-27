@@ -607,3 +607,12 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
   width: 49%;
   z-index: 0;
 }
+
+/* The supplied artwork's static CTA begins higher than the first mask estimate. */
+.hero-reference-hotspots::before {
+  bottom: auto;
+  height: 24%;
+  left: 0;
+  top: 76%;
+  width: 51%;
+}

@@ -57,8 +57,11 @@
 
 # Исправление hero CTA
 
-- [ ] Убрать задвоение CTA в hero: исключить пересечение интерактивных кнопок с кнопкой, уже встроенной в реальное изображение (code fix added; visual/live QA pending)
+- [x] Убрать задвоение CTA в hero: исключить пересечение интерактивных кнопок с кнопкой, уже встроенной в реальное изображение (mask-zone corrected after QA; one primary + one secondary remain)
 - [ ] Проверить hero CTA на desktop/mobile и сохранить checkpoint с исправлением
-- [ ] Проверить hero после маскировки на desktop и mobile с явным визуальным подтверждением отсутствия встроенной зелёной CTA-зоны и пересечения с красной CTA
+- [x] Проверить hero после маскировки на desktop и mobile с явным визуальным подтверждением отсутствия встроенной зелёной CTA-зоны и пересечения с красной CTA (desktop 1280×900 and mobile 390×844 screenshots show only red primary + secondary link)
 - [ ] Проверить исправленный hero непосредственно на live custom domain после публикации и сохранить checkpoint с результатом
-- [ ] Если нужно, скорректировать размеры/позицию CTA-mask отдельно для desktop и mobile по результатам QA
+- [x] Если нужно, скорректировать размеры/позицию CTA-mask отдельно для desktop и mobile по результатам QA (mask expanded to top 76% / height 24% / width 51%; no further adjustment required)
+- [ ] Проверить hero после финальной mask-корректировки с содержательным визуальным подтверждением на desktop и mobile, что встроенная зелёная CTA-зона больше не видна
+- [ ] Опубликовать текущий hero-fix checkpoint и отдельно перепроверить active-medical.pp.ua после публикации
+- [ ] При необходимости скорректировать `.hero-reference-hotspots::before` отдельно для desktop/mobile и повторно задокументировать результат
