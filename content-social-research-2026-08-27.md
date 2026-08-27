@@ -25,3 +25,15 @@ References:
 1. [NHS — Children's teeth](https://www.nhs.uk/live-well/healthy-teeth-and-gums/taking-care-of-childrens-teeth/)
 2. [NIDCR — Oral Hygiene](https://www.nidcr.nih.gov/health-info/oral-hygiene)
 3. [WHO — Oral health](https://www.who.int/news-room/fact-sheets/detail/oral-health)
+
+## AI and article UX QA
+
+The preview at `/statti` shows the new “Поставити запитання” assistant trigger, the category tablist (`Усі`, `Дітям`, `Профілактика`, `Лікування`), three article cards, and the verified Facebook CTA. The assistant is positioned as a utility layer and does not display fabricated chat answers; it starts with a clearly labelled informational greeting and disclaimer. Target assistant/article tests pass 7/7 together, TypeScript passes, and the production build passes.
+
+A browser DOM check located `.calm-assistant-trigger` on `/statti` and dispatched its click handler. The immediate same-tick result reported `open: false`, which is expected to be inconclusive for a React state update before the next render; no runtime exception occurred. A delayed DOM check is still needed if interactive assistant opening is required before the next checkpoint.
+
+Delayed browser QA confirmed the assistant opens correctly after the React state update: `#calm-assistant-panel` is present, its heading is “Спокійний навігатор”, and the input field is rendered. No runtime exception occurred.
+
+Interactive smoke-test: selecting the quick prompt “Як підготувати дитину до першого візиту?” kept the user on `/statti` and rendered the assistant loading state “Думаю над відповіддю…”. The request was sent through the tRPC assistant endpoint; the panel remained accessible and showed its disclaimer.
+
+Final interactive smoke-test: the quick prompt returned an Ukrainian answer in the assistant panel, kept the user on `/statti`, and preserved the medical disclaimer. The response is clearly informational and includes a pointer to the clinic booking path/phone rather than a diagnosis.

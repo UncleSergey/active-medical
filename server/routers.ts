@@ -3,6 +3,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
+import { invokeLLM } from "./_core/llm";
 import { publicProcedure, router } from "./_core/trpc";
 
 const leadInput = z.object({
@@ -92,6 +93,26 @@ export const appRouter = router({
     submit: publicProcedure.input(leadInput).mutation(async ({ input }) => {
       const delivery = await deliverLead(input);
       return { success: true, delivery } as const;
+    }),
+  }),
+  assistant: router({
+    ask: publicProcedure.input(z.object({
+      message: z.string().trim().min(2).max(600),
+      history: z.array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().trim().min(1).max(1200) })).max(8).default([]),
+    })).mutation(async ({ input }) => {
+      const response = await invokeLLM({
+        messages: [
+          {
+            role: "system",
+            content: "Ти — спокійний навігатор стоматології Active Medical у Миколаєві. Відповідай українською, коротко й доброзичливо. Допомагай зорієнтуватися в послугах, сторінках сайту, підготовці до візиту та записі. Не став діагнозів, не визначай терміновість як лікар, не призначай ліків і не обіцяй результатів. Якщо користувач описує сильний біль, набряк, кровотечу, травму або інший гострий стан — порадь звернутися до стоматолога/невідкладної допомоги та запропонуй записатися в клініку. Завжди нагадуй, що відповідь загальна і не замінює огляд лікаря. Не вигадуй ціни, графік, адреси чи факти про клініку; для запису направляй до форми або телефону +38 (0512) 777-888.",
+          },
+          ...input.history,
+          { role: "user" as const, content: input.message },
+        ],
+      });
+      const content = response.choices[0]?.message?.content;
+      const text = typeof content === "string" ? content : "Будь ласка, зверніться до адміністратора Active Medical для уточнення цього питання.";
+      return { text } as const;
     }),
   }),
 });

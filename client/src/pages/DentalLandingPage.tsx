@@ -1,6 +1,7 @@
 import { ArrowUpRight, Check, MapPin } from "lucide-react";
 import { Link } from "wouter";
 import { servicePages } from "@/pages/ServicePage";
+import CalmAssistant from "@/components/CalmAssistant";
 
 const dentalHighlights = [
   "Діагностика та зрозумілий план лікування",
@@ -72,6 +73,7 @@ export default function DentalLandingPage() {
       </section>
 
       <footer className="footer"><Link className="footer-brand" href="/"><img src="/manus-storage/active-medical-official-logo_c0e6b7c3.png" alt="Актив Медікал" /><div><b>Актив</b><span>Медікал</span></div></Link><p>Стоматологія, в якій<br />вам спокійно.</p><span className="footer-copy">© 2026 Active Medical</span></footer>
+      <CalmAssistant />
     </main>
   );
 }
