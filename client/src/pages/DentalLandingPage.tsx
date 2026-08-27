@@ -37,6 +37,7 @@ export default function DentalLandingPage() {
           <div className="dental-highlight-list" aria-label="Переваги стоматологічного напрямку">
             {dentalHighlights.map((highlight) => <span key={highlight}><Check size={16} />{highlight}</span>)}
           </div>
+          <Link className="text-button dental-articles-link" href="/statti">Зуби без складних слів <ArrowUpRight size={16} /></Link>
         </div>
         <div className="dental-page-hero-art" aria-hidden="true">
           <img className="dental-lion-pattern" src="/manus-storage/active-medical-official-logo_c0e6b7c3.png" alt="" aria-hidden="true" />
@@ -67,7 +68,7 @@ export default function DentalLandingPage() {
 
       <section id="contacts" className="dental-contact-banner section-pad">
         <div><div className="section-kicker">03 / Де ми</div><h2>Зустрінемося<br /><em>у Миколаєві.</em></h2><p>Стоматологія Active Medical працює на Намиві, у ЖК «Рив'єра».</p></div>
-        <div className="dental-contact-actions"><span><MapPin size={18} /> вул. Лазурна, 5, корпус 10/1</span><Link className="button button-coral" href="/viddilennia">Усі відділення <ArrowUpRight size={16} /></Link></div>
+          <div className="dental-contact-actions"><span><MapPin size={18} /> вул. Лазурна, 5, корпус 10/1</span><div className="dental-contact-links"><Link className="text-button" href="/statti">Корисні статті <ArrowUpRight size={16} /></Link><Link className="button button-coral" href="/viddilennia">Усі відділення <ArrowUpRight size={16} /></Link></div></div>
       </section>
 
       <footer className="footer"><Link className="footer-brand" href="/"><img src="/manus-storage/active-medical-official-logo_c0e6b7c3.png" alt="Актив Медікал" /><div><b>Актив</b><span>Медікал</span></div></Link><p>Стоматологія, в якій<br />вам спокійно.</p><span className="footer-copy">© 2026 Active Medical</span></footer>

@@ -6,6 +6,7 @@ const dentalPage = readFileSync("client/src/pages/DentalLandingPage.tsx", "utf8"
 const home = readFileSync("client/src/pages/Home.tsx", "utf8");
 const servicePage = readFileSync("client/src/pages/ServicePage.tsx", "utf8");
 const css = readFileSync("client/src/index.css", "utf8");
+const articles = readFileSync("client/src/pages/ArticlesPage.tsx", "utf8");
 
 describe("Active Medical dental architecture", () => {
   it("keeps dedicated overview and branches routes", () => {
@@ -57,6 +58,20 @@ describe("Active Medical dental architecture", () => {
     expect(css).toContain("flex: 0 0 calc((100% - 3rem) / 4)");
     expect(css).toContain("@media (max-width: 1100px)");
     expect(css).toContain("prefers-reduced-motion: reduce");
+  });
+
+  it("adds a source-aware article hub and verified social CTA", () => {
+    expect(app).toContain('path="/statti"');
+    expect(app).toContain('path="/statti/:slug"');
+    expect(articles).toContain("export const dentalArticles");
+    expect(articles).toContain("не є діагнозом");
+    expect(articles).toContain("www.nhs.uk");
+    expect(articles).toContain("www.nidcr.nih.gov");
+    expect(articles).toContain("www.who.int");
+    expect(articles).toContain("61558068189082");
+    expect(articles).toContain("facebook.com");
+    expect(css).toContain(".article-grid");
+    expect(css).toContain(".article-detail-layout");
   });
 
   it("uses only the approved core colors plus the restricted contact blue", () => {
