@@ -31,6 +31,14 @@ describe("Active Medical brand identity contract", () => {
     expect(css).toContain("Cover the static CTA artwork");
   });
 
+  it("keeps complete benefit labels over the original hero", () => {
+    expect(home).toContain("Сучасно");
+    expect(home).toContain("Безпечно");
+    expect(home).toContain("Індивідуально");
+    expect(css).toContain(".hero-benefits-mask");
+    expect(css).toContain(".hero-benefits-overlay");
+  });
+
   it("keeps the hero frame aligned with the real 1536x924 artwork", () => {
     expect(css).toContain("aspect-ratio: 1536 / 924");
     expect(css).toContain(".hero-reference-image");

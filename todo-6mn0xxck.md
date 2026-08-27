@@ -216,3 +216,15 @@
 - [x] Показать loading/error/empty states и явно отметить preview как непубликуемый
 - [x] Добавить Vitest-регрессию и проверить flow на desktop/mobile (assistant suite 3/3; desktop/mobile protected route captures)
 - [x] Опубликовать checkpoint обновления preview-функции (checkpoint follows)
+
+# Возврат предыдущего первого экрана
+
+- [x] Восстановить hero к состоянию checkpoint `2ca4278c`: портрет Мезінової, supplied hero artwork, прежние CTA и overlays
+- [x] Удалить clinic-first overlay и новые интерьерные hero overrides, не затрагивая статьи, AI и админ-панель
+- [x] Проверить desktop/mobile и завершить rollback checkpoint (brand regression 5/5, TypeScript и production build проходят)
+
+# Точечное исправление подписей исходного hero
+
+- [x] Закрыть обрывки подписей, встроенные в исходный hero asset
+- [x] Наложить под значками полные слова «Сучасно», «Безпечно», «Індивідуально» без изменения портрета и CTA
+- [x] Проверить desktop/mobile и опубликовать точечное исправление (brand tests 6/6, TypeScript/build pass; checkpoint follows)

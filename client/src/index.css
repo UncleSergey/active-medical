@@ -975,3 +975,15 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
 .admin-preview-label { align-items: center; color: #8b1d2d; display: flex; font-size: 10px; font-weight: 800; gap: 7px; letter-spacing: .08em; text-transform: uppercase; }
 .admin-preview-card p { color: #4d464b; font-size: 13px; line-height: 1.6; margin-top: 10px; white-space: pre-wrap; }
 @media (max-width: 520px) { .admin-editor-actions { grid-template-columns: 1fr; } }
+
+/* Complete benefit labels over the baked-in hero captions without changing the original composition. */
+.hero-benefits-mask { background: rgba(247,243,235,.97); height: 8.8%; left: 2.4%; pointer-events: none; position: absolute; top: 71.8%; width: 47.5%; z-index: 3; }
+.hero-benefits-overlay { align-items: center; color: #2f3940; display: flex; font-size: clamp(8px, .78vw, 12px); font-weight: 800; justify-content: space-around; left: 2.5%; letter-spacing: .055em; line-height: 1; pointer-events: none; position: absolute; text-align: center; text-transform: uppercase; top: 76.1%; width: 47%; z-index: 6; }
+.hero-benefits-overlay span { flex: 1 1 0; white-space: nowrap; }
+@media (max-width: 900px) {
+  .hero-benefits-mask { height: 9.5%; left: 3.2%; top: 70.2%; width: 57%; }
+  .hero-benefits-overlay { font-size: clamp(7px, 1.75vw, 10px); left: 3.2%; top: 74.6%; width: 56.7%; }
+}
+@media (max-width: 560px) {
+  .hero-benefits-overlay { letter-spacing: .02em; }
+}

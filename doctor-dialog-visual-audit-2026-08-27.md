@@ -59,3 +59,7 @@ After the user identified the previously used natural-gaze portrait as Юлія 
 ## Mapping responsive QA
 
 A fresh mobile full-page capture at 390×844 completed after the mapping correction. The page remained responsive without a visible horizontal overflow; the doctor section and its four-card sequence are present in the full document. The DOM audit above confirms the real image source/name pairing, with Мезінова first and Диченко second.
+
+## Original hero label correction QA
+
+The original hero composition with Alina Mezinova, supplied artwork, and existing CTA pair was preserved. The baked-in truncated labels are covered and the complete labels “Сучасно”, “Безпечно”, and “Індивідуально” render beneath the icons. Desktop 1280×900 and mobile 390×844 captures confirm the labels and CTA remain within the hero without horizontal overflow.

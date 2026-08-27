@@ -184,7 +184,7 @@ export default function Home() {
       </header>
 
       <section id="top" className="hero-reference">
-        <img className="hero-reference-image" src={heroImage} alt="Стоматолог Active Medical у світлому клінічному інтер’єрі" loading="eager" fetchPriority="high" decoding="async" /><span className="hero-badge-cover" aria-hidden="true" />
+        <img className="hero-reference-image" src={heroImage} alt="Стоматолог Active Medical у світлому клінічному інтер’єрі" loading="eager" fetchPriority="high" decoding="async" /><span className="hero-badge-cover" aria-hidden="true" /><div className="hero-benefits-mask" aria-hidden="true" /><div className="hero-benefits-overlay" aria-label="Переваги Active Medical"><span>Сучасно</span><span>Безпечно</span><span>Індивідуально</span></div>
         <h1 className="sr-only">Стоматологія Active Medical у Миколаєві</h1>
         <div className="hero-reference-hotspots" aria-label="Дії першого екрану">
           <button className="hero-hotspot hero-hotspot-primary" onClick={() => scrollTo("booking")} aria-label="Записатись на консультацію">Записатись на консультацію</button>
