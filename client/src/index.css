@@ -987,3 +987,19 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
 @media (max-width: 560px) {
   .hero-benefits-overlay { letter-spacing: .02em; }
 }
+
+/* Align each replacement label to the icon centers in the supplied hero artwork. */
+.hero-benefits-overlay { justify-content: initial; left: 2%; width: 65.5%; }
+.hero-benefits-overlay span { flex: 0 0 33.3333%; }
+@media (max-width: 900px) {
+  .hero-benefits-overlay { left: 2%; width: 65.5%; }
+}
+
+/* Final geometry: the three icon centers occupy the left 30% of the original supplied artwork. */
+.hero-benefits-mask { left: 2%; width: 30%; }
+.hero-benefits-overlay { left: 2%; width: 30%; }
+.hero-benefits-overlay span { flex: 0 0 33.3333%; }
+@media (max-width: 900px) {
+  .hero-benefits-mask { left: 2%; width: 30%; }
+  .hero-benefits-overlay { left: 2%; width: 30%; }
+}

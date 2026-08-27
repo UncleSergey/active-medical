@@ -63,3 +63,7 @@ A fresh mobile full-page capture at 390×844 completed after the mapping correct
 ## Original hero label correction QA
 
 The original hero composition with Alina Mezinova, supplied artwork, and existing CTA pair was preserved. The baked-in truncated labels are covered and the complete labels “Сучасно”, “Безпечно”, and “Індивідуально” render beneath the icons. Desktop 1280×900 and mobile 390×844 captures confirm the labels and CTA remain within the hero without horizontal overflow.
+
+## Icon-label alignment QA
+
+The benefit overlay was narrowed to the actual three-icon zone and split into three equal columns. Desktop 1280×900 confirms “Сучасно”, “Безпечно”, and “Індивідуально” are centered beneath their respective icons and stop before the portrait. Mobile 390×844 keeps the labels within the hero without horizontal overflow.
