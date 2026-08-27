@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { asc, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { AssistantKnowledgeEntry, InsertAssistantKnowledgeEntry, InsertUser, assistantKnowledgeEntries, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,32 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+export async function listAssistantKnowledgeEntries() {
+  const db = await getDb();
+  if (!db) return [] as AssistantKnowledgeEntry[];
+  return db.select().from(assistantKnowledgeEntries).orderBy(asc(assistantKnowledgeEntries.sortOrder), desc(assistantKnowledgeEntries.updatedAt));
+}
+
+export async function listPublishedAssistantKnowledgeEntries() {
+  const db = await getDb();
+  if (!db) return [] as AssistantKnowledgeEntry[];
+  return db.select().from(assistantKnowledgeEntries).where(eq(assistantKnowledgeEntries.status, "published")).orderBy(asc(assistantKnowledgeEntries.sortOrder), asc(assistantKnowledgeEntries.id));
+}
+
+export async function createAssistantKnowledgeEntry(values: InsertAssistantKnowledgeEntry) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const result = await db.insert(assistantKnowledgeEntries).values(values);
+  return { id: Number(result[0].insertId) };
+}
+
+export async function updateAssistantKnowledgeEntry(id: number, values: Partial<InsertAssistantKnowledgeEntry>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.update(assistantKnowledgeEntries).set(values).where(eq(assistantKnowledgeEntries.id, id));
+  return { id };
+}
+
+export async function updateAssistantKnowledgeStatus(id: number, status: "draft" | "published" | "archived", updatedBy?: string | null) {
+  return updateAssistantKnowledgeEntry(id, { status, updatedBy: updatedBy ?? null });
+}

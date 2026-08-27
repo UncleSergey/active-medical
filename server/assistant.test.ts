@@ -4,6 +4,9 @@ import { describe, expect, it } from "vitest";
 const router = readFileSync("server/routers.ts", "utf8");
 const knowledge = readFileSync("server/assistantKnowledge.ts", "utf8");
 const component = readFileSync("client/src/components/CalmAssistant.tsx", "utf8");
+const adminPage = readFileSync("client/src/pages/AdminKnowledgePage.tsx", "utf8");
+const db = readFileSync("server/db.ts", "utf8");
+const app = readFileSync("client/src/App.tsx", "utf8");
 const css = readFileSync("client/src/index.css", "utf8");
 
 describe("Active Medical calm assistant", () => {
@@ -20,6 +23,18 @@ describe("Active Medical calm assistant", () => {
     expect(knowledge).toContain("Мезінова Аліна Віталіївна");
     expect(knowledge).toContain("/statti");
     expect(knowledge).toContain("Не вигадуй ціни");
+  });
+
+  it("keeps knowledge management admin-only and published-only for the AI", () => {
+    expect(router).toContain("adminList: adminProcedure");
+    expect(router).toContain("adminCreate: adminProcedure");
+    expect(router).toContain("adminUpdate: adminProcedure");
+    expect(router).toContain("adminSetStatus: adminProcedure");
+    expect(router).toContain("listPublishedAssistantKnowledgeEntries");
+    expect(db).toContain('where(eq(assistantKnowledgeEntries.status, "published"))');
+    expect(adminPage).toContain("user.role !== \"admin\"");
+    expect(app).toContain('path="/admin/knowledge" component={AdminKnowledgePage}');
+    expect(adminPage).toContain("Опубліковано");
   });
 
   it("provides accessible UI states and does not fabricate social proof", () => {

@@ -25,4 +25,20 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+export const assistantKnowledgeEntries = mysqlTable("assistant_knowledge_entries", {
+  id: int("id").autoincrement().primaryKey(),
+  slug: varchar("slug", { length: 160 }).notNull().unique(),
+  title: varchar("title", { length: 240 }).notNull(),
+  category: varchar("category", { length: 80 }).notNull(),
+  content: text("content").notNull(),
+  sourceUrl: varchar("sourceUrl", { length: 500 }),
+  sourceLabel: varchar("sourceLabel", { length: 240 }),
+  status: mysqlEnum("status", ["draft", "published", "archived"]).default("draft").notNull(),
+  sortOrder: int("sortOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  updatedBy: varchar("updatedBy", { length: 320 }),
+});
+
+export type AssistantKnowledgeEntry = typeof assistantKnowledgeEntries.$inferSelect;
+export type InsertAssistantKnowledgeEntry = typeof assistantKnowledgeEntries.$inferInsert;

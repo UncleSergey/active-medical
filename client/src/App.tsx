@@ -11,6 +11,7 @@ import DoctorPage, { doctorPages } from "./pages/DoctorPage";
 import DentalLandingPage from "./pages/DentalLandingPage";
 import BranchesPage from "@/pages/BranchesPage";
 import ArticlesPage from "@/pages/ArticlesPage";
+import AdminKnowledgePage from "@/pages/AdminKnowledgePage";
 
 function ServiceRoute({ slug }: { slug: string }) {
   const page = servicePages.find((item) => item.slug === slug);
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/viddilennya" component={BranchesPage} />
       <Route path="/statti" component={ArticlesPage} />
       <Route path="/statti/:slug" component={ArticlesPage} />
+      <Route path="/admin/knowledge" component={AdminKnowledgePage} />
       {servicePages.map((page) => <Route key={page.slug} path={`/${page.slug}`}><ServiceRoute slug={page.slug} /></Route>)}
       {doctorPages.map((doctor) => <Route key={doctor.slug} path={`/likari/${doctor.slug}`}><DoctorRoute slug={doctor.slug} /></Route>)}
       <Route path="/404" component={NotFound} />

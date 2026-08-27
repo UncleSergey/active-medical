@@ -197,3 +197,14 @@
 - [x] Обновить UI чата, quick actions и loading/error states под полноценный пациентский сценарий
 - [x] Добавить Vitest-регрессии и проверить реальные AI-сценарии в preview (assistant 2/2; quick prompt response verified)
 - [x] Сохранить и опубликовать production-ready версию умного AI-бота (checkpoint follows)
+
+# Админ-панель базы знаний AI
+
+- [x] Проверить текущую auth/role модель, schema и шаблон DashboardLayout (adminProcedure and owner role auto-promotion verified)
+- [x] Спроектировать таблицу `assistant_knowledge_entries` для категорий, текста, источников, статуса и сортировки
+- [x] Применить schema-first SQL migration через безопасный database workflow и проверить структуру (6 real initial entries verified)
+- [x] Добавить admin-only tRPC CRUD: список, создание, редактирование, публикация, архивирование
+- [x] Добавить server-side сборку AI context только из опубликованных записей
+- [x] Создать responsive админ-панель с поиском, фильтром статуса, редактором и понятными состояниями
+- [x] Добавить Vitest для authorization, CRUD contract и published-only AI context (assistant/admin suite 3/3)
+- [x] Проверить админ-панель desktop/mobile и опубликовать checkpoint (unauthenticated protection QA; desktop/mobile captures; checkpoint follows)

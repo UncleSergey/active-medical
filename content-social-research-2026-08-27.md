@@ -43,3 +43,7 @@ Final interactive smoke-test: the quick prompt returned an Ukrainian answer in t
 After the server-side knowledge context was added, the preview `/statti?assistant=knowledge` opened the existing assistant panel successfully. The accurate DOM probe confirmed the title `Спокійний навігатор`, `#calm-assistant-panel`, and the accessible input label `Запитання для AI-помічника`. The earlier failed probe used an uppercase-only selector and did not represent a product error.
 
 Final smart-bot smoke-test: on `/statti?assistant=knowledge`, the assistant opened successfully and the quick prompt “Які є напрямки стоматології?” returned the approved eight service directions, a general-information disclaimer, and the real booking phone/form handoff. The response stayed inside the panel and did not navigate away.
+
+## Knowledge admin QA
+
+The `/admin/knowledge` route is protected before data loading: an unauthenticated preview shows only the Ukrainian administrator login state and no editor/list content. Desktop 1280×900 and mobile 390×844 captures both remain readable with no horizontal overflow. The six initial published knowledge entries are stored in the database and are available for future admin editing.

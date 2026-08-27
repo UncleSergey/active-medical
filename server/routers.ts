@@ -5,7 +5,19 @@ import { ENV } from "./_core/env";
 import { systemRouter } from "./_core/systemRouter";
 import { invokeLLM } from "./_core/llm";
 import { assistantKnowledge } from "./assistantKnowledge";
-import { publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc";
+import { createAssistantKnowledgeEntry, listAssistantKnowledgeEntries, listPublishedAssistantKnowledgeEntries, updateAssistantKnowledgeEntry, updateAssistantKnowledgeStatus } from "./db";
+
+const assistantKnowledgeInput = z.object({
+  slug: z.string().trim().min(2).max(160).regex(/^[a-z0-9-]+$/),
+  title: z.string().trim().min(2).max(240),
+  category: z.string().trim().min(2).max(80),
+  content: z.string().trim().min(10).max(12000),
+  sourceUrl: z.string().trim().url().max(500).optional().or(z.literal("")),
+  sourceLabel: z.string().trim().max(240).optional(),
+  status: z.enum(["draft", "published", "archived"]).default("draft"),
+  sortOrder: z.number().int().min(0).max(9999).default(0),
+});
 
 const leadInput = z.object({
   name: z.string().trim().min(2).max(120),
@@ -97,15 +109,25 @@ export const appRouter = router({
     }),
   }),
   assistant: router({
+    adminList: adminProcedure.query(() => listAssistantKnowledgeEntries()),
+    adminCreate: adminProcedure.input(assistantKnowledgeInput).mutation(async ({ input, ctx }) => createAssistantKnowledgeEntry({ ...input, sourceUrl: input.sourceUrl || null, updatedBy: ctx.user.email ?? ctx.user.openId })),
+    adminUpdate: adminProcedure.input(assistantKnowledgeInput.partial().extend({ id: z.number().int().positive() })).mutation(async ({ input, ctx }) => {
+      const { id, ...values } = input;
+      return updateAssistantKnowledgeEntry(id, { ...values, sourceUrl: values.sourceUrl || null, updatedBy: ctx.user.email ?? ctx.user.openId });
+    }),
+    adminSetStatus: adminProcedure.input(z.object({ id: z.number().int().positive(), status: z.enum(["draft", "published", "archived"]) })).mutation(({ input, ctx }) => updateAssistantKnowledgeStatus(input.id, input.status, ctx.user.email ?? ctx.user.openId)),
     ask: publicProcedure.input(z.object({
       message: z.string().trim().min(2).max(600),
       history: z.array(z.object({ role: z.enum(["user", "assistant"]), content: z.string().trim().min(1).max(1200) })).max(8).default([]),
     })).mutation(async ({ input }) => {
+      const publishedEntries = await listPublishedAssistantKnowledgeEntries();
+      const databaseContext = publishedEntries.map((entry) => `${entry.title} (${entry.category}): ${entry.content}${entry.sourceUrl ? ` Джерело: ${entry.sourceUrl}` : ""}`).join("\n");
+      const knowledgeContext = databaseContext ? `${assistantKnowledge}\n\nДодаткові опубліковані записи з адмін-панелі:\n${databaseContext}` : assistantKnowledge;
       const response = await invokeLLM({
         messages: [
           {
             role: "system",
-            content: `Ти — спокійний навігатор стоматології Active Medical у Миколаєві. Відповідай українською, коротко й доброзичливо. Допомагай зорієнтуватися в послугах, сторінках сайту, підготовці до візиту та записі. Не став діагнозів, не визначай терміновість як лікар, не призначай ліків і не обіцяй результатів. Якщо користувач описує сильний біль, набряк, кровотечу, травму або інший гострий стан — порадь звернутися до стоматолога/невідкладної допомоги та запропонуй записатися в клініку. Завжди нагадуй, що відповідь загальна і не замінює огляд лікаря. Не вигадуй ціни, графік, адреси чи факти про клініку; для запису направляй до форми або телефону +38 (0512) 777-888.\n\nЗатверджений контекст сайту:\n${assistantKnowledge}` ,
+            content: `Ти — спокійний навігатор стоматології Active Medical у Миколаєві. Відповідай українською, коротко й доброзичливо. Допомагай зорієнтуватися в послугах, сторінках сайту, підготовці до візиту та записі. Не став діагнозів, не визначай терміновість як лікар, не призначай ліків і не обіцяй результатів. Якщо користувач описує сильний біль, набряк, кровотечу, травму або інший гострий стан — порадь звернутися до стоматолога/невідкладної допомоги та запропонуй записатися в клініку. Завжди нагадуй, що відповідь загальна і не замінює огляд лікаря. Не вигадуй ціни, графік, адреси чи факти про клініку; для запису направляй до форми або телефону +38 (0512) 777-888.\n\nЗатверджений контекст сайту:\n${knowledgeContext}` ,
           },
           ...input.history,
           { role: "user" as const, content: input.message },
