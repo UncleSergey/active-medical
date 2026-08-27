@@ -77,7 +77,7 @@
 - [x] Пересобрать детскую галерею из существующих реальных изображений в плотную responsive-композицию с разными весёлыми рамочками без placeholders (6 real images, red/burgundy frame accents, no placeholders)
 - [x] Добавить регрессионную Vitest-проверку структуры/классов детской галереи (dentalArchitecture.test.ts palette/route contract plus existing image loading checks)
 - [x] Проверить новую галерею на desktop/mobile, доступность alt-текстов и отсутствие горизонтального overflow (full-page 1280×720 and 390×844 captures; alt text present; grid uses bounded columns)
-- [ ] Сохранить checkpoint опубликованной версии новой детской галереи
+- [x] Сохранить checkpoint опубликованной версии новой детской галереи (unified checkpoint aba32b75 published)
 
 # Блок врачей: горизонтальная лента
 
@@ -86,7 +86,7 @@
 - [x] Остановить автодвижение при hover/focus и уважать prefers-reduced-motion (pause handlers + media query)
 - [x] Сохранить реальные имена, специализации, портреты и alt-тексты без вымышленных отзывов/рейтингов (4 real doctor records; no reviews/ratings added)
 - [x] Добавить Vitest-проверки механики и доступности doctor carousel (dentalArchitecture.test.ts, 4/4 pass)
-- [ ] Проверить doctor carousel и детскую галерею на desktop/mobile и опубликовать единый checkpoint (preview проверен; checkpoint pending)
+- [x] Проверить doctor carousel и детскую галерею на desktop/mobile и опубликовать единый checkpoint (desktop/mobile preview + live custom domain confirmed; aba32b75)
 
 # Фирменный львиный фон в блоке врачей
 
@@ -101,7 +101,7 @@
 - [x] Реализовать страницу «Наши отделения» в фирменном стиле Active Medical: карточки отделений, контакты, график, CTA, карта и адаптивная мобильная версия (BranchesPage + MapView)
 - [x] Добавить навигационные ссылки на страницу отделений в header/footer и необходимые Vitest-проверки (header links + dentalArchitecture.test.ts)
 - [x] Проверить страницу отделений desktop/mobile, ссылки, карту и отсутствие горизонтального overflow (preview 1280×720 and 390×844)
-- [ ] Сохранить checkpoint опубликованной страницы отделений (pending unified checkpoint)
+- [x] Сохранить checkpoint опубликованной страницы отделений (unified checkpoint aba32b75 published; live page verified)
 
 # Раздел «Стоматологія» и подразделы
 
@@ -112,7 +112,7 @@
 - [x] Реализовать вложенные подразделы как отдельные маршруты с честными состояниями «контент будет заполнен» там, где фактов ещё нет (existing service routes linked; no invented facts added)
 - [x] Добавить ссылку «Стоматологія» и подразделы в навигацию/страницу отделений, не ломая текущие маршруты (home + dental + branches navigation)
 - [x] Добавить Vitest-проверки карты маршрутов и доступных CTA (4/4 dentalArchitecture tests)
-- [ ] Проверить раздел и подразделы на desktop/mobile и сохранить опубликованный checkpoint (preview done; unified checkpoint pending)
+- [x] Проверить раздел и подразделы на desktop/mobile и сохранить опубликованный checkpoint (desktop/mobile preview + live `/stomatologiya` verified; aba32b75)
 
 # Цветовой контракт Active Medical
 
@@ -136,4 +136,12 @@
 - [x] Использовать доступный lion-pattern как спокойный светло-серый фон секции врачей, не перенося чужого доктора (real logo mark repeated at low opacity)
 - [x] Пересобрать детскую галерею в плотную композицию с рамками/линиями без лишних цветовых заливок и пустых провалов (dense CSS grid + red/burgundy frame accents)
 - [x] Добавить Vitest-проверки для dental route, doctor carousel и palette contract (4/4 pass)
-- [ ] Проверить новые блоки на desktop/mobile и сохранить рабочий preview/checkpoint (preview done; checkpoint pending)
+- [x] Проверить новые блоки на desktop/mobile и сохранить рабочий preview/checkpoint (full-page 1280×720 and 390×844; checkpoint aba32b75)
+
+# Исправление стартового врача в carousel
+
+- [x] Проверить порядок doctor records и initial scroll position карусели (doctor records start with Мезінова №01; initial reset is explicit)
+- [x] Сделать Мезінову Аліну №01 первой видимой карточкой при каждом открытии секции (reset on mount, team navigation and new viewport entry)
+- [x] Сохранить автодвижение после карточки №01, arrows/swipe, reduced-motion и доступность (30s first delay, 5.2s interval, existing controls/pause behavior preserved)
+- [x] Добавить/обновить Vitest-регрессию стартового порядка и проверить desktop/mobile перед checkpoint (dentalArchitecture 4/4, TypeScript OK, desktop/mobile PASS)
+- [x] Проверить fresh-load старт doctor carousel в отдельном browser context без сохранённого horizontal scroll state и записать результат (fresh-doctor-start-audit.md: desktop/mobile PASS, scrollLeft=0, visible card 01)

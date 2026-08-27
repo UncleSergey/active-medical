@@ -34,6 +34,13 @@ describe("Active Medical dental architecture", () => {
     expect(home).toContain("hero-hotspot");
     expect(home).toContain('aria-label="Попередній лікар"');
     expect(home).toContain('aria-label="Наступний лікар"');
+    expect(home).toContain("const [doctorInView, setDoctorInView] = useState(false)");
+    expect(home).toContain('track.scrollTo({ left: 0, behavior: "auto" })');
+    expect(home).toContain("doctorWasInView");
+    expect(home).toContain('if (id === "team")');
+    expect(home).toContain("!doctorInView");
+    expect(home).toContain("setTimeout(() => moveDoctors(1), 30000)");
+    expect(home.indexOf('name: "Мезінова Аліна Віталіївна"')).toBeLessThan(home.indexOf('name: "Диченко Юлія Андріївна"'));
     expect(css).toContain(".doctor-carousel-track");
     expect(css).toContain("prefers-reduced-motion: reduce");
   });

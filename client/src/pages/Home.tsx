@@ -73,7 +73,9 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [doctorPaused, setDoctorPaused] = useState(false);
+  const [doctorInView, setDoctorInView] = useState(false);
   const doctorTrackRef = useRef<HTMLDivElement>(null);
+  const doctorWasInView = useRef(false);
   const leadMutation = trpc.leads.submit.useMutation();
   const visibleCategories = useMemo(() => priceCategories.map((category) => ({ ...category, items: category.items.filter((item) => item.name !== "Послуга") })), []);
 
@@ -104,9 +106,25 @@ export default function Home() {
   }, []);
 
   const scrollTo = (id: string) => {
+    if (id === "team") doctorTrackRef.current?.scrollTo({ left: 0, behavior: "auto" });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
+
+  useEffect(() => {
+    const track = doctorTrackRef.current;
+    if (!track) return;
+    track.scrollTo({ left: 0, behavior: "auto" });
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !doctorWasInView.current) {
+        track.scrollTo({ left: 0, behavior: "auto" });
+      }
+      doctorWasInView.current = entry.isIntersecting;
+      setDoctorInView(entry.isIntersecting);
+    }, { threshold: 0.45 });
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, []);
 
   const moveDoctors = (direction: number) => {
     const track = doctorTrackRef.current;
@@ -116,10 +134,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (doctorPaused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (doctorPaused || !doctorInView || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const firstStep = window.setTimeout(() => moveDoctors(1), 30000);
     const timer = window.setInterval(() => moveDoctors(1), 5200);
-    return () => window.clearInterval(timer);
-  }, [doctorPaused]);
+    return () => {
+      window.clearTimeout(firstStep);
+      window.clearInterval(timer);
+    };
+  }, [doctorPaused, doctorInView]);
 
   return (
     <main className="site-shell">
