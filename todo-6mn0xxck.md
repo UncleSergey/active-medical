@@ -54,3 +54,11 @@
 - [x] Проверить mobile-версию active-medical.pp.ua на live custom domain с явным viewport 390×844 и сохранить computed styles/DOM для header, logo, red CTA, hero и first section (CDP: viewport 390×844, overflow false, all key styles confirmed)
 - [x] Добавить и перечитать явное примечание в brand-audit.md о том, что checkpoint является публикацией, поэтому live desktop/mobile verification выполняется сразу после checkpoint (explicit workflow clarification added and mobile report saved)
 - [x] Перечитать brand-audit-2026-08-27.md после добавления workflow clarification и зафиксировать точные строки о post-checkpoint live verification (строки 59–63: checkpoint is publication; live checks follow immediately)
+
+# Исправление hero CTA
+
+- [ ] Убрать задвоение CTA в hero: исключить пересечение интерактивных кнопок с кнопкой, уже встроенной в реальное изображение (code fix added; visual/live QA pending)
+- [ ] Проверить hero CTA на desktop/mobile и сохранить checkpoint с исправлением
+- [ ] Проверить hero после маскировки на desktop и mobile с явным визуальным подтверждением отсутствия встроенной зелёной CTA-зоны и пересечения с красной CTA
+- [ ] Проверить исправленный hero непосредственно на live custom domain после публикации и сохранить checkpoint с результатом
+- [ ] Если нужно, скорректировать размеры/позицию CTA-mask отдельно для desktop и mobile по результатам QA

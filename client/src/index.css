@@ -594,3 +594,16 @@ h2 { font-size: clamp(3.5rem, 6vw, 6.3rem); line-height: .88; }
   .hero-hotspot-primary { font-size: 8px; padding: .35rem .4rem; }
   .hero-hotspot-secondary { font-size: 8px; }
 }
+
+/* Cover the static CTA artwork before placing the accessible, branded controls above it. */
+.hero-reference-hotspots::before {
+  background: #f4f5f3;
+  content: "";
+  height: 15.2%;
+  left: 2.5%;
+  pointer-events: none;
+  position: absolute;
+  bottom: 3.6%;
+  width: 49%;
+  z-index: 0;
+}

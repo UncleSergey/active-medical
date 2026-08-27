@@ -23,4 +23,11 @@ describe("Active Medical brand identity contract", () => {
     expect(home).toContain("Послуги");
     expect(home).toContain("Записатись на прийом");
   });
+
+  it("keeps a single accessible CTA pair over the supplied hero artwork", () => {
+    expect(home.match(/hero-hotspot-primary/g)).toHaveLength(1);
+    expect(home.match(/hero-hotspot-secondary/g)).toHaveLength(1);
+    expect(css).toContain(".hero-reference-hotspots::before");
+    expect(css).toContain("Cover the static CTA artwork");
+  });
 });
