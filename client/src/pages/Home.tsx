@@ -10,7 +10,7 @@ const heroImage = "/manus-storage/active-medical-hero-reference-body_fda89e6a.pn
 const interiorImage = "/manus-storage/active-medical-interior_10802c60.jpg";
 const teamImage = "/manus-storage/active-medical-team-realistic-proportions_23ae09e7.png";
 const doctorPortraits = [
-  "/manus-storage/alina-mezinova-natural-gaze-2026-08-27_d1dbc079.png",
+  "/manus-storage/alina-mezinova-color-scrubs-new_22ddf932.png",
   "/manus-storage/yuliia-standing-option-balanced-head_4c568e66.png",
   "/manus-storage/pohulych-yaroslav-color-scrubs-new_e4e3f887.png",
   "/manus-storage/fedorov-ivan-light-gray-scrubs_b178ecf8.png",

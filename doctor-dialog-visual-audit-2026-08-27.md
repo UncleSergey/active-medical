@@ -51,3 +51,11 @@ The final desktop capture at 1280×900 keeps the single red hero CTA, real logo,
 ## Runtime note
 
 After the MapView constructor guard, a fresh browser console tail returned no output, while a fresh mount still showed native Google Maps controls. The known full-suite exceptions remain the two pre-existing Telegram credential checks returning HTTP 401; all target tests, TypeScript, and production build pass.
+
+## Portrait mapping correction
+
+After the user identified the previously used natural-gaze portrait as Юлія Диченко rather than Аліна Мезінова, the first carousel mapping was restored to the existing real `alina-mezinova-color-scrubs-new_22ddf932.png` asset. A fresh DOM audit confirmed: card 01 Мезінова → `/manus-storage/alina-mezinova-color-scrubs-new_22ddf932.png`; card 02 Диченко → `/manus-storage/yuliia-standing-option-balanced-head_4c568e66.png`; card 03 Погулич → `pohulych-yaroslav-color-scrubs-new_e4e3f887.png`; card 04 Федоров → `fedorov-ivan-light-gray-scrubs_b178ecf8.png`.
+
+## Mapping responsive QA
+
+A fresh mobile full-page capture at 390×844 completed after the mapping correction. The page remained responsive without a visible horizontal overflow; the doctor section and its four-card sequence are present in the full document. The DOM audit above confirms the real image source/name pairing, with Мезінова first and Диченко second.

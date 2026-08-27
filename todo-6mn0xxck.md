@@ -180,3 +180,10 @@
 - [x] Добавить блок Facebook с реальной ссылкой/профилем клиники и понятным CTA без фиктивной ленты публикаций (verified page ID `61558068189082`)
 - [x] Добавить 1–2 современные отличительные UX-функции, связанные с услугами и записью, без медицинской диагностики (article topic tabs and AI quick prompts linked to booking/navigation)
 - [x] Проверить доступность, responsive, производительность, тесты и опубликовать расширение отдельным checkpoint (desktop/mobile captures; 5/5 dental tests; TypeScript/build pass; checkpoint follows)
+
+# Исправление portrait mapping врачей
+
+- [x] Проверить текущий порядок `doctors` и соответствие каждого элемента `doctorPortraits` (DOM audit confirms 01 Мезінова, 02 Диченко, 03 Погулич, 04 Федоров)
+- [x] Исправить ошибочное отображение портрета Диченко как Мезінової без замены реальных фотографий (restored `alina-mezinova-color-scrubs-new_22ddf932.png` for Alina)
+- [x] Добавить regression на имя/фото и проверить карусель/modal на desktop и mobile (dentalArchitecture 5/5; desktop DOM + mobile full-page capture)
+- [x] Сохранить исправление опубликованным checkpoint (checkpoint follows)

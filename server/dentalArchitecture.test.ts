@@ -43,7 +43,9 @@ describe("Active Medical dental architecture", () => {
     expect(home).toContain("setTimeout(() => moveDoctors(1), 30000)");
     expect(home).toContain("track.scrollWidth <= track.clientWidth + 2");
     expect(home.indexOf('name: "Мезінова Аліна Віталіївна"')).toBeLessThan(home.indexOf('name: "Диченко Юлія Андріївна"'));
-    expect(home).toContain("alina-mezinova-natural-gaze-2026-08-27_d1dbc079.png");
+    expect(home).toContain("alina-mezinova-color-scrubs-new_22ddf932.png");
+    expect(home.indexOf("alina-mezinova-color-scrubs-new_22ddf932.png")).toBeLessThan(home.indexOf("yuliia-standing-option-balanced-head_4c568e66.png"));
+    expect(home).not.toContain("alina-mezinova-natural-gaze-2026-08-27_d1dbc079.png");
     expect(home).toContain("selectedDoctor");
     expect(home).toContain('aria-haspopup="dialog"');
     expect(home).toContain("<Dialog open={Boolean(selectedDoctor)}");
