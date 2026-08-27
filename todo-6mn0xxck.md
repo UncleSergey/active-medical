@@ -187,3 +187,13 @@
 - [x] Исправить ошибочное отображение портрета Диченко как Мезінової без замены реальных фотографий (restored `alina-mezinova-color-scrubs-new_22ddf932.png` for Alina)
 - [x] Добавить regression на имя/фото и проверить карусель/modal на desktop и mobile (dentalArchitecture 5/5; desktop DOM + mobile full-page capture)
 - [x] Сохранить исправление опубликованным checkpoint (checkpoint follows)
+
+# Умный AI-бот для пациентов
+
+- [x] Провести аудит текущего `CalmAssistant`, server endpoint и утверждённых фактов клиники
+- [x] Собрать server-side knowledge context из реальных услуг, адресов, контактов, врачей, статей и правил записи (`server/assistantKnowledge.ts`)
+- [x] Улучшить intent-сценарии бота: навигация, услуги, подготовка к визиту, запись, срочные симптомы и передача администратору
+- [x] Усилить privacy/medical guardrails: не просить лишние персональные данные, не диагностировать и не назначать лечение
+- [x] Обновить UI чата, quick actions и loading/error states под полноценный пациентский сценарий
+- [x] Добавить Vitest-регрессии и проверить реальные AI-сценарии в preview (assistant 2/2; quick prompt response verified)
+- [x] Сохранить и опубликовать production-ready версию умного AI-бота (checkpoint follows)

@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 const router = readFileSync("server/routers.ts", "utf8");
+const knowledge = readFileSync("server/assistantKnowledge.ts", "utf8");
 const component = readFileSync("client/src/components/CalmAssistant.tsx", "utf8");
 const css = readFileSync("client/src/index.css", "utf8");
 
@@ -14,6 +15,11 @@ describe("Active Medical calm assistant", () => {
     expect(router).toContain("max(600)");
     expect(router).toContain("max(8)");
     expect(router).toContain("+38 (0512) 777-888");
+    expect(router).toContain("assistantKnowledge");
+    expect(knowledge).toContain("Лазурна, 5");
+    expect(knowledge).toContain("Мезінова Аліна Віталіївна");
+    expect(knowledge).toContain("/statti");
+    expect(knowledge).toContain("Не вигадуй ціни");
   });
 
   it("provides accessible UI states and does not fabricate social proof", () => {

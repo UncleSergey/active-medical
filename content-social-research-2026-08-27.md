@@ -37,3 +37,9 @@ Delayed browser QA confirmed the assistant opens correctly after the React state
 Interactive smoke-test: selecting the quick prompt “Як підготувати дитину до першого візиту?” kept the user on `/statti` and rendered the assistant loading state “Думаю над відповіддю…”. The request was sent through the tRPC assistant endpoint; the panel remained accessible and showed its disclaimer.
 
 Final interactive smoke-test: the quick prompt returned an Ukrainian answer in the assistant panel, kept the user on `/statti`, and preserved the medical disclaimer. The response is clearly informational and includes a pointer to the clinic booking path/phone rather than a diagnosis.
+
+## Smart assistant knowledge-context QA
+
+After the server-side knowledge context was added, the preview `/statti?assistant=knowledge` opened the existing assistant panel successfully. The accurate DOM probe confirmed the title `Спокійний навігатор`, `#calm-assistant-panel`, and the accessible input label `Запитання для AI-помічника`. The earlier failed probe used an uppercase-only selector and did not represent a product error.
+
+Final smart-bot smoke-test: on `/statti?assistant=knowledge`, the assistant opened successfully and the quick prompt “Які є напрямки стоматології?” returned the approved eight service directions, a general-information disclaimer, and the real booking phone/form handoff. The response stayed inside the panel and did not navigate away.
