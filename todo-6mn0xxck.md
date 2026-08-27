@@ -162,3 +162,10 @@
 - [x] Проверить desktop/mobile, keyboard escape/focus и опубликовать checkpoint (desktop/mobile captures; Dialog, Escape focus and booking CTA verified; checkpoint follows)
 - [x] Исправить возврат keyboard focus после закрытия controlled doctor Dialog на карточку, которая его открыла, и повторно проверить Escape/CTA (Escape возвращает focus на card; CTA фокусирует booking name input)
 - [x] Защитить MapView от частично загруженного Google Maps namespace без конструктора Map и сохранить OSM fallback без console error (guard + mapFallback regression)
+
+# Исправление duplicate Google Maps SDK
+
+- [x] Найти все точки подключения Google Maps JavaScript API и определить источник повторной загрузки на `/?from_webdev=1` (единственная точка — shared `MapView`; повтор был возможен после module reload/remount)
+- [x] Сделать загрузчик Maps SDK одноразовым для повторных mount/navigation и сохранить OSM fallback (stable script selector + loading/ready/invalid state)
+- [x] Добавить Vitest-регрессию против повторного добавления Maps script и проверить preview runtime (5/5 target tests; clean `?from_webdev=1` console empty)
+- [x] Проверить production build, browser console и опубликовать checkpoint исправления (build passes; checkpoint follows)

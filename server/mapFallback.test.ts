@@ -10,6 +10,10 @@ describe("MapView fallback", () => {
 
     expect(source).toContain("https://www.openstreetmap.org/export/embed.html");
     expect(source).toContain('typeof window.google?.maps?.Map === "function"');
+    expect(source).toContain('const MAPS_SCRIPT_SELECTOR = \'script[data-active-medical-maps-sdk="true"]\'');
+    expect(source).toContain('document.querySelector<HTMLScriptElement>(MAPS_SCRIPT_SELECTOR)');
+    expect(source).toContain("existing.dataset.mapsState");
+    expect(source).toContain('script.dataset.mapsState = "loading"');
     expect(source).toContain('typeof maps.Map !== "function"');
     expect(source).toMatch(/className=\{cn\("map-embed-fallback", mapReady && "map-embed-fallback-hidden"\)\}/);
     expect(source).toMatch(/loading="lazy"/);

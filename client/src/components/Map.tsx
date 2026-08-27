@@ -91,16 +91,37 @@ const MAPS_SDK_URLS = [
   "https://activemedic-rcveslat.manus.space/api/maps-sdk",
 ];
 let mapScriptPromise: Promise<boolean> | null = null;
+const MAPS_SCRIPT_SELECTOR = 'script[data-active-medical-maps-sdk="true"]';
+
+type MapsScriptState = "loading" | "ready" | "invalid";
 
 function appendMapScript(src: string): Promise<boolean> {
+  const existing = document.querySelector<HTMLScriptElement>(MAPS_SCRIPT_SELECTOR);
+  if (existing) {
+    if (existing.dataset.mapsState === "ready") return Promise.resolve(true);
+    if (existing.dataset.mapsState === "invalid") return Promise.resolve(false);
+    return new Promise<boolean>((resolve) => {
+      const onLoad = () => resolve(typeof window.google?.maps?.Map === "function");
+      const onError = () => resolve(false);
+      existing.addEventListener("load", onLoad, { once: true });
+      existing.addEventListener("error", onError, { once: true });
+    });
+  }
+
   return new Promise<boolean>((resolve) => {
     const script = document.createElement("script");
     script.src = src;
     script.async = true;
     script.dataset.activeMedicalMapsSdk = "true";
-    script.onload = () => resolve(typeof window.google?.maps?.Map === "function");
+    script.dataset.mapsState = "loading" satisfies MapsScriptState;
+    script.onload = () => {
+      const ready = typeof window.google?.maps?.Map === "function";
+      script.dataset.mapsState = ready ? "ready" : "invalid";
+      resolve(ready);
+    };
     // The branded map fallback remains visible when the external SDK is unavailable.
     script.onerror = () => {
+      script.dataset.mapsState = "invalid";
       script.remove();
       resolve(false);
     };
